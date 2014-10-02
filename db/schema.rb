@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002191749) do
+ActiveRecord::Schema.define(version: 20141002221737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20141002191749) do
     t.date     "end_date"
     t.string   "calculation_type"
     t.string   "tag"
-    t.boolean  "approved"
+    t.boolean  "approved",         default: false
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20141002191749) do
     t.date     "end_date"
     t.decimal  "amount_owed"
     t.string   "permission"
-    t.boolean  "paid"
+    t.boolean  "paid",        default: false
     t.integer  "event_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20141002191749) do
     t.string   "image"
     t.string   "name"
     t.string   "phone_number"
-    t.boolean  "admin"
+    t.boolean  "admin",           default: false
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
