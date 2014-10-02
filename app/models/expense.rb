@@ -1,5 +1,6 @@
 class Expense < ActiveRecord::Base
-  validates :name, :amount, :calculation_type, presence: true
-  validates :approved, :event_id, presence: true
+  validates :item, :amount, :calculation_type, presence: true
+  validates :event_id, presence: true
+  validates :approved, :inclusion => {:in => [true, false]}
   has_one :role, :through => :event
 end

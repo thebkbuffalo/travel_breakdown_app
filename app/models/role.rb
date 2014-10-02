@@ -1,6 +1,7 @@
 class Role < ActiveRecord::Base
   validates :permission, :event_id, :user_id, presence: true
-  has_one :user
-  has_one :event
+  validates :paid, :inclusion => {:in => [true, false]}
+  belongs_to :user
+  belongs_to :event
   has_many :costs, :through => :event
 end
