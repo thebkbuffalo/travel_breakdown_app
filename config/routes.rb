@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   resource  :session, only: [:create, :destroy]
 
-  resources :users do
+  resources :users, shallow: true do
     resources :events do
       resources :expenses, only: [:create, :destroy, :index, :edit, :update, :new]
     end
