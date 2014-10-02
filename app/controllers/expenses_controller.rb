@@ -22,6 +22,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.event_id = @event.id
+    @expense.user_id = @user.id
     respond_to do |format|
       if @expense.save
         format.html { redirect_to user_event_expenses_path, notice: 'Expense was successfully created.' }
