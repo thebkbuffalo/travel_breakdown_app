@@ -13,7 +13,5 @@ u3 = User.create(name: "Erica", image: "https://encrypted-tbn1.gstatic.com/image
 
 e1 = Event.create(name: "Boat", start_date: DateTime.new(2015,9,1,17), end_date: DateTime.new(2015,9,8,17), location: "Bahamas")
 e2 = Event.create(name: "Bachelorette", start_date: DateTime.new(2014,12,1,17), end_date: DateTime.new(2014,12,4,17), location: "Vegas")
-e3 = Event.create(name: "Summer share", start_date: DateTime.new(2015,12,1,17), end_date: DateTime.new(2014,12,4,17), location: "Vegas")
-
-
-
+e3 = Event.create(name: "Summer Share", start_date: DateTime.new(2015,5,1,12), end_date: DateTime.new(2015,8,4,17), location: "East Hampton")
+e4 = Event.create(name: "Bonnaroo", start_date: DateTime.new(2015,5,1,12), end_date: DateTime.new(2015,5,5,17), location: "Tennessee")
