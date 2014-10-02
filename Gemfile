@@ -39,6 +39,11 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'simple_form', '~> 3.0.2'
+<<<<<<< HEAD
 gem 'pony' , '~> 1.11'
 gem 'cancan' , '~> 1.6.10'
+=======
+gem 'pony',  '~> 1.11'
+gem 'cancan', '~> 1.6.10'
+>>>>>>> 28cc650c1196ee268a8eeeeeaf98b2eb6f98267a
 gem 'twilio-ruby', '~> 3.13.1'
