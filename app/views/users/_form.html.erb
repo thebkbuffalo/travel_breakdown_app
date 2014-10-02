@@ -1,41 +1,35 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+      <p><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</p>
       <ul>
       <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li style="color: red"><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
-  </div>
-  <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <p>
+      <%= f.label(:email) %>
+      <%= f.text_field(:email) %><br/>
+    </p>
+
+    <p>
+      <%= f.label(:name) %>
+      <%= f.text_field(:name) %><br/>
+    </p>
+
+    <% unless @user.persisted? # if we are creating instead of editing... %>
+    <p>
+      <%= f.label(:password) %><br/>
+      <%= f.password_field(:password) %><br/>
+      <%= f.label(:password_confirmation, 'Confirmation') %><br/>
+      <%= f.password_field(:password_confirmation) %><br/>
+    </p>
+    <% end %>
+    
+    <p><%= f.submit %></p>
   </div>
 <% end %>
