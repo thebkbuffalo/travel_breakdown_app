@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @role.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @role.end_date %>
+</p>
+
+<p>
+  <strong>Amount owed:</strong>
+  <%= @role.amount_owed %>
+</p>
+
+<p>
+  <strong>Permission:</strong>
+  <%= @role.permission %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @role.paid %>
+</p>
+
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>
