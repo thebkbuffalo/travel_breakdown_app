@@ -27,6 +27,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
+        @role = Role.create(permission: "owner", event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
         format.html { redirect_to user_event_path(id: @event.id), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
