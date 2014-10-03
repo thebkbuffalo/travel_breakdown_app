@@ -62,7 +62,9 @@ class EventsController < ApplicationController
   end
 
   def invite_friends
+  end
 
+  def new_friend
   end
 
   private
