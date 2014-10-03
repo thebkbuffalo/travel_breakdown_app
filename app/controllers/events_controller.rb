@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :invite_friends]
   before_action :set_user
   # GET /events
   # GET /events.json
@@ -59,6 +59,10 @@ class EventsController < ApplicationController
       format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def invite_friends
+
   end
 
   private
