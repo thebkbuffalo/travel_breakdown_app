@@ -1,34 +1,36 @@
-<p id="notice"><%= notice %></p>
+<strong>Name:</strong><%= @user.name %>
+<br/><br/>
+<img src="<%=@user.image%>" %>
+<br/><br/>
+<strong>Email:</strong><%= @user.email %>
+<br/>
+<strong>Phone number:</strong><%= @user.phone_number %>
+<br/>
+<strong>Admin:</strong><%= @user.admin %>
+<br/><br/>
+<table style="width:100%">
+<tr> 
+  <th>Name</th>
+  <th>Location</th>
+  <th>Permission</th>
+  <th>Paid?</th>
+  <th>Dates</th> 
+<% @events.each do |event| %>
+  <tr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <td><a href="/events/<%=event[0][0].id %>"><%= event[0][0].name %></a></td>
+  <td> <%= event[0][0].location %></td>
 
-<p>
-  <strong>Image:</strong>
-  <%= @user.image %>
-</p>
+  <td> <%= event[1].permission %></td>
+  <td> <%= event[1].paid %></td>
+  <td> <%= event[1].start_date %> - <%= event[1].end_date %>
+  </td>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @user.phone_number %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
+</tr> 
+<%end%>
+</table>
+<br/><br/>
+<%= link_to 'Edit Profile', edit_user_path(@user) %> |
+<%= link_to 'New Event', new_user_event_path(@user) %> |
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

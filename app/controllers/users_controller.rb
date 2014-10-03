@@ -15,6 +15,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    roles = Role.where(user_id: params[:id].to_i)
+    @events = []
+    roles.each do |role|
+      @events.push([Event.where(id: role.event_id), role])
+    end  
   end
 
   # GET /users/new
