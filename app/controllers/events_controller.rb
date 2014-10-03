@@ -62,7 +62,21 @@ class EventsController < ApplicationController
   end
 
   def invite_friends
+    @role = Role.new
+  end
 
+  def new_friend
+    friend = User.find_by(email: params[:email])
+    @role = Role.new(user_id: friend.id, start_date: params[:start_date], end_date: params[:start_date], permission: params[:permission])
+    respond_to do |format|
+      if @role.save
+        format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Friend was successfully invited.' }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
