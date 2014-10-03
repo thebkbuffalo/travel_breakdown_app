@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
+    @expenses = Expense.where(event_id: @event.id)
   end
 
   # GET /expenses/new
