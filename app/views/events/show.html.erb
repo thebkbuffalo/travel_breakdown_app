@@ -30,5 +30,5 @@
   <%= @event.image %>
 </p>
 
-<%= link_to 'Edit', edit_user_event_path(id: @event.id)  %> |
-<%= link_to 'Back', user_events_path %>
+<%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
+<%= link_to 'Back', user_events_path(user_id: @user.id) %>

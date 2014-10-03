@@ -1,4 +1,9 @@
-<%= form_for [@user, @event] do |f| %>
+<% if params[:user_id]%>
+<% form_info = [@user, @event] %>
+<% else %>
+<% form_info = (@event) %>
+<% end %>
+ <%= form_for form_info do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
