@@ -15,11 +15,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    roles = Role.where(user_id: params[:id].to_i)
-    @events = []
-    roles.each do |role|
-      @events.push([Event.where(id: role.event_id), role])
-    end  
+    owner = Role.where(user_id: params[:id].to_i).where(permission: "owner")
+    @owned = owner.map { |role| Event.where(id: role.event_id)}.flatten
+    organizer = Role.where(user_id: params[:id].to_i).where(permission: "organizer")
+    @organized = organizer.map { |role| Event.where(id: role.event_id)}.flatten
+    friend = Role.where(user_id: params[:id].to_i).where(permission: "friend")
+    @friended = friend.map { |role| Event.where(id: role.event_id)}.flatten
   end
 
   # GET /users/new

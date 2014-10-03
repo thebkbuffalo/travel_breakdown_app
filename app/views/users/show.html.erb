@@ -8,25 +8,48 @@
 <br/>
 <strong>Admin:</strong><%= @user.admin %>
 <br/><br/>
+<h2> Events Owned </h2>
 <table style="width:100%">
-<tr> 
+<tr>
   <th>Name</th>
   <th>Location</th>
-  <th>Permission</th>
-  <th>Paid?</th>
-  <th>Dates</th> 
-<% @events.each do |event| %>
+  <th>Dates</th>
+<% @owned.each do |event| %>
   <tr>
-
-  <td><a href="/events/<%=event[0][0].id %>"><%= event[0][0].name %></a></td>
-  <td> <%= event[0][0].location %></td>
-
-  <td> <%= event[1].permission %></td>
-  <td> <%= event[1].paid %></td>
-  <td> <%= event[1].start_date %> - <%= event[1].end_date %>
-  </td>
-
-</tr> 
+    <td><%= link_to event.name, event_path(event.id) %> <td>
+    <td> <%= event.location %></td>
+    <td> <%= event.start_date %> - <%= event.end_date %></td>
+  </tr>
+<%end%>
+</table>
+<br/><br/>
+<h2> Events Organizing </h2>
+<table style="width:100%">
+<tr>
+  <th>Name</th>
+  <th>Location</th>
+  <th>Dates</th>
+<% @organized.each do |event| %>
+  <tr>
+    <td><%= link_to event.name, event_path(event.id) %> <td>
+    <td> <%= event.location %></td>
+    <td> <%= event.start_date %> - <%= event.end_date %></td>
+  </tr>
+<%end%>
+</table>
+<br/><br/>
+<h2> Events Invited to </h2>
+<table style="width:100%">
+<tr>
+  <th>Name</th>
+  <th>Location</th>
+  <th>Dates</th>
+<% @friended.each do |event| %>
+  <tr>
+    <td><%= link_to event.name, event_path(event.id) %> <td>
+    <td> <%= event.location %></td>
+    <td> <%= event.start_date %> - <%= event.end_date %></td>
+  </tr>
 <%end%>
 </table>
 <br/><br/>
