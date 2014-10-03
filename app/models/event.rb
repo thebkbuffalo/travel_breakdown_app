@@ -5,9 +5,8 @@ class Event < ActiveRecord::Base
   has_many :expenses
 
 	def expenses
-    	Expense.where(event_id: id)
-    	# Expense.where(event_id: id).map {|expense| expense.amount.to_i}.inject(:+)
-
+  	Expense.where(event_id: id)
+  	# Expense.where(event_id: id).map {|expense| expense.amount.to_i}.inject(:+)
 	end
 
 	def total_days
@@ -17,6 +16,7 @@ class Event < ActiveRecord::Base
 	def event_users
 		Role.where(event_id: self.id)
 	end
+	
 	def attendance
 		@attendance = []
 		total_days.times {@attendance.push([])}

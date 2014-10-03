@@ -6,6 +6,7 @@ class Role < ActiveRecord::Base
   belongs_to :event
   validates :user, :uniqueness => {:scope => :event}
   has_many :costs, :through => :event
+  
   def total_days
 		(end_date - start_date).to_i
 	end
