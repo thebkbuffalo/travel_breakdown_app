@@ -1,8 +1,8 @@
 
 class Event < ActiveRecord::Base
-  validates :name, :start_date, :end_date, presence: true
   has_many :roles
   has_many :expenses
+  validates :name, :start_date, :end_date, presence: true
 
 	def expenses
   	Expense.where(event_id: id)
@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
 	def event_users
 		Role.where(event_id: self.id)
 	end
-	
+
 	def attendance
 		@attendance = []
 		total_days.times {@attendance.push([])}
