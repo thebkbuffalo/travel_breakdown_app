@@ -10,6 +10,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    people = Role.where(event_id: @event.id)
+    @people = people.map { |person| User.where(id: person.user_id)}.flatten
     # total_expenses = Expense.where(event_id: params[:id])
     # user_expenses = total_expenses.select { |expense| expense.event_id == params[:id].to_i}
     # # binding.pry
@@ -77,15 +79,15 @@ class EventsController < ApplicationController
     friend = User.find_by(email: params[:role][:user][:email])
     if friend
       @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: params[:role][:start_date], end_date: params[:role][:start_date], permission: params[:role][:permission])
-      respond_to do |format|
       if @role.save
-        format.html { render :show, notice: 'Friend was successfully invited.' }
-        format.json { render :show, status: :created, location: @event }
+        flash[:notice] = "Friend was successfully invited."
+        redirect_to event_path(id: @event.id)
       else
-        format.html { render :invite_friends }
-        format.json { render json: @role.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.html { render :invite_friends }
+          format.json { render json: @role.errors, status: :unprocessable_entity }
+        end
       end
-    end
     else
       flash[:notice] = "This person is not a member. Would you like to invite them to join the site?"
       redirect_to event_invite_friends_path(event_id: @event.id)
