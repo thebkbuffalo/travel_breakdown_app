@@ -1,34 +1,26 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong>Event:</strong>
   <%= @event.name %>
 </p>
-
-<p>
-  <strong>Users title:</strong>
-  <%= @event.users_title %>
-</p>
-
 <p>
   <strong>Start date:</strong>
   <%= @event.start_date %>
 </p>
-
 <p>
   <strong>End date:</strong>
   <%= @event.end_date %>
 </p>
-
 <p>
   <strong>Location:</strong>
   <%= @event.location %>
 </p>
-
 <p>
-  <strong>Image:</strong>
-  <%= @event.image %>
+  <img src="<%= @event.image %>">
 </p>
-
+<h1> People <h1>
+<br>
 <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
-<%= link_to 'Back', user_events_path(user_id: @user.id) %>
+<%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> <br>
+<%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
+<%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
