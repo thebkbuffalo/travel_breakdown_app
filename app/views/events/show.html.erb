@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p style="color: red"><%= flash[:notice] %></p>
 <p>
   <strong>Event:</strong>
   <%= @event.name %>
@@ -19,6 +19,19 @@
   <img src="<%= @event.image %>">
 </p>
 <h1> People <h1>
+<table style="width:100%">
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Permission</th>
+<% @people.each do |person| %>
+  <tr>
+    <td> <%= person.name %></td>
+    <td> <%= person.email %></td>
+    <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
+  </tr>
+<%end%>
+</table>
 <br>
 <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
 <%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> <br>
