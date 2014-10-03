@@ -43,3 +43,5 @@ Role.create(event_id: e4.id, user_id: u2.id, start_date: e4.start_date, end_date
 Role.create(event_id: e4.id, user_id: u3.id, start_date: e4.start_date, end_date: e4.end_date, permission: "friend")
 Role.create(event_id: e4.id, user_id: u4.id, start_date: e4.start_date, end_date: e4.end_date, permission: "owner")
 Role.create(event_id: e4.id, user_id: u5.id, start_date: e4.start_date, end_date: e4.end_date, permission: "friend")
+
+Expense.create()

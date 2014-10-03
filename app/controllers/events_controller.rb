@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :invite_friends]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
   before_action :set_user
   # GET /events
   # GET /events.json
@@ -67,17 +67,23 @@ class EventsController < ApplicationController
   end
 
   def new_friend
-    friend = User.find_by(email: params[:email])
-    @role = Role.new(user_id: friend.id, start_date: params[:start_date], end_date: params[:start_date], permission: params[:permission])
-    respond_to do |format|
+    friend = User.find_by(email: params[:role][:user][:email])
+    if friend
+      @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: params[:role][:start_date], end_date: params[:role][:start_date], permission: params[:role][:permission])
+      respond_to do |format|
       if @role.save
-        format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Friend was successfully invited.' }
+        format.html { render :show, notice: 'Friend was successfully invited.' }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.html { render :invite_friends }
+        format.json { render json: @role.errors, status: :unprocessable_entity }
       end
     end
+    else
+      flash[:notice] = "This person is not a member. Would you like to invite them to join the site?"
+      redirect_to event_invite_friends_path(event_id: @event.id)
+    end
+
   end
 
   private
