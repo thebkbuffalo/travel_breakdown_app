@@ -4,6 +4,7 @@ class Role < ActiveRecord::Base
   validates :paid, :inclusion => {:in => [true, false]}
   belongs_to :user
   belongs_to :event
+  validates :user, :uniqueness => {:scope => :event}
   has_many :costs, :through => :event
 end
 
