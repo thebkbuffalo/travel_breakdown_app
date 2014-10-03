@@ -9,10 +9,8 @@ class User < ActiveRecord::Base
   has_many :expenses
 
  	def is_admin?
-    self.role == 'admin'
+    self.admin == true
   end
-
-
 
 end
 # == Schema Information
