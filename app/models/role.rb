@@ -1,16 +1,18 @@
 
 class Role < ActiveRecord::Base
-  validates :permission, :event_id, :user_id, presence: true
-  validates :paid, :inclusion => {:in => [true, false]}
   belongs_to :user
   belongs_to :event
-  validates :user, :uniqueness => {:scope => :event}
   has_many :costs, :through => :event
-  
+  validates :permission, :event_id, :user_id, presence: true
+  validates :paid, :inclusion => {:in => [true, false]}
+  validates :user, :uniqueness => {:scope => :event}
+
   def total_days
 		(end_date - start_date).to_i
 	end
 end
+
+
 
 # == Schema Information
 #
