@@ -12,6 +12,7 @@ class EventsController < ApplicationController
   def show
     people = Role.where(event_id: @event.id)
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
+    @people_role = people
     @event.total_days
     expenses = @event.expenses
     @event.attendance
@@ -25,7 +26,7 @@ class EventsController < ApplicationController
         @total_cost += expense.gift
       end
     # type.inject(:+)
-        
+
     end
     # user_expenses = total_expenses.select { |expense| expense.event_id == params[:id].to_i}
     # # binding.pry
@@ -52,7 +53,7 @@ class EventsController < ApplicationController
         @role = Role.create(permission: "owner", event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
         # format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully created.' }
         format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully created.' }
-        
+
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
