@@ -10,7 +10,14 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    binding.pry
+    # total_expenses = Expense.where(event_id: params[:id])
+    # user_expenses = total_expenses.select { |expense| expense.event_id == params[:id].to_i}
+    # # binding.pry
+    # total_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
+    # user_expenses_num = total_expenses.map {|expense| expense.amount.to_i}
+    # @total_owed = @expenses.inject(:+)
+    # @total_paid = user_expenses_num.inject(:+)
+    # # binding.pry
   end
 
   # GET /events/new
