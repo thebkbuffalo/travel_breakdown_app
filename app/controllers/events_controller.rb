@@ -93,6 +93,7 @@ class EventsController < ApplicationController
       redirect_to event_invite_friends_path(event_id: @event.id)
     end
 
+
   end
 
   private
