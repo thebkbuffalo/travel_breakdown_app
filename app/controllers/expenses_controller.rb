@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-  before_action :set_event
+  before_action :set_event, only: [:create, :index, :show, :edit, :new]
   # GET /expenses
   # GET /expenses.json
   def index
@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
     @expense.user_id = @user.id
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to user_event_expenses_path, notice: 'Expense was successfully created.' }
+        format.html { redirect_to event_expenses_path(event_id: params[:event_id]), notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new }
@@ -39,7 +39,7 @@ class ExpensesController < ApplicationController
   def update
     respond_to do |format|
       if @expense.update(expense_params)
-        format.html { redirect_to user_event_expenses_path, notice: 'Expense was successfully updated.' }
+        format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
         format.json { render :show, status: :ok, location: @expense }
       else
         format.html { render :edit }
@@ -53,7 +53,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to user_event_expenses_path, notice: 'Expense was successfully destroyed.' }
+      format.html { redirect_to event_expenses_path(event_id: params[:event_id]), notice: 'Expense was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,7 +65,7 @@ class ExpensesController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:user_id])
+      @user = User.find(session[:user_id])
     end
 
     def set_event

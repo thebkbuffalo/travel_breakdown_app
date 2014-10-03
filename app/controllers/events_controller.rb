@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         @role = Role.create(permission: "owner", event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
-        format.html { redirect_to user_event_path(id: @event.id), notice: 'Event was successfully created.' }
+        format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to user_event_path(id: @event.id), notice: 'Event was successfully updated.' }
+        format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to user_event_path(id: @event.id), notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +68,7 @@ class EventsController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:user_id])
+      @user = User.find(session[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
