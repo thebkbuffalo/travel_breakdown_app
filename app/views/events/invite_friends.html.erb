@@ -16,10 +16,6 @@
       <%= user.label(:email) %>
       <%= user.text_field(:email) %>
     <% end %>
-  <%= f.label(:start_date) %>
-  <%= f.date_field(:start_date) %>
-  <%= f.label(:end_date) %>
-  <%= f.date_field(:end_date) %>
   <%= f.radio_button :permission, :organizer %> Organizer?
   <%= f.radio_button :permission, :friend %> Friend?
   <%= f.submit "Invite"%>
