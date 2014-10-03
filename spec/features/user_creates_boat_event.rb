@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# User.destroy_all
+ User.destroy_all
 
 # describe "the signin process", :type => :feature do
 #   before :each do
