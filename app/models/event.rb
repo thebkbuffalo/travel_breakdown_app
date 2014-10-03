@@ -1,5 +1,7 @@
 
 class Event < ActiveRecord::Base
+  after_save :check_valid_dates
+
   has_many :roles
   has_many :expenses
   validates :name, :start_date, :end_date, presence: true
@@ -34,6 +36,30 @@ class Event < ActiveRecord::Base
 		end
 		@attendance
 	end
+
+	 private
+
+    def event_dates
+      (event.start_date..event.end_date).to_a
+    end
+
+    def correct_date_order?
+      start_date <= end_date
+    end
+
+    def valid_date_range?
+      event_dates.include?(start_date) && event_dates.include?(end_date)
+    end
+
+    def check_valid_dates
+      binding.pry
+      if !correct_date_order? || !valid_date_range?
+        state = "dirt"
+      else
+        state = "golden"
+      end
+    end
+
 end
 
 # == Schema Information
