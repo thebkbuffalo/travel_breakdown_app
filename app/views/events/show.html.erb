@@ -38,4 +38,5 @@
 <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
 <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
 
-</br></br>
+
+<h1>Total Cost: <%= @total_cost %></h1>

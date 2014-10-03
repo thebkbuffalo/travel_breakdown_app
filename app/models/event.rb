@@ -4,21 +4,35 @@ class Event < ActiveRecord::Base
   has_many :roles
   has_many :expenses
 
-
-
-	def perpersonperday(total)
-		total / days 
+	def expenses
+  	Expense.where(event_id: id)
+  	# Expense.where(event_id: id).map {|expense| expense.amount.to_i}.inject(:+)
 	end
 
-	def days
-		end_date - begin_date
+	def total_days
+		(end_date - start_date).to_i
 	end
 
-	def evensplit(total)
-		cost/@event.users.count
+	def event_users
+		Role.where(event_id: self.id)
 	end
-
-	def personperday
+	
+	def attendance
+		@attendance = []
+		total_days.times {@attendance.push([])}
+		event_users.each do |event_user|
+			count = 0
+			while count < total_days
+				if event_user.start_date == (start_date + count) && event_user.end_date >= (start_date + count)
+					@attendance[count].push(event_user)
+					count += 1
+					event_user.start_date += 1
+				else
+					count += 1
+				end
+			end
+		end
+		@attendance
 	end
 end
 

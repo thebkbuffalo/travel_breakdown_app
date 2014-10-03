@@ -12,14 +12,27 @@ class EventsController < ApplicationController
   def show
     people = Role.where(event_id: @event.id)
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
-    # total_expenses = Expense.where(event_id: params[:id])
+    
+    @event.total_days
+    expenses = @event.expenses
+    @event.attendance
+    @total_cost = 0
+    @type = expenses.map do |expense|
+      if expense.calculation_type == "Groceries"
+        @total_cost += expense.groceries
+      elsif expense.calculation_type == "Boat"
+        @total_cost += expense.boat
+      elsif expense.calculation_type == "Gift"
+        @total_cost += expense.gift
+      end
+    # type.inject(:+)
+        
+    end
     # user_expenses = total_expenses.select { |expense| expense.event_id == params[:id].to_i}
     # # binding.pry
-    # total_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
-    # user_expenses_num = total_expenses.map {|expense| expense.amount.to_i}
+    # user_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
     # @total_owed = @expenses.inject(:+)
     # @total_paid = user_expenses_num.inject(:+)
-    # # binding.pry
   end
 
   # GET /events/new

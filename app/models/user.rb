@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
     self.admin == true
   end
 
+
 end
 # == Schema Information
 #
