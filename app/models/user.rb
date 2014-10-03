@@ -7,8 +7,14 @@ class User < ActiveRecord::Base
   has_many :roles
   has_many :events, through: :role
   has_many :expenses
-end
 
+ 	def is_admin?
+    self.role == 'admin'
+  end
+
+
+
+end
 # == Schema Information
 #
 # Table name: users
@@ -23,4 +29,5 @@ end
 #  created_at      :datetime
 #  updated_at      :datetime
 #
+
 
