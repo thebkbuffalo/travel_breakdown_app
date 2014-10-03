@@ -4,7 +4,9 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
-require 'capybara'
+require 'capybara/rspec'
+
+Capybara.default_driver = :selenium
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
