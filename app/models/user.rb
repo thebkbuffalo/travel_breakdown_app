@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   validates :admin, :inclusion => {:in => [true, false]}
   has_many :roles
   has_many :events, through: :role
+  has_many :expenses
 end
