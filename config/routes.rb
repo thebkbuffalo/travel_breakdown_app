@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     resources :users  do
       resources :events, shallow: true do
+        get 'invite_friends'
         resources :expenses, only: [:create, :destroy, :index, :edit, :update, :new]
       end
     end
