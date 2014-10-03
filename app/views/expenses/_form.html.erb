@@ -39,7 +39,9 @@
   </div>
   <div class="field">
     <%= f.label :calculation_type %><br>
-    <%= f.text_field :calculation_type %>
+    <%= f.radio_button :calculation_type, :boat %> BOAT?
+    <%= f.radio_button :calculation_type, :groceries %> GROCERIES?
+    <%= f.radio_button :calculation_type, :gifts %> GIFTS?
   </div>
   <div class="actions">
     <%= f.submit %>

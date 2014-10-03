@@ -46,6 +46,7 @@ Role.create(event_id: e4.id, user_id: u4.id, start_date: e4.start_date, end_date
 Role.create(event_id: e4.id, user_id: u5.id, start_date: e4.start_date, end_date: e4.end_date, permission: "friend")
 
 
+
 Expense.create(item:"Wine", amount: "105.00", description:"Wine for everyone", start_date:DateTime.new(2015,9,1,17), end_date:DateTime.new(2015,9,3,17), calculation_type:"Boat", tag:"", approved: true, event_id: e1.id, user_id: u1.id)
 Expense.create(item:"Cheese", amount: "29.00", description:"Cheese for the wine", start_date:DateTime.new(2015,9,1,17), end_date:DateTime.new(2015,9,2,17), calculation_type:"Groceries", tag:"", approved: true, event_id: e1.id, user_id: u1.id)
 Expense.create(item:"Wine Crackers", amount: "12.00", description:"Crackers for the cheese", start_date:DateTime.new(2015,9,1,17), end_date:DateTime.new(2015,9,8,17), calculation_type:"Groceries", tag:"", approved: true, event_id: e1.id, user_id: u2.id)
@@ -70,5 +71,6 @@ Expense.create(item:"Decorations", amount: "112.00", description:"Decoration for
 
 Expense.create(item:"Gasoline", amount: "350.00", description:"Gasoline for trip", start_date:DateTime.new(2015,5,1,12), end_date:DateTime.new(2015,5,5,17), calculation_type:"Groceries", tag:"", approved: true, event_id: e4.id, user_id: u4.id)
 Expense.create(item:"Lunch", amount: "50.00", description:"Lunch on Tuesday", start_date:DateTime.new(2015,5,2,12), end_date:DateTime.new(2015,5,2,17), calculation_type:"Groceries", tag:"", approved: true, event_id: e4.id, user_id: u5.id)
+
 
 
