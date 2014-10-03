@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    authorize_admin_only
     @users = User.all
   end
 

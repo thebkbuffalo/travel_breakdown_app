@@ -51,7 +51,9 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         @role = Role.create(permission: "owner", event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
-        format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully created.' }
+        # format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully created.' }
+        format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully created.' }
+        
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -105,7 +107,6 @@ class EventsController < ApplicationController
       flash[:notice] = "This person is not a member. Would you like to invite them to join the site?"
       redirect_to event_invite_friends_path(event_id: @event.id)
     end
-
 
   end
 
