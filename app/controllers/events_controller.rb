@@ -12,7 +12,6 @@ class EventsController < ApplicationController
   def show
     people = Role.where(event_id: @event.id)
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
-    
     @event.total_days
     expenses = @event.expenses
     @event.attendance
