@@ -47,6 +47,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+#####################################
 body {
 	line-height: 1;
 }
@@ -61,7 +62,29 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+html, body {
+	font-family: verdana;
+}
+header {
+	padding: 10px;
+	border-bottom: solid 1px lightgrey;
+}
 table {
+	margin: 20px;
+	margin-right: 20px;
 	border-collapse: collapse;
 	border-spacing: 0;
+	border: solid 1px lightgrey;
+	/*text-align: center;*/
+	/*width: 100%;*/
+	/*max-width: 960px;*/
 }
+tr {
+	border: solid 1px lightgrey;
+
+}
+td {
+	padding-left: 10px;
+	border: solid 1px lightgrey;
+}
+################################################
