@@ -17,6 +17,11 @@ class EventsController < ApplicationController
     expenses = @event.expenses
     @event.attendance
     @total_cost = 0
+    @total_paid = 0
+    paid_expenses = expenses.where(user_id: @user.id)
+    paid_expenses.each do |expense|
+      @total_paid += expense.amount.to_f
+    end
     @type = expenses.map do |expense|
       if expense.calculation_type == "Groceries"
         @total_cost += expense.groceries
@@ -25,6 +30,7 @@ class EventsController < ApplicationController
       elsif expense.calculation_type == "Gift"
         @total_cost += expense.gift
       end
+    @total_owed = @total_cost - @total_paid
     # type.inject(:+)
 
     end
@@ -33,6 +39,7 @@ class EventsController < ApplicationController
     # user_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
     # @total_owed = @expenses.inject(:+)
     # @total_paid = user_expenses_num.inject(:+)
+    @pending_expenses = Expense.where(event_id: @event.id).where(approved: false)
   end
 
   # GET /events/new
@@ -93,7 +100,7 @@ class EventsController < ApplicationController
   def new_friend
     friend = User.find_by(email: params[:role][:user][:email])
     if friend
-      @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: params[:role][:start_date], end_date: params[:role][:start_date], permission: params[:role][:permission])
+      @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: params[:role][:start_date], end_date: params[:role][:end_date], permission: params[:role][:permission])
       if @role.save
         flash[:notice] = "Friend was successfully invited."
         redirect_to event_path(id: @event.id)
