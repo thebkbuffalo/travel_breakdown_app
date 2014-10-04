@@ -23,7 +23,7 @@ describe 'User creates boat trip' do
     visit root_path
 
     click_link 'Sign up'
-    expect(page).to have_css '.new_user'
+    expect(page).to have_content 'Confirmation'
     fill_in 'Email', :with => 'user@example.com'
     fill_in 'Name', :with => 'will'
     fill_in 'Password', :with => 'guest'
