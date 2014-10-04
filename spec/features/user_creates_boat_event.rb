@@ -24,20 +24,19 @@ describe 'User creates boat trip' do
 
     click_link 'Sign up'
     expect(page).to have_content 'Confirmation'
-    fill_in 'Email', :with => 'user@example.com'
-    fill_in 'Name', :with => 'will'
-    fill_in 'Password', :with => 'guest'
-    fill_in 'Confirmation', :with => 'guest'
+    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Name', with: 'will'
+    fill_in '
+Password', with: 'guest'
+    fill_in 'Confirmation', with: 'guest'
     click_button 'Create User'
     expect(page).to have_content 'will'
-    click_button 'log_out'
-    expect
   end
 
   it 'can login/logout' do
     visit root_path
-    fill_in 'Email', :with => 'user@example.com'
-    fill_in 'Password', :with => 'guest'
+    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Password', with: 'guest'
     click_button 'Login'
     expect(page).to have_content 'Logout'
     click_link 'Logout'
@@ -48,13 +47,32 @@ end
 describe 'new event' do
   before :each do
     visit root_path
-    fill_in 'Email', :with => 'user@example.com'
-    fill_in 'Password', :with => 'guest'
+    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Password', with: 'guest'
     click_button 'Login'
     expect(page).to have_content 'Logout'
   end
 
-  # it 'can create a new event' do
-  #   click_button
-  # end
+  it 'can create a new event' do
+    click_link 'New Event'
+    expect(page).to have_content 'New event'
+
+    fill_in 'Name', with: 'Squirrel Fest 15'
+    fill_in 'Start date', with: '2014-10-15'
+    fill_in 'End date', with: '2014-10-21'
+    fill_in 'Location', with: 'D.C.'
+    click_button 'Create Event'
+    expect(page).to have_content 'Event: Squirrel Fest 15'
+  end
+  it 'can invite friends' do
+    click_link 'Squirrel Fest 15'
+    click_link 'Invite Friends'
+    expect(page).to have_content 'Email'
+    fill_in 'Email', with: 'aaron@fakegmail.com'
+    choose 'organizer'
+    click_button 'Invite'
+    expect(page).to have_content 'Squirrel Fest 15'
+    click_link 'Squirrel Fest 15'
+    expect(page).to have_content 'aaron@fakegmail.com'
+  end
 end
