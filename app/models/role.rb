@@ -10,6 +10,10 @@ class Role < ActiveRecord::Base
   def total_days
 		(end_date - start_date).to_i
 	end
+
+  def is_owner?
+    self.permission == "owner"
+  end
 end
 
 
