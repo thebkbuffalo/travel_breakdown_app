@@ -22,7 +22,6 @@ class EventsController < ApplicationController
     paid_expenses.each do |expense|
       @total_paid += expense.amount.to_f
     end
-    @total_owed = @total_cost - @total_paid
     @type = expenses.map do |expense|
       if expense.calculation_type == "Groceries"
         @total_cost += expense.groceries
@@ -31,6 +30,7 @@ class EventsController < ApplicationController
       elsif expense.calculation_type == "Gift"
         @total_cost += expense.gift
       end
+    @total_owed = @total_cost - @total_paid
     # type.inject(:+)
 
     end
