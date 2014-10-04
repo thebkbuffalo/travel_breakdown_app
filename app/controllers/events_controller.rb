@@ -33,6 +33,7 @@ class EventsController < ApplicationController
     # user_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
     # @total_owed = @expenses.inject(:+)
     # @total_paid = user_expenses_num.inject(:+)
+    @pending_expenses = Expense.where(event_id: @event.id).where(approved: false)
   end
 
   # GET /events/new
