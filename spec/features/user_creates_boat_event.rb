@@ -33,4 +33,28 @@ describe 'User creates boat trip' do
     click_button 'log_out'
     expect
   end
+
+  it 'can login/logout' do
+    visit root_path
+    fill_in 'Email', :with => 'user@example.com'
+    fill_in 'Password', :with => 'guest'
+    click_button 'Login'
+    expect(page).to have_content 'Logout'
+    click_link 'Logout'
+    expect(page).to have_content 'Login'
+  end
+end
+
+describe 'new event' do
+  before :each do
+    visit root_path
+    fill_in 'Email', :with => 'user@example.com'
+    fill_in 'Password', :with => 'guest'
+    click_button 'Login'
+    expect(page).to have_content 'Logout'
+  end
+
+  # it 'can create a new event' do
+  #   click_button
+  # end
 end
