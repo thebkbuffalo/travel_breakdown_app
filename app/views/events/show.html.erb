@@ -47,13 +47,13 @@
 <h1>Total Cost: $<%= '%.2f' % @total_cost %></h1>
 <h1>Total Paid: $<%= '%.2f' % @total_paid %></h1>
 <h1>
-<% if @total_owed >= 0 || @total_owed == nil %>
+<% if @total_owed && @total_owed >= 0 %>
 <span style="color:red"><h1>You Owe: $<%= '%.2f' % @total_owed.abs %></h1></span>
-<% else %>
+<% elsif @total_owed && @total_owed < 0 %>
 <span style="color:green"><h1>You Are Owed: $<%= '%.2f' % @total_owed.abs %></h1></span>
 <% end %>
 </br></br>
-
+</br></br>
 
 <script>
 
@@ -91,6 +91,12 @@
 </script>
 <style>
 
+  body {
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
 
 
 	#calendar {
