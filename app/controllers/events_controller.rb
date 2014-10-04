@@ -17,6 +17,12 @@ class EventsController < ApplicationController
     expenses = @event.expenses
     @event.attendance
     @total_cost = 0
+    @total_paid = 0
+    paid_expenses = expenses.where(user_id: @user.id)
+    paid_expenses.each do |expense|
+      @total_paid += expense.amount.to_f
+    end
+    @total_owed = @total_cost - @total_paid
     @type = expenses.map do |expense|
       if expense.calculation_type == "Groceries"
         @total_cost += expense.groceries

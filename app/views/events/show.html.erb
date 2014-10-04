@@ -41,8 +41,14 @@
 <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
 
 
-<h1>Total Cost: <%= @total_cost %></h1>
-
+<h1>Total Cost: $<%= '%.2f' % @total_cost %></h1>
+<h1>Total Paid: $<%= '%.2f' % @total_paid %></h1>
+<h1>
+<% if @total_owed >= 0 %>
+<span style="color:red"><h1>You Owe: $<%= '%.2f' % @total_owed.abs %></h1></span>
+<% else %>
+<span style="color:green"><h1>You Are Owed: $<%= '%.2f' % @total_owed.abs %></h1></span>
+<% end %>
 </br></br>
 
 
