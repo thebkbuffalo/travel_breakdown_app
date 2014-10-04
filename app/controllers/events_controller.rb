@@ -57,7 +57,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
-        @role = Role.create(permission: "owner", event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
+        @role = Role.create(permission: "owner", accepted: true, event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
         # format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully created.' }
         format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully created.' }
 
@@ -72,8 +72,10 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    role = Role.where(user_id: @user.id).where(event_id: @event.id)[0]
+    role.accepted = true
     respond_to do |format|
-      if @event.update(event_params)
+      if role.save
         format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
