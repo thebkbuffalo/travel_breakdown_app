@@ -49,7 +49,7 @@
 <h1>
 <% if @total_owed && @total_owed >= 0 %>
 <span style="color:red"><h1>You Owe: $<%= '%.2f' % @total_owed.abs %></h1></span>
-<% elsif @total_owed && @total_owed < 0 %>
+<% elsif @total_owed && @total_owed < 0  %>
 <span style="color:green"><h1>You Are Owed: $<%= '%.2f' % @total_owed.abs %></h1></span>
 <% end %>
 </br></br>
