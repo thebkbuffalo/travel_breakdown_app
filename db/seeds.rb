@@ -16,7 +16,7 @@ u3 = User.create(name: "Ariel", image: "https://encrypted-tbn0.gstatic.com/image
 u4 = User.create(name: "Aaron", image: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSReCMdBV28yy7H0R3PmS1waCPIzRUQOdNtEoftBaeH7zychCyz", email: "aaron@fakegmail.com", admin: false,  phone_number: "536-345-3456", password: "good guy")
 u5 = User.create(name: "Erica", image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSGwe4QW8OUlUaf06TO7pf8LH46cLJRGDBRbmWfba5VMLDeh6ZUmg", email: "erica@fakegmail.com", admin: true,  phone_number: "536-345-3456", password: "good gal")
 
-e1 = Event.create(name: "Boat", 		start_date: DateTime.new(2015,9,1,17),  end_date: DateTime.new(2015,9,8,17),  location: "Bahamas", image: "https://www.peaceboat.com/v/vspfiles/assets/images/boat%20horz%202.gif")
+e1 = Event.create(name: "Boat", start_date: DateTime.new(2015,9,1,17), end_date: DateTime.new(2015,9,8,17),  location: "Bahamas", image: "https://www.peaceboat.com/v/vspfiles/assets/images/boat%20horz%202.gif")
 e2 = Event.create(name: "Bachelorette", start_date: DateTime.new(2014,12,1,17), end_date: DateTime.new(2014,12,4,17), location: "Vegas", image: "http://theheadliner.com/wp-content/uploads/2014/02/bachelorette-party-editorial-heels-at-Andaz-Hotel-San-Diego-1.jpg")
 e3 = Event.create(name: "Summer Share", start_date: DateTime.new(2015,5,1,12),  end_date: DateTime.new(2015,8,4,17),  location: "East Hampton", image: "http://cdn.c.photoshelter.com/img-get/I0000ROqaL_wF3iY/s/750/600/beach-house-001.jpg")
 e4 = Event.create(name: "Bonnaroo", 	start_date: DateTime.new(2015,5,1,12),  end_date: DateTime.new(2015,5,5,17),  location: "Tennessee", image: "http://festivalfling.com/wp-content/uploads/2012/04/bonnaroo-crowd.jpeg")
@@ -71,6 +71,3 @@ Expense.create(item:"Decorations", amount: "112.00", description:"Decoration for
 
 Expense.create(item:"Gasoline", amount: "350.00", description:"Gasoline for trip", start_date:DateTime.new(2015,5,1,12), end_date:DateTime.new(2015,5,5,17), calculation_type:"Groceries", tag:"", approved: true, event_id: e4.id, user_id: u4.id)
 Expense.create(item:"Lunch", amount: "50.00", description:"Lunch on Tuesday", start_date:DateTime.new(2015,5,2,12), end_date:DateTime.new(2015,5,2,17), calculation_type:"Groceries", tag:"", approved: true, event_id: e4.id, user_id: u5.id)
-
-
-

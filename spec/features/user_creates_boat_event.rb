@@ -30,5 +30,7 @@ describe 'User creates boat trip' do
     fill_in 'Confirmation', :with => 'guest'
     click_button 'Create User'
     expect(page).to have_content 'will'
+    click_button 'log_out'
+    expect
   end
 end
