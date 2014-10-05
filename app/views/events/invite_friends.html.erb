@@ -15,10 +15,10 @@
 
 <%= form_for [@event, @user, @role], url: event_new_friend_path(event_id: @event.id) do |f| %>
     <%= f.fields_for @user do |user|%>
-      <%= user.label(:email) %>
-      <%= user.text_field :email, :value => nil, :placeholder => "yourname@email.com" %>
-    <% end %>
+      <%= user.label :email %>:
+      <%= user.text_field :email, :value => nil, :placeholder => "yourname@email.com", :required => true %>
+    <% end %><br>
   <%= f.radio_button :permission, :organizer %> Organizer?
-  <%= f.radio_button :permission, :friend %> Friend?
+  <%= f.radio_button :permission, :friend, :checked => true %> Friend? <br>
   <%= f.submit "Invite"%>
 <% end %>
