@@ -32,12 +32,12 @@
 /* Table & Day-Row Restyling
 --------------------------------------------------------------------------------------------------*/
 
-th,
+
+.fc-row th,
 td,
 hr,
 thead,
-tbody,
-.fc-row {
+tbody {
 	border-color: #ccc !important;
 	background: #fff !important;
 }

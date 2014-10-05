@@ -1,12 +1,12 @@
 <%= render 'layouts/header' %>
-
-<strong>Name:</strong><%= @user.name %>
+</br>
+Name: <%= @user.name %>
+</br></br>
+<img src="<%=@user.image%>" width=100px, height=100px %>
 <br/><br/>
-<img src="<%=@user.image%>" %>
-<br/><br/>
-<strong>Email:</strong><%= @user.email %>
+Email:<%= @user.email %>
 <br/>
-<strong>Phone number:</strong><%= @user.phone_number %>
+Phone Number:<%= @user.phone_number %>
 <br/><br/>
 <h2> Events Owned </h2>
 <table style="width:100%">
