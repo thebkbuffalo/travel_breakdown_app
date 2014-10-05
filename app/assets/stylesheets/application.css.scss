@@ -52,6 +52,7 @@ table {
 
 @import 'bourbon';
 
+
 @import 'users';
 @import 'events';
 @import 'expenses';
@@ -71,10 +72,25 @@ header {
 }
  a {
 	text-decoration:none;
+	margin: 5px;
 	@include button(#3B5998);
 		&:hover{
 			color:white
 		}
 }
 
-
+#table {
+	@include border-color(red green null blue);
+	@include border-style(dashed null solid);
+	align:left;
+	background: shade(#313131, 10%);
+	width:90%;
+		th {
+    height: 40px;
+		width:auto;
+			td {
+				width:auto;
+	
+			}
+	}
+}

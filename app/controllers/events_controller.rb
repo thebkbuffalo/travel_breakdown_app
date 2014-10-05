@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
   before_action :set_user
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
+  before_action :set_role, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
   # GET /events
   # GET /events.json
   def index
@@ -10,7 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    people = Role.where(event_id: @event.id)
+    people = Role.where(event_id: @event.id).where(accepted: true)
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
     @people_role = people
     @event.total_days
@@ -18,7 +19,8 @@ class EventsController < ApplicationController
     @event.attendance
     @total_cost = 0
     @total_paid = 0
-    paid_expenses = expenses.where(user_id: @user.id)
+    paid_expenses = @role.expenses
+    expenses.where(user_id: @user.id)
     paid_expenses.each do |expense|
       @total_paid += expense.amount.to_f
     end
@@ -32,7 +34,7 @@ class EventsController < ApplicationController
       end
     @total_owed = @total_cost - @total_paid
     end
-    @pending_expenses = Expense.where(event_id: @event.id).where(approved: false)
+    @pending_expenses = @event.expenses.where(approved: false)
   end
 
   # GET /events/new
@@ -65,15 +67,27 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    role = Role.where(user_id: @user.id).where(event_id: @event.id)[0]
-    role.accepted = true
-    respond_to do |format|
-      if role.save
-        format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    if params[:friend]
+      role = Role.where(user_id: @user.id).where(event_id: @event.id)[0]
+      role.accepted = true
+      respond_to do |format|
+        if role.save
+          format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully updated.' }
+          format.json { render :show, status: :ok, location: @event }
+        else
+          format.html { render :edit }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @event.update(event_params)
+          format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully updated.' }
+          format.json { render :show, status: :ok, location: @event }
+        else
+          format.html { render :edit }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -81,10 +95,18 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
+    if params[:friend]
+      @role.destroy
+      respond_to do |format|
+        format.html { redirect_to user_path(user_id: @user.id), notice: 'Expense was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      @event.destroy
+      respond_to do |format|
+        format.html { redirect_to user_path(user_id: @user.id), notice: 'Event was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -121,6 +143,10 @@ class EventsController < ApplicationController
 
     def set_user
       @user = User.find(session[:user_id])
+    end
+
+    def set_role
+      @role = Role.where("event_id = ? AND user_id = ?", @event.id, @user.id).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

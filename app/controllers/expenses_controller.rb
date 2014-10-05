@@ -2,10 +2,11 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   before_action :set_event, only: [:create, :index, :show, :edit, :new]
+  before_action :set_role, only: [:create, :index, :show, :edit, :new]
   # GET /expenses
-  # GET /expenses.json
+  # GET /expenses.jsonexi
   def index
-    @expenses = Expense.where("event_id = ? AND approved = ?", @event.id, true)
+    @expenses = @event.expenses.where(approved: true)
   end
 
   # GET /expenses/new
@@ -20,13 +21,11 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
-    binding.pry
     @expense = Expense.new(expense_params)
-    @expense.event_id = @event.id
-    @expense.user_id = @user.id
+    @expense.role_id = @role.id
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to event_expenses_path(event_id: params[:event_id]), notice: 'Expense was successfully created.' }
+        format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new }
@@ -42,7 +41,7 @@ class ExpensesController < ApplicationController
       @expense.approved = "true"
       respond_to do |format|
         if @expense.save
-          format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
+          format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully updated.' }
           format.json { render :show, status: :ok, location: @expense }
         else
           format.html { render :edit }
@@ -52,7 +51,7 @@ class ExpensesController < ApplicationController
     else
       respond_to do |format|
         if @expense.update(expense_params)
-          format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
+          format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully updated.' }
           format.json { render :show, status: :ok, location: @expense }
         else
           format.html { render :edit }
@@ -67,7 +66,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to event_expenses_path(event_id: params[:event_id]), notice: 'Expense was successfully destroyed.' }
+      format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -86,8 +85,13 @@ class ExpensesController < ApplicationController
       @event = Event.find(params[:event_id])
     end
 
+    def set_role
+      @role = Role.where("event_id = ? AND user_id = ?", @event.id, @user.id).first
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
       params.require(:expense).permit(:item, :amount, :description, :start_date, :end_date, :calculation_type)
     end
+
 end

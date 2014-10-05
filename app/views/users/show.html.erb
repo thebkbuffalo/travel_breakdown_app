@@ -29,11 +29,18 @@
   <th>Name</th>
   <th>Location</th>
   <th>Dates</th>
+  <th>Invitations </th>
 <% @organized.each do |event| %>
   <tr>
     <td><%= link_to event.name, event_path(event.id) %> </td>
     <td> <%= event.location %></td>
     <td> <%= event.start_date %> - <%= event.end_date %></td>
+    <% role = Role.where(user_id: @user.id).where(event_id: event.id)[0].accepted %>
+    <% if role%>
+      <td><p> attending</p></td>
+    <% else %>
+      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
+    <% end %>
   </tr>
 <%end%>
 </table>
@@ -44,7 +51,7 @@
   <th>Name</th>
   <th>Location</th>
   <th>Dates</th>
-  <th>Accept Invitation </th>
+  <th>Invitations </th>
 <% @friended.each do |event| %>
   <tr>
     <td><%= link_to event.name, event_path(event.id) %> </td>
@@ -54,7 +61,7 @@
     <% if role%>
       <td><p> attending</p></td>
     <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id), :method=> :put%></td>
+      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
     <% end %>
   </tr>
 <%end%>

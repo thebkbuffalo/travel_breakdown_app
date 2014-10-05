@@ -2,7 +2,7 @@
 class Role < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
-  has_many :costs, :through => :event
+  has_many :expenses
   validates :permission, :event_id, :user_id, presence: true
   validates :paid, :inclusion => {:in => [true, false]}
   validates :user, :uniqueness => {:scope => :event}
@@ -13,6 +13,12 @@ class Role < ActiveRecord::Base
 
   def is_owner?
     self.permission == "owner"
+  end
+  def is_organizer?
+    self.permission == "organizer"
+  end
+  def is_friend?
+    self.permission == "friend"
   end
 end
 
