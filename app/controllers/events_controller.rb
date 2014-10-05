@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    people = Role.where(event_id: @event.id)
+    people = Role.where(event_id: @event.id).where(accepted: true)
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
     @people_role = people
     @event.total_days
@@ -31,14 +31,7 @@ class EventsController < ApplicationController
         @total_cost += expense.gift
       end
     @total_owed = @total_cost - @total_paid
-    # type.inject(:+)
-
     end
-    # user_expenses = total_expenses.select { |expense| expense.event_id == params[:id].to_i}
-    # # binding.pry
-    # user_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
-    # @total_owed = @expenses.inject(:+)
-    # @total_paid = user_expenses_num.inject(:+)
     @pending_expenses = Expense.where(event_id: @event.id).where(approved: false)
   end
 
@@ -73,15 +66,27 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    role = Role.where(user_id: @user.id).where(event_id: @event.id)[0]
-    role.accepted = true
-    respond_to do |format|
-      if role.save
-        format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    if params[:friend]
+      role = Role.where(user_id: @user.id).where(event_id: @event.id)[0]
+      role.accepted = true
+      respond_to do |format|
+        if role.save
+          format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully updated.' }
+          format.json { render :show, status: :ok, location: @event }
+        else
+          format.html { render :edit }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @event.update(event_params)
+          format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully updated.' }
+          format.json { render :show, status: :ok, location: @event }
+        else
+          format.html { render :edit }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -117,7 +122,6 @@ class EventsController < ApplicationController
       flash[:notice] = "This person is not a member. Would you like to invite them to join the site?"
       redirect_to event_invite_friends_path(event_id: @event.id)
     end
-
   end
 
   private

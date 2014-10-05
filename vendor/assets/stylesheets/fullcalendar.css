@@ -111,6 +111,7 @@ body .fc { /* extra precedence to overcome jqui */
 }
 
 /* Firefox has an annoying inner border */
+
 .fc button::-moz-focus-inner { margin: 0; padding: 0; }
 
 .fc-state-default { /* non-theme */
@@ -134,6 +135,7 @@ body .fc { /* extra precedence to overcome jqui */
 	top: .05em; /* seems to be a good adjustment across browsers */
 	margin: 0 .1em;
 }
+
 
 /*
   button states
