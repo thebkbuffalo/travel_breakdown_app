@@ -6,7 +6,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.jsonexi
   def index
-    @expenses = Expense.where("role_id = ? AND approved = ?", @role.id, true)
+    @expenses = @event.expenses.where(approved: true)
   end
 
   # GET /expenses/new
@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
     @expense.role_id = @role.id
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to event_expenses_path(event_id: @event.id), notice: 'Expense was successfully created.' }
+        format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class ExpensesController < ApplicationController
       @expense.approved = "true"
       respond_to do |format|
         if @expense.save
-          format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
+          format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully updated.' }
           format.json { render :show, status: :ok, location: @expense }
         else
           format.html { render :edit }
@@ -51,7 +51,7 @@ class ExpensesController < ApplicationController
     else
       respond_to do |format|
         if @expense.update(expense_params)
-          format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
+          format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully updated.' }
           format.json { render :show, status: :ok, location: @expense }
         else
           format.html { render :edit }
