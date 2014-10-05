@@ -1,9 +1,12 @@
 
 class Expense < ActiveRecord::Base
+  # belongs_to :user thru  :event
+  belongs_to :role
+  has_one :user, through: :role
+  has_one :event, through: :role
   validates :item, :amount, :calculation_type, presence: true
   validates :event_id, :user_id, presence: true
   validates :approved, :inclusion => {:in => [true, false]}
-  belongs_to :user
 	def expense_event
 		Event.find_by(id: event_id)
 	end
@@ -29,6 +32,7 @@ class Expense < ActiveRecord::Base
 	end
 	def boat
 		per_day = amount.to_f/total_days
+		binding.pry
 		count = 0
 		sum = 0
 		while count < expense_event.total_days
