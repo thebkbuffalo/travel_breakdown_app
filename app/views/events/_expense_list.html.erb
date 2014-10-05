@@ -21,7 +21,7 @@
         <td><%= expense.description %></td>
         <td><%= expense.start_date %></td>
         <td><%= expense.end_date %></td>
-        <td><%= link_to 'APPROVE',  expense_path(expense.id), :method=> :put%></td>
+        <td><%= link_to 'APPROVE',  expense_path(expense.id, approve:"true"), :method=> :put%></td>
       </tr>
     <% end %>
   </tbody>

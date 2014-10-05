@@ -38,14 +38,26 @@ class ExpensesController < ApplicationController
   # PATCH/PUT /expenses/1
   # PATCH/PUT /expenses/1.json
   def update
-    @expense.approved = "true"
-    respond_to do |format|
-      if @expense.save
-        format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
-        format.json { render :show, status: :ok, location: @expense }
-      else
-        format.html { render :edit }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
+    if params[:approve]
+      @expense.approved = "true"
+      respond_to do |format|
+        if @expense.save
+          format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
+          format.json { render :show, status: :ok, location: @expense }
+        else
+          format.html { render :edit }
+          format.json { render json: @expense.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @expense.update(expense_params)
+          format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
+          format.json { render :show, status: :ok, location: @expense }
+        else
+          format.html { render :edit }
+          format.json { render json: @expense.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
