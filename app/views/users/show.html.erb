@@ -39,7 +39,7 @@
     <% if role%>
       <td><p> attending</p></td>
     <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%></td>
+      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
     <% end %>
   </tr>
 <%end%>
@@ -61,7 +61,7 @@
     <% if role%>
       <td><p> attending</p></td>
     <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%></td>
+      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
     <% end %>
   </tr>
 <%end%>

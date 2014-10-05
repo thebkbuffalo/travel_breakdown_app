@@ -66,7 +66,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to event_expenses_path(event_id: params[:event_id]), notice: 'Expense was successfully destroyed.' }
+      format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
