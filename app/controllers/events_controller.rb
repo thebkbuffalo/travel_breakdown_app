@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
   before_action :set_user
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
+  before_action :set_role, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
   # GET /events
   # GET /events.json
   def index
@@ -18,7 +19,8 @@ class EventsController < ApplicationController
     @event.attendance
     @total_cost = 0
     @total_paid = 0
-    paid_expenses = expenses.where(user_id: @user.id)
+    paid_expenses = @role.expenses
+    expenses.where(user_id: @user.id)
     paid_expenses.each do |expense|
       @total_paid += expense.amount.to_f
     end
@@ -32,7 +34,7 @@ class EventsController < ApplicationController
       end
     @total_owed = @total_cost - @total_paid
     end
-    @pending_expenses = Expense.where(event_id: @event.id).where(approved: false)
+    @pending_expenses = @event.expenses.where(approved: false)
   end
 
   # GET /events/new
@@ -132,6 +134,10 @@ class EventsController < ApplicationController
 
     def set_user
       @user = User.find(session[:user_id])
+    end
+
+    def set_role
+      @role = Role.where("event_id = ? AND user_id = ?", @event.id, @user.id).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
