@@ -3,6 +3,7 @@
     <p style="color: red"><%= flash[:notice] %></p>
   <% if flash[:notice] && flash[:notice].match("is not a member") %>
       <%= form_for @invitation do |f| %>
+        <%= hidden_field_tag(:event_id, @event.id) %>
       <div>
         <%= f.label :name %><br/>
         <%= f.text_field :name %>
@@ -10,7 +11,7 @@
 
       <div>
         <%= f.label :email %><br/>
-        <%= f.text_field :email, value: "#{flash[:notice].split(" ")[0]}" %>
+        <%= f.text_field :email, value: @new_email %>
       </div>
 
       <div>
