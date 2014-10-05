@@ -1,34 +1,27 @@
 
 class Event < ActiveRecord::Base
   # after_save :check_valid_dates
-
   has_many :roles
-  has_many :expenses
+  has_many :users, through: :roles
+  has_many :expenses, through: :roles
   validates :name, :start_date, :end_date, presence: true
 
-	def expenses
-  	Expense.where(event_id: id)
-  	# Expense.where(event_id: id).map {|expense| expense.amount.to_i}.inject(:+)
-	end
 
 	def total_days
 		(end_date - start_date).to_i
 	end
 
-	def event_users
-		Role.where(event_id: self.id)
-	end
 
 	def attendance
 		@attendance = []
 		total_days.times {@attendance.push([])}
-		event_users.each do |event_user|
+		roles.each do |role|
 			count = 0
 			while count < total_days
-				if event_user.start_date == (start_date + count) && event_user.end_date >= (start_date + count)
-					@attendance[count].push(event_user)
+				if role.start_date == (start_date + count) && role.end_date >= (start_date + count)
+					@attendance[count].push(role)
 					count += 1
-					event_user.start_date += 1
+					role.start_date += 1
 				else
 					count += 1
 				end
