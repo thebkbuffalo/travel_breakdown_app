@@ -31,14 +31,7 @@ class EventsController < ApplicationController
         @total_cost += expense.gift
       end
     @total_owed = @total_cost - @total_paid
-    # type.inject(:+)
-
     end
-    # user_expenses = total_expenses.select { |expense| expense.event_id == params[:id].to_i}
-    # # binding.pry
-    # user_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
-    # @total_owed = @expenses.inject(:+)
-    # @total_paid = user_expenses_num.inject(:+)
     @pending_expenses = Expense.where(event_id: @event.id).where(approved: false)
   end
 
@@ -114,7 +107,6 @@ class EventsController < ApplicationController
       flash[:notice] = "This person is not a member. Would you like to invite them to join the site?"
       redirect_to event_invite_friends_path(event_id: @event.id)
     end
-
   end
 
   private
