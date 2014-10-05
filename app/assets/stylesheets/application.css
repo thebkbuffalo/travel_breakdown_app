@@ -16,4 +16,6 @@
  *= require fullcalendar.print
  *= require_self
  */
-@import 'application.css.scss'
+
+@import 'reset.css';
+@import 'application.css.scss';
