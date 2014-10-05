@@ -53,7 +53,7 @@
 <span style="color:green"><h1>You Are Owed: $<%= '%.2f' % @total_owed.abs %></h1></span>
 <% end %>
 </br></br>
-
+</br></br>
 
 <script>
 
@@ -91,7 +91,12 @@
 </script>
 <style>
 
-
+	body {
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
 
 	#calendar {
 		max-width: 900px;
@@ -99,7 +104,7 @@
 	}
 
 </style>
-</head>
+
 <body>
 
 	<div id='calendar'></div>
