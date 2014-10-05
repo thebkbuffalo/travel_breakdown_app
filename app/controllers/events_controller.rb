@@ -95,10 +95,18 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
+    if params[:friend]
+      @role.destroy
+      respond_to do |format|
+        format.html { redirect_to user_path(user_id: @user.id), notice: 'Expense was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      @event.destroy
+      respond_to do |format|
+        format.html { redirect_to user_path(user_id: @user.id), notice: 'Event was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
