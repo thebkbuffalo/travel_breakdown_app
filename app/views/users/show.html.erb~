@@ -9,7 +9,7 @@
 <strong>Phone number:</strong><%= @user.phone_number %>
 <br/><br/>
 <h2> Events Owned </h2>
-<table>
+<table id="table">
 <tr>
   <th>Name</th>
   <th>Location</th>

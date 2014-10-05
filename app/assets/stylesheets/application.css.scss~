@@ -52,8 +52,6 @@ table {
 
 @import 'bourbon';
 
-
-@import 'users';
 @import 'events';
 @import 'expenses';
 @import 'users';
@@ -80,18 +78,23 @@ header {
 		}
 }
 
-#table {
-	@include border-color(red green null blue);
-	@include border-style(dashed null solid);
-	align:left;
-	background: shade(#313131, 10%);
-	width:90%;
-		th {
+$table_bg_color:black;
+
+table {
+	margin: 0;
+	padding: 0;
+	border: 1;
+	font-size: 14px;
+	font: inherit;
+	vertical-align: middle;
+		tr {
+		background-color: $table_bg_color;
     height: 40px;
-		width:auto;
+		text-align:left;
 			td {
+				background-color: $table_bg_color;
 				width:auto;
-	
-			}
+				text-align:left;
+		}
 	}
 }
