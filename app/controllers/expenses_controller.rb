@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
     @expense.role_id = @role.id
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to event_expenses_path(event_id: params[:event_id]), notice: 'Expense was successfully created.' }
+        format.html { redirect_to event_expenses_path(event_id: @event.id), notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new }
