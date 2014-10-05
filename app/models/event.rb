@@ -1,15 +1,11 @@
 
 class Event < ActiveRecord::Base
   # after_save :check_valid_dates
-
   has_many :roles
-  has_many :expenses
+  has_many :users, through: :roles
+  has_many :expenses, through: :roles
   validates :name, :start_date, :end_date, presence: true
 
-	def expenses
-  	Expense.where(event_id: id)
-  	# Expense.where(event_id: id).map {|expense| expense.amount.to_i}.inject(:+)
-	end
 
 	def total_days
 		(end_date - start_date).to_i
@@ -20,6 +16,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def attendance
+		binding.pry
 		@attendance = []
 		total_days.times {@attendance.push([])}
 		event_users.each do |event_user|
