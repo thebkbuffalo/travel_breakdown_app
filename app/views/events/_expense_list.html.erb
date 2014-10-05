@@ -1,5 +1,5 @@
 <h1>Pending Costs</h1>
-<table>
+<table id="table">
   <thead>
     <tr>
       <th>Item</th>
@@ -23,7 +23,8 @@
         <td><%= expense.start_date %></td>
         <td><%= expense.end_date %></td>
         <td><%= expense.user.name %></td>
-        <td><%= link_to 'APPROVE',  expense_path(expense.id, approve:"true"), :method=> :put%></td>
+        <td><%= link_to 'APPROVE',  expense_path(expense.id, approve:"true"), :method=> :put%>
+            <%= link_to 'DENY',  expense_path(expense.id, approve:"true"), :method=> :delete%></td>
       </tr>
     <% end %>
   </tbody>
