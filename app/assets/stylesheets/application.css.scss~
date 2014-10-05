@@ -62,6 +62,7 @@ body{
 	font-family: $verdana;
 }
 button { 
+	@include button(shiny, #3B5998);
 	display: inline-block;
 }
 
@@ -69,12 +70,16 @@ header {
 	background-color:#3B5998;
 	height:3em;
 }
- a {
+ a{
 	text-decoration:none;
-	@include button(#3B5998);
-		&:hover{
-			color:white
-		}
 }
+
+button a {
+	color:white;
+	font-size: 13px;
+}
+
+
+
 
 
