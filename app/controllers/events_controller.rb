@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
     @people_role = people
     @event.total_days
+    binding.pry
     expenses = @event.expenses
     @event.attendance
     @total_cost = 0

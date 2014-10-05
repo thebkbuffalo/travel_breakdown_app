@@ -5,7 +5,7 @@ class Expense < ActiveRecord::Base
   has_one :user, through: :role
   has_one :event, through: :role
   validates :item, :amount, :calculation_type, presence: true
-  validates :event_id, :user_id, presence: true
+  validates :role_id, presence: true
   validates :approved, :inclusion => {:in => [true, false]}
 	def expense_event
 		Event.find_by(id: event_id)

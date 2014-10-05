@@ -1,8 +1,8 @@
 
 class Event < ActiveRecord::Base
   # after_save :check_valid_dates
-
   has_many :roles
+  has_many :users, through: :roles
   has_many :expenses, through: :roles
   validates :name, :start_date, :end_date, presence: true
 
