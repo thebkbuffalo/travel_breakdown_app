@@ -52,6 +52,8 @@ table {
 
 @import 'bourbon';
 
+
+@import 'users';
 @import 'events';
 @import 'expenses';
 @import 'users';
