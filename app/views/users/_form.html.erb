@@ -19,16 +19,16 @@
       <%= f.text_field :name, :required => true %> (required)<br/>
     </p>
      <p>
-      <%= f.label :image %>
+      <%= f.label :image %>:
       <%= f.url_field :image %><br/>
     </p>
-    <% unless @user.persisted? # if we are creating instead of editing... %>
+
     <p>
       <%= f.label :password %>:
       <%= f.password_field :password, :required => true %> (required)<br/></p>
       <p><%= f.label :password_confirmation, 'Confirmation' %>:
       <%= f.password_field :password_confirmation, :required => true %> (required)<br/></p>
-    <% end %>
+
 
     <p><%= f.submit %></p>
 <% end %>
