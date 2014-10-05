@@ -26,7 +26,12 @@ describe 'User creates boat trip' do
     expect(page).to have_content 'Confirmation'
     fill_in 'Email', with: 'user@example.com'
     fill_in 'Name', with: 'will'
+<<<<<<< HEAD
+    fill_in '
+Password', with: 'guest'
+=======
     fill_in 'Password', with: 'guest'
+>>>>>>> dd9b43488bb880e5ec0b07d4b86cfddc0f61efe9
     fill_in 'Confirmation', with: 'guest'
     click_button 'Create User'
     expect(page).to have_content 'will'
