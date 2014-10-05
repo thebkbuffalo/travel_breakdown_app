@@ -18,11 +18,12 @@ class Expense < ActiveRecord::Base
   			sum += event.attendance[count].count
   			self.start_date += 1
   			count += 1
+
   		else
   			count += 1
   		end
   	 end 
-  	 amount.to_f/sum * (expense_role.total_days)
+  	 amount.to_f/sum * (role.total_days)
 	end
 	def boat
 		per_day = amount.to_f/total_days
