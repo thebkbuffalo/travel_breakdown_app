@@ -1,65 +1,19 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-
-
+// setting sheet links as imports //
 
 @import 'bourbon';
 
-
-@import 'users';
 @import 'events';
 @import 'expenses';
+@import 'users';
 @import 'welcome';
 
+// setting site wide blue button header + color and white text //
+$blue_bg_color:#3B5998;
+$text_color: white;
+
+// setting site wide font to verdana //
 body{
-	color:white;
+	color:$text_color;
 	font-family: $verdana;
 }
 button { 
@@ -67,30 +21,76 @@ button {
 }
 
 header {
-	background-color:#3B5998;
+	background-color:$blue_bg_color;
 	height:3em;
 }
+// setting page body margin -- everything after header //
+section{
+	margin:10px;
+}
+// setting page links //
  a {
 	text-decoration:none;
 	margin: 5px;
-	@include button(#3B5998);
+	@include button($blue_bg_color);
 		&:hover{
 			color:white
 		}
 }
 
-#table {
-	@include border-color(red green null blue);
-	@include border-style(dashed null solid);
-	align:left;
-	background: shade(#313131, 10%);
-	width:90%;
-		th {
-    height: 40px;
-		width:auto;
-			td {
-				width:auto;
-	
-			}
-	}
+// setting radius for table //
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
 }
+
+// setting up site wide table bg color //
+
+$table_bg_color:hsla(221, 44%, 21%, 0.65);
+
+
+#sassTable {
+	@include border-color(red green null blue);
+	@include border-radius(4px);
+	background-color:$table_bg_color;
+	text-align:left;
+	width:90%;
+	margin: 10px 0px;
+	padding: 2px;
+	font-size: inherit;
+	vertical-align: middle;
+	border-collapse: separate;
+	border-spacing: 3px;
+			  &.th, &.td, &.hr, &.thead, &.tbody {
+				background-color:$table_bg_color;
+				text-align:left;
+		}
+}
+
+
+.message, .success, .error, .warning {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
