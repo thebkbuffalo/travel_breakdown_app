@@ -2,7 +2,7 @@
 class User < ActiveRecord::Base
   has_many :roles
   has_many :events, through: :role
-  has_many :expenses
+  has_many :expenses, through: :role
   has_secure_password
   validates :password, presence: true
   validates :email, presence: true, uniqueness: true
