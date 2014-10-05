@@ -50,7 +50,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
-        @role = Role.create(permission: "owner", event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
+        @role = Role.create(permission: "owner", accepted: true, event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
         # format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully created.' }
         format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully created.' }
 
@@ -65,8 +65,10 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    role = Role.where(user_id: @user.id).where(event_id: @event.id)[0]
+    role.accepted = true
     respond_to do |format|
-      if @event.update(event_params)
+      if role.save
         format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -93,7 +95,7 @@ class EventsController < ApplicationController
   def new_friend
     friend = User.find_by(email: params[:role][:user][:email])
     if friend
-      @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: params[:role][:start_date], end_date: params[:role][:end_date], permission: params[:role][:permission])
+      @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: @event.start_date, end_date: @event.end_date, permission: params[:role][:permission])
       if @role.save
         flash[:notice] = "Friend was successfully invited."
         redirect_to event_path(id: @event.id)

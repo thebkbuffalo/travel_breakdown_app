@@ -18,10 +18,11 @@ class UsersController < ApplicationController
   def show
     owner = Role.where(user_id: params[:id].to_i).where(permission: "owner")
     @owned = owner.map { |role| Event.where(id: role.event_id)}.flatten
-    organizer = Role.where(user_id: params[:id].to_i).where(permission: "organizer")
+    organizer = Role.where("user_id = ? AND permission = ?", params[:id].to_i, "organizer")
     @organized = organizer.map { |role| Event.where(id: role.event_id)}.flatten
     friend = Role.where(user_id: params[:id].to_i).where(permission: "friend")
     @friended = friend.map { |role| Event.where(id: role.event_id)}.flatten
+    # @pending_invites = Role.where(user_id: @user.id).where(accepted: false)
   end
 
   # GET /users/new
