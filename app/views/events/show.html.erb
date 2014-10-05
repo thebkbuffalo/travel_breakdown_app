@@ -37,6 +37,8 @@
   </tr>
 <%end%>
 </table>
+<p style="color: blue"><%= flash[:success] %></p>
+<p style="color: red"><%= flash[:error] %></p>
 <br>
 <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
 <%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> <br>
