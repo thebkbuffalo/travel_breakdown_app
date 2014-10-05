@@ -14,6 +14,12 @@ class Role < ActiveRecord::Base
   def is_owner?
     self.permission == "owner"
   end
+  def is_organizer?
+    self.permission == "organizer"
+  end
+  def is_friend?
+    self.permission == "friend"
+  end
 end
 
 
