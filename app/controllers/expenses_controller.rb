@@ -20,7 +20,6 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
-    binding.pry
     @expense = Expense.new(expense_params)
     @expense.event_id = @event.id
     @expense.user_id = @user.id
