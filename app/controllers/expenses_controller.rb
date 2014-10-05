@@ -20,10 +20,8 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
-    binding.pry
     @expense = Expense.new(expense_params)
-    @expense.event_id = @event.id
-    @expense.user_id = @user.id
+    @expense.role_id = Role.where("event_id = ? AND user_id = ?", @event.id, @user.id).first.id
     respond_to do |format|
       if @expense.save
         format.html { redirect_to event_expenses_path(event_id: params[:event_id]), notice: 'Expense was successfully created.' }
