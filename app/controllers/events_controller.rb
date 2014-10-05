@@ -12,14 +12,34 @@ class EventsController < ApplicationController
   def show
     people = Role.where(event_id: @event.id)
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
-    # total_expenses = Expense.where(event_id: params[:id])
+    @people_role = people
+    @event.total_days
+    expenses = @event.expenses
+    @event.attendance
+    @total_cost = 0
+    @total_paid = 0
+    paid_expenses = expenses.where(user_id: @user.id)
+    paid_expenses.each do |expense|
+      @total_paid += expense.amount.to_f
+    end
+    @type = expenses.map do |expense|
+      if expense.calculation_type == "Groceries"
+        @total_cost += expense.groceries
+      elsif expense.calculation_type == "Boat"
+        @total_cost += expense.boat
+      elsif expense.calculation_type == "Gift"
+        @total_cost += expense.gift
+      end
+    @total_owed = @total_cost - @total_paid
+    # type.inject(:+)
+
+    end
     # user_expenses = total_expenses.select { |expense| expense.event_id == params[:id].to_i}
     # # binding.pry
-    # total_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
-    # user_expenses_num = total_expenses.map {|expense| expense.amount.to_i}
+    # user_expenses_num = user_expenses.map {|expense| expense.amount.to_i}
     # @total_owed = @expenses.inject(:+)
     # @total_paid = user_expenses_num.inject(:+)
-    # # binding.pry
+    @pending_expenses = Expense.where(event_id: @event.id).where(approved: false)
   end
 
   # GET /events/new
@@ -37,8 +57,10 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
-        @role = Role.create(permission: "owner", event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
-        format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully created.' }
+        @role = Role.create(permission: "owner", accepted: true, event_id: @event.id, user_id: @user.id, start_date: params[:event][:start_date], end_date: params[:event][:end_date])
+        # format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully created.' }
+        format.html { redirect_to event_path(id: @event.id), notice: 'Event was successfully created.' }
+
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -50,8 +72,10 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    role = Role.where(user_id: @user.id).where(event_id: @event.id)[0]
+    role.accepted = true
     respond_to do |format|
-      if @event.update(event_params)
+      if role.save
         format.html { redirect_to user_events_path(user_id: @user.id), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -78,7 +102,7 @@ class EventsController < ApplicationController
   def new_friend
     friend = User.find_by(email: params[:role][:user][:email])
     if friend
-      @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: params[:role][:start_date], end_date: params[:role][:start_date], permission: params[:role][:permission])
+      @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: @event.start_date, end_date: @event.end_date, permission: params[:role][:permission])
       if @role.save
         flash[:notice] = "Friend was successfully invited."
         redirect_to event_path(id: @event.id)

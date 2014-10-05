@@ -1,3 +1,5 @@
+<%= render 'layouts/header' %>
+
 <strong>Name:</strong><%= @user.name %>
 <br/><br/>
 <img src="<%=@user.image%>" %>
@@ -5,8 +7,6 @@
 <strong>Email:</strong><%= @user.email %>
 <br/>
 <strong>Phone number:</strong><%= @user.phone_number %>
-<br/>
-<strong>Admin:</strong><%= @user.admin %>
 <br/><br/>
 <h2> Events Owned </h2>
 <table style="width:100%">
@@ -16,7 +16,7 @@
   <th>Dates</th>
 <% @owned.each do |event| %>
   <tr>
-    <td><%= link_to event.name, event_path(event.id) %> <td>
+    <td><%= link_to event.name, event_path(event.id) %> </td>
     <td> <%= event.location %></td>
     <td> <%= event.start_date %> - <%= event.end_date %></td>
   </tr>
@@ -31,7 +31,7 @@
   <th>Dates</th>
 <% @organized.each do |event| %>
   <tr>
-    <td><%= link_to event.name, event_path(event.id) %> <td>
+    <td><%= link_to event.name, event_path(event.id) %> </td>
     <td> <%= event.location %></td>
     <td> <%= event.start_date %> - <%= event.end_date %></td>
   </tr>
@@ -44,14 +44,23 @@
   <th>Name</th>
   <th>Location</th>
   <th>Dates</th>
+  <th>Accept Invitation </th>
 <% @friended.each do |event| %>
   <tr>
-    <td><%= link_to event.name, event_path(event.id) %> <td>
+    <td><%= link_to event.name, event_path(event.id) %> </td>
     <td> <%= event.location %></td>
     <td> <%= event.start_date %> - <%= event.end_date %></td>
+    <% role = Role.where(user_id: @user.id).where(event_id: event.id)[0].accepted %>
+    <% if role%>
+      <td><p> attending</p></td>
+    <% else %>
+      <td> <%= link_to 'accept',  event_path(event.id), :method=> :put%></td>
+    <% end %>
   </tr>
 <%end%>
 </table>
+
+
 <br/><br/>
 <%= link_to 'Edit Profile', edit_user_path(@user) %> |
 <%= link_to 'New Event', new_user_event_path(@user) %>

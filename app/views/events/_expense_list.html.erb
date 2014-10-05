@@ -1,0 +1,29 @@
+<h1>Pending Costs</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Approve</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <% @pending_expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.item %></td>
+        <td><%= expense.amount %></td>
+        <td><%= expense.description %></td>
+        <td><%= expense.start_date %></td>
+        <td><%= expense.end_date %></td>
+        <td><%= link_to 'APPROVE',  expense_path(expense.id), :method=> :put%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

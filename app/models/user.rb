@@ -1,12 +1,12 @@
 
 class User < ActiveRecord::Base
+  has_many :roles
+  has_many :events, through: :role
+  has_many :expenses
   has_secure_password
   validates :password, presence: true
   validates :email, presence: true, uniqueness: true
   validates :admin, :inclusion => {:in => [true, false]}
-  has_many :roles
-  has_many :events, through: :role
-  has_many :expenses
 
  	def is_admin?
     self.admin == true

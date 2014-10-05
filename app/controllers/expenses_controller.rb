@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.where(event_id: @event.id)
+    @expenses = Expense.where("event_id = ? AND approved = ?", @event.id, true)
   end
 
   # GET /expenses/new
@@ -20,6 +20,7 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
+    binding.pry
     @expense = Expense.new(expense_params)
     @expense.event_id = @event.id
     @expense.user_id = @user.id
@@ -37,8 +38,9 @@ class ExpensesController < ApplicationController
   # PATCH/PUT /expenses/1
   # PATCH/PUT /expenses/1.json
   def update
+    @expense.approved = "true"
     respond_to do |format|
-      if @expense.update(expense_params)
+      if @expense.save
         format.html { redirect_to event_expenses_path(event_id: @expense.event_id), notice: 'Expense was successfully updated.' }
         format.json { render :show, status: :ok, location: @expense }
       else
