@@ -14,25 +14,24 @@ class EventsController < ApplicationController
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
     @people_role = people
     @event.total_days
-    binding.pry
     expenses = @event.expenses
     @event.attendance
     @total_cost = 0
     @total_paid = 0
-    # paid_expenses = expenses.where(user_id: @user.id)
-    # paid_expenses.each do |expense|
-      # @total_paid += expense.amount.to_f
-    # end
-    # @type = expenses.map do |expense|
-    #   if expense.calculation_type == "Groceries"
-    #     @total_cost += expense.groceries
-    #   elsif expense.calculation_type == "Boat"
-    #     @total_cost += expense.boat
-    #   elsif expense.calculation_type == "Gift"
-    #     @total_cost += expense.gift
-    #   end
-    # @total_owed = @total_cost - @total_paid
-    # end
+    paid_expenses = expenses.where(user_id: @user.id)
+    paid_expenses.each do |expense|
+      @total_paid += expense.amount.to_f
+    end
+    @type = expenses.map do |expense|
+      if expense.calculation_type == "Groceries"
+        @total_cost += expense.groceries
+      elsif expense.calculation_type == "Boat"
+        @total_cost += expense.boat
+      elsif expense.calculation_type == "Gift"
+        @total_cost += expense.gift
+      end
+    @total_owed = @total_cost - @total_paid
+    end
     @pending_expenses = Expense.where(event_id: @event.id).where(approved: false)
   end
 
