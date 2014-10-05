@@ -49,18 +49,18 @@ r20 = Role.create(event_id: e4.id, user_id: u5.id, start_date: e4.start_date + 1
 
 
 
-Expense.create(item:"Lodging", amount: "1098.00", description:"Lodging on the boat", start_date:e1.start_date + 1, end_date:e1.end_date - 1, calculation_type:"Boat", tag:"", approved: true, role_id: r1.id)
-Expense.create(item:"wines", amount: "225.00", description:"Provided the wine", start_date:e1.start_date + 1, end_date:e1.end_date - 1, calculation_type:"Groceries", tag:"", approved: true, role_id: r2.id)
-Expense.create(item:"Cheese", amount: "29.00", description:"Cheese for the wine", start_date:e1.start_date + 1, end_date:e1.end_date - 3, calculation_type:"Groceries", tag:"", approved: true, role_id: r3.id)
-Expense.create(item:"Wine Crackers", amount: "12.00", description:"Crackers for the cheese", start_date:e1.start_date + 1, end_date:e1.end_date - 3, calculation_type:"Groceries", tag:"", approved: true, role_id: r4.id)
-Expense.create(item:"Soft drinks", amount: "22.00", description:"Sodas", start_date:e1.start_date + 1, end_date:e1.end_date - 2, calculation_type:"Groceries", tag:"", approved: true, role_id: r4.id)
-Expense.create(item:"Bagels", amount: "15.44", description:"Breakfast Bagels", start_date:e1.start_date + 1, end_date:e1.end_date - 4, calculation_type:"Groceries", tag:"", approved: true, role_id: r5.id)
+Expense.create(item: "Lodging", amount: "1098.00", description: "Lodging on the boat", start_date: e1.start_date + 1, end_date: e1.end_date - 1, calculation_type: "Boat", tag: "", approved: true, role_id: r1.id)
+Expense.create(item: "wines", amount: "225.00", description: "Provided the wine", start_date: e1.start_date + 1, end_date: e1.end_date - 1, calculation_type: "Groceries", tag: "", approved: true, role_id: r2.id)
+Expense.create(item: "Cheese", amount: "29.00", description: "Cheese for the wine", start_date: e1.start_date + 4, end_date: e1.end_date - 2, calculation_type: "Groceries", tag: "", approved: true, role_id: r3.id)
+Expense.create(item: "Wine Crackers", amount: "12.00", description: "Crackers for the cheese", start_date: e1.start_date + 1, end_date: e1.end_date - 3, calculation_type: "Groceries", tag: "", approved: true, role_id: r4.id)
+# Expense.create(item: "Soft drinks", amount: "22.00", description: "Sodas", start_date: e1.start_date + 1, end_date: e1.end_date - 2, calculation_type: "Groceries", tag: "", approved: true, role_id: r4.id)
+Expense.create(item: "Bagels", amount: "15.44", description: "Breakfast Bagels", start_date: e1.start_date + 1, end_date: e1.end_date - 2, calculation_type: "Groceries", tag: "", approved: true, role_id: r5.id)
 
-Expense.create(item:"Whiskey", amount: "52.00", description:"Whiskey Bottle", start_date:e2.start_date + 1, end_date:e2.end_date - 5, calculation_type:"Groceries", tag:"", approved: true, role_id: r6.id)
-Expense.create(item:"Breakfast", amount: "42.00", description:"Bacon and Eggs breakfast", start_date:e2.start_date, end_date:e2.end_date - 3, calculation_type:"Groceries", tag:"", approved: true, role_id: r7.id)
-Expense.create(item:"Decorations", amount: "52.00", description:"Event Decor", start_date:e2.start_date + 1, end_date:e2.end_date - 1, calculation_type:"Gift", tag:"", approved: true, role_id: r8.id)
-Expense.create(item:"Jewelry", amount: "312.00", description:"Necklace",  start_date:e2.start_date, end_date:e2.end_date, calculation_type:"Gift", tag:"", approved: true, role_id: r9.id)
-Expense.create(item:"Watch", amount: "1032.00", description:"Gold Watch Gift",  start_date:e2.start_date, end_date:e2.end_date, calculation_type:"Gift", tag:"", approved: true, role_id: r10.id)
+Expense.create(item: "Whiskey", amount: "52.00", description: "Whiskey Bottle", start_date: e2.start_date + 1, end_date: e2.end_date, calculation_type: "Groceries", tag: "", approved: true, role_id: r6.id)
+Expense.create(item: "Breakfast", amount: "42.00", description: "Bacon and Eggs breakfast", start_date: e2.start_date, end_date: e2.end_date, calculation_type: "Groceries", tag: "", approved: true, role_id: r7.id)
+Expense.create(item: "Decorations", amount: "52.00", description: "Event Decor", start_date: e2.start_date + 1, end_date: e2.end_date - 1, calculation_type: "Gift", tag: "", approved: true, role_id: r8.id)
+Expense.create(item: "Jewelry", amount: "312.00", description: "Necklace",  start_date: e2.start_date, end_date: e2.end_date, calculation_type: "Gift", tag: "", approved: true, role_id: r9.id)
+Expense.create(item: "Watch", amount: "1032.00", description: "Gold Watch Gift",  start_date: e2.start_date, end_date: e2.end_date, calculation_type: "Gift", tag: "", approved: true, role_id: r10.id)
 
 Expense.create(item:"Drinks", amount: "152.00", description:"Drinks for the evenings", start_date:e3.start_date + 1, end_date:e3.end_date - 3, calculation_type:"Groceries", tag:"", approved: true, role_id: r11.id)
 Expense.create(item:"Breakfast", amount: "12.00", description:"Breakfast food", start_date:e3.start_date + 1, end_date:e3.end_date - 3, calculation_type:"Groceries", tag:"", approved: true, role_id: r12.id)
@@ -75,16 +75,16 @@ Expense.create(item:"Gasoline", amount: "350.00", description:"Gasoline for trip
 Expense.create(item:"Lunch", amount: "50.00", description:"Lunch on Tuesday", start_date:e4.start_date + 4, end_date:e4.end_date - 2, calculation_type:"Groceries", tag:"", approved: true, role_id: r20.id)
 
 #Boat test	
-e5 = Event.create(name: "Boat test", 	start_date: DateTime.new(2015,5,1,12),  end_date: DateTime.new(2015,5,1,12) + 10,  location: "Bahamas", image: "http://festivalfling.com/wp-content/uploads/2012/04/bonnaroo-crowd.jpeg")
-r21 = Role.create(event_id: e5.id, user_id: u5.id, start_date: e5.start_date,  end_date: e5.end_date, 	 permission: "owner")
-Role.create(event_id: e5.id, user_id: u4.id, start_date: e5.start_date + 1,  end_date: e5.end_date - 1, 	 permission: "friend")
-Role.create(event_id: e5.id, user_id: u3.id, start_date: e5.start_date + 5,  end_date: e5.end_date - 2, 	 permission: "friend")
+e5 = Event.create(name: "Boat test", 	start_date: DateTime.new(2015,5,1,12),  end_date: DateTime.new(2015,5,11,12),  location: "Bahamas", image: "http://festivalfling.com/wp-content/uploads/2012/04/bonnaroo-crowd.jpeg")
+r21 = Role.create(event_id: e5.id, user_id: u5.id, start_date: e5.start_date,  end_date: e5.end_date, 	 permission: "owner", accepted: true)
+Role.create(event_id: e5.id, user_id: u4.id, start_date: e5.start_date + 1,  end_date: e5.end_date - 1, 	 permission: "friend", accepted: true)
+Role.create(event_id: e5.id, user_id: u3.id, start_date: e5.start_date + 5,  end_date: e5.end_date - 2, 	 permission: "friend", accepted: true)
 
 
-Expense.create(item:"Boat", amount: "5000.00", description:"Breakfast Bagels", start_date: e5.start_date, end_date: e5.end_date, calculation_type:"Boat", tag:"", approved: true, role_id:r21.id)
+Expense.create(item: "Boat", amount: "5000.00", description: "Boat", start_date: e5.start_date, end_date: e5.end_date, calculation_type: "Boat", tag: "", approved: true, role_id: r21.id)
 
 #Groceries test	
-e6 = Event.create(name: "Groceries test", 	start_date: DateTime.new(2015,5,1,12),  end_date: DateTime.new(2015,5,1,12) + 10,  location: "Bahamas", image: "http://festivalfling.com/wp-content/uploads/2012/04/bonnaroo-crowd.jpeg")
+e6 = Event.create(name: "Groceries test", 	start_date: DateTime.new(2015,5,1,12),  end_date: DateTime.new(2015,5,11,12),  location: "Bahamas", image: "http://festivalfling.com/wp-content/uploads/2012/04/bonnaroo-crowd.jpeg")
 r22 = Role.create(event_id: e6.id, user_id: u5.id, start_date: e6.start_date,  end_date: e6.end_date, 	 permission: "owner")
 Role.create(event_id: e6.id, user_id: u4.id, start_date: e6.start_date + 1,  end_date: e6.end_date - 1, 	 permission: "friend")
 Role.create(event_id: e6.id, user_id: u3.id, start_date: e6.start_date + 5,  end_date: e6.end_date - 2, 	 permission: "friend")

@@ -15,30 +15,36 @@ class Expense < ActiveRecord::Base
   	sum = 0
   	while count < event.total_days
   		if event.start_date  + count == start_date && end_date >= event.start_date + count
-  			sum += event.attendance[count].count
-  			self.start_date += 1
-  			count += 1
-
+	  		unless event.attendance[count] == nil
+	  				self.start_date += 1
+	  			count += 1
+	  		else
+	  			sum += event.attendance[count].count
+	  			self.start_date += 1
+	  			count += 1
+	  		end
   		else
   			count += 1
   		end
   	 end 
-  	 amount.to_f/sum * (role.total_days)
+  	 sum
 	end
 	def boat
+		@attendance = event.attendance
 		per_day = amount.to_f/total_days
 		count = 0
-		sum = 0
+		start_date_count = 0
+		@sum = 0
 		while count < event.total_days
-			if event.start_date + count == start_date && end_date >= event.start_date + count
-				sum += per_day/event.attendance[count].count if event.start_date + count >= role.start_date && event.start_date + count <= role.end_date
-				start_date += 1
-				count += 1
+			if event.start_date + count == start_date + start_date_count && end_date >= event.start_date + count
+					@sum += per_day/@attendance[count].count if event.start_date + count >= role.start_date && event.start_date + count <= role.end_date
+					start_date_count += 1
+					count += 1
 			else 
 				count += 1
 			end
 		end
-		sum
+		@sum
 	end
 	def gift
 		amount.to_f / event.users.count
