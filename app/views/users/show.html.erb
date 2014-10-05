@@ -1,8 +1,10 @@
 <%= render 'layouts/header' %>
+
 </br>
 Name: <%= @user.name %>
 </br></br>
 <img src="<%=@user.image%>" width=100px, height=100px %>
+
 <br/><br/>
 Email:<%= @user.email %>
 <br/>
@@ -39,7 +41,7 @@ Phone Number:<%= @user.phone_number %>
     <% if role%>
       <td><p> attending</p></td>
     <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%></td>
+      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
     <% end %>
   </tr>
 <%end%>
@@ -61,7 +63,7 @@ Phone Number:<%= @user.phone_number %>
     <% if role%>
       <td><p> attending</p></td>
     <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%></td>
+      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
     <% end %>
   </tr>
 <%end%>

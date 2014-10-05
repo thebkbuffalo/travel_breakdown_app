@@ -28,6 +28,7 @@ describe 'signup/login/logout' do
     fill_in 'Name', with: 'will'
     fill_in 'Password', with: 'guest'
     fill_in 'Confirmation', with: 'guest'
+
     click_button 'Create User'
     expect(page).to have_content 'will'
   end
@@ -83,16 +84,16 @@ describe 'new event' do
     click_button 'Update Event'
     expect(page).to have_content 'Event: Prince Fest 15'
   end
-  # it 'can add expenses to event' do
-  #   click_link 'Prince Fest 15'
-  #   click_link 'Add Expense'
-  #   fill_in 'Item', with: 'Bottle of whiskey'
-  #   fill_in 'Amount', with: '65'
-  #   fill_in 'Description', with: 'A delicious bottle of Buffalo Trace'
-  #   choose 'expense_calculation_type_groceries'
-  #   click_button 'Create Expense'
-  #   expect(page).to have_content 'Bottle of whiskey, $65.00'
-  # end
+  it 'can add expenses to event' do
+    click_link 'Prince Fest 15'
+    click_link 'Add Expense'
+    fill_in 'Item', with: 'Bottle of whiskey'
+    fill_in 'Amount', with: '65'
+    fill_in 'Description', with: 'A delicious bottle of Buffalo Trace'
+    choose 'expense_calculation_type_groceries'
+    click_button 'Create Expense'
+    expect(page).to have_content 'Bottle of whiskey'
+  end
 end
 
 describe 'user page' do
