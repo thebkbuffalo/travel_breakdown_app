@@ -3,7 +3,6 @@
     <% if current_user.is_admin? %>
     <%= link_to('Users', users_path) %>
     <% end %>
-    <span style="color:red; float:right">Admin |
-    <%= link_to("Logout", session_path, method: :delete) %>
-    </span>
+    <span style="float: right">&nbsp;| <%= link_to("Logout", session_path, method: :delete) %></span>
+    <span style="color:red; float:right">Admin</span>
 </header>
