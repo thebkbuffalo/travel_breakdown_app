@@ -11,14 +11,10 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    people = Role.where(event_id: @event.id).where(accepted: true)
-    @people = people.map { |person| User.where(id: person.user_id)}.flatten
-    @people_role = people
+    @people = Role.where(event_id: @event.id).where(accepted: true)
     @total_cost = @event.get_total_cost(@role)
     @total_paid = 0
-    @role.expenses.each do |expense|
-      @total_paid += expense.amount.to_f
-    end
+    @role.expenses.each { |expense| @total_paid += expense.amount.to_f }
     @total_owed = @total_cost - @total_paid
     @pending_expenses = @event.expenses.where(approved: false)
   end

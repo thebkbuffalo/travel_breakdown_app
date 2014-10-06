@@ -5,46 +5,43 @@ class Event < ActiveRecord::Base
   has_many :users, through: :roles
   has_many :expenses, through: :roles
   validates :name, :start_date, :end_date, presence: true
-  	def get_total_cost(role)
-  		@total_cost = 0
-  		@type = self.expenses.map do |expense|
-	      if expense.calculation_type.downcase == "groceries"
-	        @total_cost += expense.groceries_per_person_per_day * overlap_dates(expense, role)
-	      elsif expense.calculation_type.downcase == "boat"
-	        @total_cost += boat(expense, role)
-	      elsif expense.calculation_type.downcase == "gift"
-	        @total_cost += expense.gift
-	      end
-    	end
-    	@total_cost
+
+	def get_total_cost(role)
+		@total_cost = 0
+		@type = self.expenses.map do |expense|
+      if expense.calculation_type.downcase == "groceries"
+        @total_cost += expense.groceries_per_person_per_day * overlap_dates(expense, role)
+      elsif expense.calculation_type.downcase == "boat"
+        @total_cost += boat(expense, role)
+      elsif expense.calculation_type.downcase == "gift"
+        @total_cost += expense.gift
+      end
   	end
- 
-	def total_days
-		(end_date - start_date).to_i
+  	@total_cost
 	end
+
+	# def total_days
+	# 	(end_date - start_date).to_i
+	# end
 
   def boat(expense, role)
     sum = 0
     overlap_dates_array(expense, role).each do |date|
       person_count = 0
       self.roles.each do |role|
-      role_dates = (role.start_date..role.end_date).to_a
-        if role_dates.include? date
-          person_count += 1
-        end
+        role_dates = (role.start_date..role.end_date).to_a
+        person_count += 1 if role_dates.include? date
       end
       sum += expense.cost_per_day/person_count
     end
   sum
   end
+
   def overlap_dates_array(expense, role)
     role_range = (role.start_date..role.end_date).to_a
     expense_range = expense.get_expense_date_array
     intersection = role_range & expense_range
-    intersection
-
   end
-
 
   def overlap_dates(expense, role)
     role_range = (role.start_date..role.end_date).to_a
