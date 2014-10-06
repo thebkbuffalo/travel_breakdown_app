@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     people = Role.where(event_id: @event.id).where(accepted: true)
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
     @people_role = people
-    
+
     @total_cost = 0
     @total_paid = 0
     @role.expenses.where(approved: true).each do |expense|
@@ -32,8 +32,6 @@ class EventsController < ApplicationController
     end
     @pending_expenses = @event.expenses.where(approved: false)
   end
-
-  
 
   # GET /events/new
   def new
@@ -109,6 +107,10 @@ class EventsController < ApplicationController
   end
 
   def invite_friends
+    if params[:new_email]
+      @new_email = params[:new_email]
+      @invitation = Invitation.new
+    end
     @role = Role.new
   end
 
@@ -126,8 +128,9 @@ class EventsController < ApplicationController
         end
       end
     else
-      flash[:notice] = "This person is not a member. Would you like to invite them to join the site?"
-      redirect_to event_invite_friends_path(event_id: @event.id)
+      new_email = params[:role][:user][:email]
+      flash[:notice] = "#{new_email} is not a member. Would you like to invite them to join the site?"
+      redirect_to event_invite_friends_path(event_id: @event.id, new_email: new_email)
     end
   end
 
