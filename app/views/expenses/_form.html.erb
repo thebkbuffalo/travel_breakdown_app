@@ -43,6 +43,10 @@
     <%= f.radio_button :calculation_type, :groceries %> GROCERIES?
     <%= f.radio_button :calculation_type, :gifts , :checked => true%> GIFTS?<p>
   </div>
+  <div class="field">
+    <p><%= f.label :Category %>:
+    <%= f.select(:tag, ["Lodging", "Food & Beverage", "Transportation", "Miscellaneous"]) %></p>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
