@@ -1,19 +1,21 @@
 <%= render 'layouts/header' %>
 <section>
-<span class="strong">Name: </span><%= @user.name %>
-<br/><br/>
-<img src="<%=@user.image%>" width=100px height=100px %>
-<br/><br/>
-<span class="strong">Email: </span><%= @user.email %>
-<br/>
-<span class="strong">Phone number: </span><%= @user.phone_number %>
+<div id="profile-box"
+	<p> <span class="profile-info name"><%= @user.name %> </span> </p>
+	<hr style="color:#efefef">
+	<img class="user-profile" src="<%=@user.image%>" width=100px height=100px %>
+<br />
+	<span class="profile-info"> <%= @user.email %></span>
+	<br/>
+	<span class="profile-info"><%= @user.phone_number %> </span>
+</div>
 <br/><br/>
 
 
 <h2> Events Owned </h2>
 
 
-<table id="sassTable">
+<table id="user-sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
@@ -32,7 +34,7 @@
 
 
 <h2> Events Organizing </h2>
-<table id="sassTable">
+<table id="user-sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
@@ -48,7 +50,7 @@
 
 <h2> Events Invited to </h2>
 
-<table id="sassTable">
+<table id="user-sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
