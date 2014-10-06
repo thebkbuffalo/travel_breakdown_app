@@ -165,23 +165,14 @@ span.logout {
 	margin-top: 14px;
 	padding-right:6px;
 }
+// Gray do we still need this style -- broke into  event-title and events-going //
 div.strong {
 	padding: 8px;
 	margin:auto;
 	font-weight: bold;
 	font-size: 1.1em;
 }
-.events-title {
-	padding: 8px;
-	margin:auto;
-	font-weight: bold;
-	font-size: 1.7em;
-}
-span.events-going {
-	padding-left:118px;
-	font-weight: bold;
-	font-size: 1.2em;
-}
+
 div.event_info {
 	float: left;
 }
@@ -233,32 +224,7 @@ div.event_links {
 	position: relative;
 	margin-bottom: 20px
 }
-div.breakdown {
 
-	/*width: 200px;*/
-	border: solid 1px white;
-	text-align: right;
-	float: right;
-	background: white;
-	padding: 18px;
-	border-radius: 12px;
-	position: block;
-	bottom: -30px;
-	/*margin-right: 30px;*/
-}
-div.breakdown_wrap {
-position: absolute;
-bottom: 50px;
-right: 40px;
-}
-span.cost {
-	color: grey;
-}
-
-span.owed {
-	font-size: 1.3em;
-	/*margin-top: 10px;*/
-}
 
 
 // setting page body margin and bottom page link buttons //
