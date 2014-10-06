@@ -1,6 +1,7 @@
 html {
   background: url(http://i.imgur.com/sznD8BT.jpg) no-repeat center center fixed;
   background-size: cover;
+	background:#000;
 }
 
 // setting table bg color //
@@ -11,6 +12,14 @@ h1 {
   padding: 15px;
   border-radius: 10px;
   margin: 15px;
+	font-size:16px;
+	font-weight:bold;
+}
+
+h2{
+	margin: 20px 0 5px;
+	font-size:16px;
+	font-weight:bold;
 }
 
 @import 'bourbon';
@@ -138,12 +147,30 @@ header {
 	width: 100%;
 	top:0;
 }
-// setting page body margin -- everything after header //
+// setting page body margin and bottom page link buttons //
+
 section{
 	margin:10px;
 	margin-top: 48px;
 
+
+	/*margin: 15px 0 75px 15px;*/
+		.site-buttons {
+		a {
+			@include button($blue_bg_color);
+			display: inline-block;
+			text-decoration: none;
+			color:white;
+				&:hover {
+					color:white;
+					text-decoration:none;
+					font-size:16px;
+			}
+		}
+	}
+
 }
+
 
 // setting button links //
 
@@ -177,6 +204,7 @@ header a {
 			font-size:15px;
 		}
 }
+
 
 
 // setting page links //
@@ -242,6 +270,7 @@ div.center_wrap {
   color: #333;
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 #table {
 	margin: auto;
 	/*border: solid 1px black;*/
@@ -280,6 +309,12 @@ input {
 	/*border-radius: 5px;*/
 	/*width: 80px;*/
 }
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.strong{
+	font-weight:bold;
+	line-height:1.5em;
+}
+
 
 
 

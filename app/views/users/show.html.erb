@@ -1,12 +1,12 @@
 <%= render 'layouts/header' %>
 <section>
-<strong>Name:</strong><%= @user.name %>
+<span class="strong">Name: </span><%= @user.name %>
 <br/><br/>
 <img src="<%=@user.image%>" width=100px height=100px %>
 <br/><br/>
-<strong>Email:</strong><%= @user.email %>
+<span class="strong">Email: </span><%= @user.email %>
 <br/>
-<strong>Phone number:</strong><%= @user.phone_number %>
+<span class="strong">Phone number: </span><%= @user.phone_number %>
 <br/><br/>
 
 
@@ -59,10 +59,13 @@
   <%= render partial: "events_list", locals: {role: role} %>
 <%end%>
 </table>
-</section>
+
 
 <br/><br/>
+
 <span class="site-buttons">
 <%= link_to 'Edit Profile', edit_user_path(@user) %> |
 <%= link_to 'New Event', new_user_event_path(@user) %>
 </span>
+
+</section>
