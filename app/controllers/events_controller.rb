@@ -119,7 +119,7 @@ class EventsController < ApplicationController
     if friend
       @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: @event.start_date, end_date: @event.end_date, permission: params[:role][:permission])
       if @role.save
-        flash[:notice] = "Friend was successfully invited."
+        flash[:success] = "#{User.find(friend.id).email} was successfully invited."
         redirect_to event_path(id: @event.id)
       else
         respond_to do |format|
