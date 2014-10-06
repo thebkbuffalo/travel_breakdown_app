@@ -13,13 +13,13 @@ class Event < ActiveRecord::Base
 
 
 	def attendance
-		@attendance = []
-		total_days.times {@attendance.push([])}
+		attendance = []
+		total_days.times {attendance.push([])}
 		roles.each do |role|
 			count = 0
 			while count < total_days
 				if role.start_date == (start_date + count) && role.end_date >= (start_date + count)
-					@attendance[count].push(role)
+					attendance[count].push(role)
 					count += 1
 					role.start_date += 1
 				else
@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
 				end
 			end
 		end
-		@attendance
+		attendance
 	end
 
 	 # private

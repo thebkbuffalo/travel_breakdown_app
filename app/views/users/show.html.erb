@@ -1,75 +1,73 @@
 <%= render 'layouts/header' %>
 
-</br>
-Name: <%= @user.name %>
-</br></br>
-<img src="<%=@user.image%>" width=100px, height=100px %>
-
+<section>
+<span class="strong">Name: </span><%= @user.name %>
 <br/><br/>
-Email:<%= @user.email %>
+<img src="<%=@user.image%>" width=100px height=100px %>
+<br/><br/>
+<span class="strong">Email: </span><%= @user.email %>
 <br/>
-Phone Number:<%= @user.phone_number %>
+<span class="strong">Phone number: </span><%= @user.phone_number %>
+
 <br/><br/>
+
+
 <h2> Events Owned </h2>
-<table style="width:100%">
+
+
+<table id="sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
   <th>Dates</th>
-<% @owned.each do |event| %>
+<% @owner.each do |role| %>
   <tr>
-    <td><%= link_to event.name, event_path(event.id) %> </td>
-    <td> <%= event.location %></td>
-    <td> <%= event.start_date %> - <%= event.end_date %></td>
+    <td><%= link_to role.event.name, event_path(role.event.id) %> </td>
+    <td> <%= role.event.location %></td>
+    <td> <%= role.event.start_date %> - <%= role.event.end_date %></td>
   </tr>
 <%end%>
 </table>
+
+
 <br/><br/>
+
+
 <h2> Events Organizing </h2>
-<table style="width:100%">
+<table id="sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
-  <th>Dates</th>
-  <th>Invitations </th>
-<% @organized.each do |event| %>
-  <tr>
-    <td><%= link_to event.name, event_path(event.id) %> </td>
-    <td> <%= event.location %></td>
-    <td> <%= event.start_date %> - <%= event.end_date %></td>
-    <% role = Role.where(user_id: @user.id).where(event_id: event.id)[0].accepted %>
-    <% if role%>
-      <td><p> attending</p></td>
-    <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
-    <% end %>
-  </tr>
+  <th>Event Dates</th>
+  <th>Your Dates</th>
+  <th>Status </th>
+<% @organizer.each do |role| %>
+  <%= render partial: "events_list", locals: {role: role} %>
 <%end%>
 </table>
 <br/><br/>
+
+
 <h2> Events Invited to </h2>
-<table style="width:100%">
+
+<table id="sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
-  <th>Dates</th>
-  <th>Invitations </th>
-<% @friended.each do |event| %>
-  <tr>
-    <td><%= link_to event.name, event_path(event.id) %> </td>
-    <td> <%= event.location %></td>
-    <td> <%= event.start_date %> - <%= event.end_date %></td>
-    <% role = Role.where(user_id: @user.id).where(event_id: event.id)[0].accepted %>
-    <% if role%>
-      <td><p> attending</p></td>
-    <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
-    <% end %>
-  </tr>
+  <th>Event Dates</th>
+  <th>Your Dates</th>
+  <th>Status </th>
+<% @friend.each do |role| %>
+  <%= render partial: "events_list", locals: {role: role} %>
 <%end%>
 </table>
 
 
 <br/><br/>
+
+<span class="site-buttons">
 <%= link_to 'Edit Profile', edit_user_path(@user) %> |
 <%= link_to 'New Event', new_user_event_path(@user) %>
+</span>
+
+</section>

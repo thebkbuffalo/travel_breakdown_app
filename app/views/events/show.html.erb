@@ -1,5 +1,5 @@
 <%= render 'layouts/header' %>
-
+<section>
 <p style="color: red"><%= flash[:notice] %></p>
 <p>
   Event:
@@ -24,7 +24,7 @@
   <%= render 'expense_list' %>
 <% end %>
 <h1> People <h1>
-<table style="width:100%">
+<table>
 <tr>
   <th>Name</th>
   <th>Email</th>
@@ -38,22 +38,25 @@
 <%end%>
 </table>
 <br>
+<span class="site-buttons">
 <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
-<%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> <br>
+<%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> | 
 <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
 <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
+</span>
 
-
-<h1>Total Cost: $<%= '%.2f' % @total_cost %></h1>
-<h1>Total Paid: $<%= '%.2f' % @total_paid %></h1>
-<h1>
+<br>
+Total Cost: $<%= '%.2f' % @total_cost %><br>
+Total Paid: $<%= '%.2f' % @total_paid %><br>
 <% if @total_owed && @total_owed >= 0 %>
-  <span style="color:red"><h1>You Owe: $<%= '%.2f' % @total_owed.abs %></h1></span>
+  <span style="color:red">You Owe: $<%= '%.2f' % @total_owed.abs %></span>
 <% elsif @total_owed && @total_owed < 0  %>
-  <span style="color:green"><h1>You Are Owed: $<%= '%.2f' % @total_owed.abs %></h1></span>
+  <span style="color:green">You Are Owed: $<%= '%.2f' % @total_owed.abs %></span>
 <% end %>
-</br></br>
-</br></br>
+<br><br>
+<br><br>
+
+
 
 <script>
 
@@ -89,24 +92,11 @@
 	});
 
 </script>
-<style>
 
-	body {
-		margin: 40px 10px;
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
 
-	#calendar {
-		max-width: 900px;
-		margin: 0 auto;
-	}
 
-</style>
-
-<body>
 
 	<div id='calendar'></div>
+</section>
 
-</body>
+

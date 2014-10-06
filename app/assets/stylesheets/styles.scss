@@ -1,0 +1,162 @@
+html {
+  background: url(http://i.imgur.com/sznD8BT.jpg) no-repeat center center fixed;
+  background-size: cover;
+	background:#000;
+}
+
+// setting table bg color //
+$table-background: rgba(32,32,32,.8);
+
+h1 {
+  background:$table-background;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px;
+	font-size:16px;
+	font-weight:bold;
+}
+
+h2{
+	margin: 20px 0 5px;
+	font-size:16px;
+	font-weight:bold;
+}
+
+@import 'bourbon';
+
+@import 'events';
+@import 'expenses';
+@import 'users';
+@import 'welcome';
+
+// setting site wide blue button header + color and white text //
+
+$blue_bg_color:#3B5998;
+$text_color: white;
+
+// setting site wide font to verdana //
+
+body{
+	color:$text_color;
+	font-family: $verdana;
+}
+
+header {
+	background-color:$blue_bg_color;
+	height:3em;
+}
+// setting page body margin and bottom page link buttons //
+
+section{
+	margin: 15px 0 75px 15px;
+		.site-buttons {
+		a {
+			@include button($blue_bg_color);
+			display: inline-block;
+			text-decoration: none;
+			color:white;
+				&:hover {
+					color:white;
+					text-decoration:none;
+					font-size:16px;
+			}
+		}
+	}
+}
+
+
+// setting button links //
+
+header a {
+	@include button($blue_bg_color);
+	display: inline-block;
+	text-decoration: none;
+	color:white;
+	margin: 5px;
+		&:hover{
+			color:white;
+			text-decoration:none;
+			font-size:16px;
+		}
+}
+
+
+
+
+
+// setting page links //
+
+a {
+	text-decoration:none;
+	margin: 5px;
+	font-size:15px;
+	color:gray;
+	text-transform: capitalize;
+		&:hover{
+			color:white;
+			font-weight:bold;
+			font-size:14.5px;
+		}
+}
+
+
+
+// setting radius for table //
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// setting up site wide table bg color //
+
+$table_bg_color:hsla(0, 0%, 5%, 0.8);
+
+#sassTable {
+	@include border-radius(4px);
+	background-color:$table_bg_color;
+	text-align:left;
+	width:90%;
+	margin: 10px 0px;
+	padding: 2px;
+	font-size: inherit;
+	vertical-align: middle;
+	border-collapse: separate;
+	border-spacing: 3px;
+			  &.th, &.td, &.hr, &.thead, &.tbody {
+				background-color:$table_bg_color;
+				text-align:left;
+		}
+}
+
+
+.message, .success, .error, .warning {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  color: #333;
+}
+
+.strong{
+	font-weight:bold;
+	line-height:1.5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

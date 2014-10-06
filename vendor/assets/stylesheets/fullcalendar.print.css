@@ -37,7 +37,8 @@
 td,
 hr,
 thead,
-tbody {
+tbody, {
+
 	border-color: #ccc !important;
 	background: #fff !important;
 }

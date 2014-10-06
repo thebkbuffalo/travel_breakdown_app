@@ -1,5 +1,4 @@
 <header>
-
   	<% if session.id %>
       <%= link_to('Home', user_path(id: session.id)) %>
       <% if current_user.is_admin? %>
@@ -7,6 +6,7 @@
       <% end %>
     <% end %>
     <span style="float: right">&nbsp;| <%= link_to("Logout", session_path, method: :delete) %></span>
-    <span style="color:red; float:right">Admin</span>
-
+    <% if current_user.is_admin? %>
+    <span class="admin">Admin</span>
+	<% end %>
 </header>
