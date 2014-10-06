@@ -2,7 +2,8 @@
 
 <section>
 
-<div id="profile-box"
+<div id="profile-box">
+
 	<p> <span class="profile-info name"><%= @user.name %> </span> </p>
 	<hr style="color:#efefef">
 	<img class="user-profile" src="<%=@user.image%>" width=100px height=100px %>
@@ -12,7 +13,6 @@
 	<span class="profile-info"><%= @user.phone_number %> </span>
 </div>
 
-<br/><br/>
 
 
 <h2> Events Owned </h2>
@@ -22,18 +22,13 @@
 <tr>
   <th>Name</th>
   <th>Location</th>
-  <th>Dates</th>
+  <th>Event Dates</th>
+  <th>Your Dates</th>
+  <th>Status </th>
 <% @owner.each do |role| %>
-  <tr>
-    <td><%= link_to role.event.name, event_path(role.event.id) %> </td>
-    <td> <%= role.event.location %></td>
-    <td> <%= role.event.start_date %> - <%= role.event.end_date %></td>
-  </tr>
+  <%= render partial: "events_list", locals: {role: role} %>
 <%end%>
 </table>
-
-
-<br/><br/>
 
 
 <h2> Events Organizing </h2>
@@ -48,7 +43,6 @@
   <%= render partial: "events_list", locals: {role: role} %>
 <%end%>
 </table>
-<br/><br/>
 
 
 <h2> Events Invited to </h2>

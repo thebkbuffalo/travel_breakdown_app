@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html {
+  background:rgb(250,250,250);
+  color: rgb(40,40,40);
+  background-image:none;
+}
+
 .events-title {
 	padding-top: 8px;
 	margin:auto;
@@ -23,7 +29,6 @@ table.event_info {
 }
 
 div.breakdown {
-	/*width: 200px;*/
 	border: solid 1px grey;
 	text-align: right;
 	float: right;
@@ -36,8 +41,8 @@ div.breakdown {
 }
 div.breakdown_wrap {
 position: absolute;
-bottom: 50px;
-right: 40px;
+bottom: 35px;
+right: 18px;
 }
 span.cost {
 	color: grey;
@@ -48,7 +53,9 @@ span.owed {
 	/*margin-top: 10px;*/
 }
 
-
+tr.pending, tr.invited {
+	color: gray;
+}
 
 #calendar {
 		max-width: 900px;

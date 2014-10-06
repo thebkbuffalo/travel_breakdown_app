@@ -18,7 +18,7 @@ class Expense < ActiveRecord::Base
 	def people_days
 		@expense_dates = get_expense_date_array
 		sum = 0
-		self.event.roles.each do |role| 
+		self.event.roles.each do |role|
 			role_dates = (role.start_date..role.end_date).to_a
 			intersection = @expense_dates & role_dates
 			sum += intersection.count
@@ -47,7 +47,7 @@ class Expense < ActiveRecord::Base
 		# 			@sum += per_day/@attendance[count].count if event.start_date + count >= role.start_date && event.start_date + count <= role.end_date
 		# 			start_date_count += 1
 		# 			count += 1
-		# 	else 
+		# 	else
 		# 		count += 1
 		# 	end
 		# end
@@ -55,7 +55,7 @@ class Expense < ActiveRecord::Base
 	# end
 
 	def gift
-		amount.to_f / event.users.count
+		amount.to_f/event.users.count
 	end
 
 	def calculate_owed
@@ -63,7 +63,7 @@ class Expense < ActiveRecord::Base
         groceries
       elsif calculation_type.downcase == "boat"
         boat
-      elsif calculation_type.downcase == "gift"
+      elsif calculation_type.downcase == "gifts"
         gift
       end
 	end

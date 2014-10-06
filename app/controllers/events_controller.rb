@@ -12,9 +12,11 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @people = Role.where(event_id: @event.id).where(accepted: true)
+    @pending_people = Role.where(event_id: @event.id).where(accepted: false)
+    @invited_people = Invitation.where(event_id: @event.id).where(accepted: false)
     @total_cost = @event.get_total_cost(@role)
     @total_paid = 0
-    @role.expenses.each { |expense| @total_paid += expense.amount.to_f }
+    @role.expenses.each { |expense| @total_paid += expense.amount.to_f if expense.approved}
     @total_owed = @total_cost - @total_paid
     @pending_expenses = @event.expenses.where(approved: false)
   end
@@ -61,6 +63,18 @@ class EventsController < ApplicationController
           format.json { render json: @event.errors, status: :unprocessable_entity }
         end
       end
+    elsif params[:finalize]
+      @event.roles.each do |role|
+        total_cost = @event.get_total_cost(role)
+        total_paid = 0
+        role.expenses.each { |expense| total_paid += expense.amount.to_f }
+        total_owed = total_cost - total_paid
+         role.amount_owed = total_owed
+         role.save
+      end
+      @event.closed = true
+      @event.save
+      redirect_to event_path(id: @event.id)
     else
       respond_to do |format|
         if @event.update(event_params)
