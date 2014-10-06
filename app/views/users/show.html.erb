@@ -2,8 +2,8 @@
 <section>
 <div id="profile-box"
 	<p> <span class="profile-info name"><%= @user.name %> </span> </p>
-
-	<img src="<%=@user.image%>" width=100px height=100px %>
+	<hr style="color:#efefef">
+	<img class="user-profile" src="<%=@user.image%>" width=100px height=100px %>
 <br />
 	<span class="profile-info"> <%= @user.email %></span>
 	<br/>
@@ -15,7 +15,7 @@
 <h2> Events Owned </h2>
 
 
-<table id="sassTable">
+<table id="user-sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
@@ -34,7 +34,7 @@
 
 
 <h2> Events Organizing </h2>
-<table id="sassTable">
+<table id="user-sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
@@ -50,7 +50,7 @@
 
 <h2> Events Invited to </h2>
 
-<table id="sassTable">
+<table id="user-sassTable">
 <tr>
   <th>Name</th>
   <th>Location</th>
