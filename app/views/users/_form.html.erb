@@ -1,3 +1,5 @@
+<div class="form">
+<span class="strong">Editing user</span>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -20,7 +22,7 @@
     </p>
      <p>
       <%= f.label :image %>:
-      <%= f.url_field :image %><br/>
+      <%= f.url_field :image %>&nbsp;<br/>
     </p>
 
     <p>
@@ -32,3 +34,4 @@
 
     <p><%= f.submit %></p>
 <% end %>
+</div>

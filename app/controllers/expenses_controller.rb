@@ -7,7 +7,6 @@ class ExpensesController < ApplicationController
   # GET /expenses.jsonexi
   def index
     @expenses = @event.expenses.where(approved: true)
-    binding.pry
   end
 
   # GET /expenses/new
