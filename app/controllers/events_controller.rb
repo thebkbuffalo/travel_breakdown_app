@@ -12,6 +12,8 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @people = Role.where(event_id: @event.id).where(accepted: true)
+    @pending_people = Role.where(event_id: @event.id).where(accepted: false)
+    @invited_people = Invitation.where(event_id: @event.id).where(accepted: false)
     @total_cost = @event.get_total_cost(@role)
     @total_paid = 0
     @role.expenses.each { |expense| @total_paid += expense.amount.to_f if expense.approved}
