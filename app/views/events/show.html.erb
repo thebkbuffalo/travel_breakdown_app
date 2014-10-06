@@ -9,14 +9,13 @@
 	<hr>
     <div class="event_info">
         <img class="event_img" src="<%= @event.image %>">
-      <p>Location: 
+      <p>Location:
         <%= @event.location %>
       </p>
-      <p>Dates: <%= @event.start_date %> - 
+      <p>Dates: <%= @event.start_date %> -
         <%= @event.end_date %>
       </p>
     </div>
-
 
 		<div class="event_right">
 			<span class="events-going">Going
@@ -34,7 +33,24 @@
 		      <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
       	</tr>
     	<%end%>
-    	</table>
+      </table>
+
+      </br>
+      <% if flash[:success] %>
+        <table class="event_info">
+          <tr>
+            <td style="color: blue"><%= flash[:success] %></td>
+          </tr>
+        </table>
+      <% end %>
+      <% if flash[:error] %>
+        <table class="event_info">
+          <tr>
+            <td style="color: red"><%= flash[:error] %></td>
+          </tr>
+        </table>
+      <% end %>
+
     <br>
 
     <div class="breakdown_wrap">
@@ -54,7 +70,7 @@
 </div>
   <div class="event_links">
     <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
-  <%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> | 
+  <%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> |
   <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
   <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
   </div>
@@ -64,6 +80,7 @@
       <% end %>
 </div>
 <br><br><br>
+
 
 <script>
 

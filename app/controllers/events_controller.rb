@@ -107,6 +107,10 @@ class EventsController < ApplicationController
   end
 
   def invite_friends
+    if params[:new_email]
+      @new_email = params[:new_email]
+      @invitation = Invitation.new
+    end
     @role = Role.new
   end
 
@@ -115,7 +119,7 @@ class EventsController < ApplicationController
     if friend
       @role = Role.new(user_id: friend.id, event_id: @event.id, start_date: @event.start_date, end_date: @event.end_date, permission: params[:role][:permission])
       if @role.save
-        flash[:notice] = "Friend was successfully invited."
+        flash[:success] = "#{User.find(friend.id).email} was successfully invited."
         redirect_to event_path(id: @event.id)
       else
         respond_to do |format|
@@ -124,8 +128,9 @@ class EventsController < ApplicationController
         end
       end
     else
-      flash[:notice] = "This person is not a member. Would you like to invite them to join the site?"
-      redirect_to event_invite_friends_path(event_id: @event.id)
+      new_email = params[:role][:user][:email]
+      flash[:notice] = "#{new_email} is not a member. Would you like to invite them to join the site?"
+      redirect_to event_invite_friends_path(event_id: @event.id, new_email: new_email)
     end
   end
 
