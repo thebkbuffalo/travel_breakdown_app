@@ -1,13 +1,4 @@
-html {
-  background-size: cover;
-	background:rgb(250,250,250);
-	color: rgb(40,40,40);
-}
 
-html, body {
-  background-image: url("/app/assets/images/background.jpg") no-repeat center center fixed;
-  background-size: cover;
-}
 
 // setting table bg color //
 $table-background: rgba(32,32,32,.8);
@@ -28,11 +19,11 @@ h2{
 }
 
 @import 'bourbon';
-
+@import 'welcome';
 @import 'events';
 @import 'expenses';
 @import 'users';
-@import 'welcome';
+
 
 // setting site wide blue button header + color and white text //
 

@@ -1,10 +1,12 @@
-html, body {
+html {
+  margin:-200;
   background-image: url(background.jpg);
   background-repeat:no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
 }
+
 .admin {
 color:#124157; 
 float: left;
@@ -19,6 +21,7 @@ span.admin_a {
 	float: left;
 	margin-top: 14px;
 }
+
 img.header_image {
 	border-radius: 100%;
 	float: right;
