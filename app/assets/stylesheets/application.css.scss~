@@ -64,7 +64,7 @@ header a {
 	display: inline-block;
 	text-decoration: none;
 	color:white;
-	margin: 5px 0 75px 0;
+	margin: 5px 0 25px 0;
 		&:hover{
 			color:white;
 			text-decoration:none;

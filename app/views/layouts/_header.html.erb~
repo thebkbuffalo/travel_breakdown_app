@@ -1,4 +1,5 @@
 <header>
+
   	<% if session.id %>
       <%= link_to('Home', user_path(id: session.id)) %>
       <% if current_user.is_admin? %>

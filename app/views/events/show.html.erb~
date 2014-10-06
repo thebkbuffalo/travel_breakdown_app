@@ -1,0 +1,101 @@
+<%= render 'layouts/header' %>
+<section>
+<p style="color: red"><%= flash[:notice] %></p>
+<p>
+  Event:
+  <%= @event.name %>
+</p>
+<p>
+  Start date:
+  <%= @event.start_date %>
+</p>
+<p>
+  End date:
+  <%= @event.end_date %>
+</p>
+<p>
+  Location:
+  <%= @event.location %>
+</p>
+<p>
+  <img src="<%= @event.image %>" width=250px, height=200px>
+</p>
+<% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? %>
+  <%= render 'expense_list' %>
+<% end %>
+<h1> People <h1>
+<table id="table">
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Permission</th>
+<% @people.each do |person| %>
+  <tr>
+    <td> <%= person.name %></td>
+    <td> <%= person.email %></td>
+    <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
+  </tr>
+<%end%>
+</table>
+<br>
+<%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
+<%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> <br>
+<%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
+<%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
+
+
+<h1>Total Cost: $<%= '%.2f' % @total_cost %></h1>
+<h1>Total Paid: $<%= '%.2f' % @total_paid %></h1>
+<h1>
+<% if @total_owed && @total_owed >= 0 %>
+  <span style="color:red"><h1>You Owe: $<%= '%.2f' % @total_owed.abs %></h1></span>
+<% elsif @total_owed && @total_owed < 0  %>
+  <span style="color:green"><h1>You Are Owed: $<%= '%.2f' % @total_owed.abs %></h1></span>
+<% end %>
+</br></br>
+</br></br>
+
+
+
+<script>
+
+	$(document).ready(function() {
+
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			defaultDate: '<%= @event.start_date %>',
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+
+				{
+					title: '<%= @event.name %>',
+					start: '<%= @event.start_date %>',
+          end: '<%= @event.end_date %>',
+				},
+
+          <% @people_role.each do |person| %>
+            {
+              title: '<%= User.find(person.user_id).name %>',
+              start: '<%= person.start_date %>',
+              end: '<%= person.end_date %>',
+            },
+          <% end %>
+		  ]
+		});
+
+	});
+
+</script>
+
+
+
+
+	<div id='calendar'></div>
+</section>
+
+
