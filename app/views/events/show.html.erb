@@ -1,65 +1,76 @@
 <%= render 'layouts/header' %>
+<section>
 
 <p style="color: red"><%= flash[:notice] %></p>
-<p>
-  Event:
-  <%= @event.name %>
-</p>
-<p>
-  Start date:
-  <%= @event.start_date %>
-</p>
-<p>
-  End date:
-  <%= @event.end_date %>
-</p>
-<p>
-  Location:
-  <%= @event.location %>
-</p>
-<p>
-  <img src="<%= @event.image %>" width=250px, height=200px>
-</p>
-<% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? %>
-  <%= render 'expense_list' %>
-<% end %>
-<h1> People <h1>
-<table id="table">
-<tr>
-  <th>Name</th>
-  <th>Email</th>
-  <th>Permission</th>
-<% @people.each do |person| %>
-  <tr>
-    <td> <%= person.name %></td>
-    <td> <%= person.email %></td>
-    <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
-  </tr>
-<%end%>
-</table>
-<p style="color: blue"><%= flash[:success] %></p>
-<p style="color: red"><%= flash[:error] %></p>
-<br>
-<%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
-<%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> <br>
-<%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
-<%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
+<div class="center_wrap">
+  <div class="event_wrapper">
+    <div class="strong"><%= @event.name %>
+    </div>
+    <div class="event_info">
+        <img class="event_img" src="<%= @event.image %>">
+      <p>
+        Location:
+        <%= @event.location %>
+      </p>
+      <p>
+        Start date:
+        <%= @event.start_date %>
+      </p>
+      <p>
+        End date:
+        <%= @event.end_date %>
+      </p>
+    </div>
+    <div class="event_right">
+    <table class="event_info">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Permission</th>
+    <% @people.each do |person| %>
+      <tr>
+        <td> <%= person.name %></td>
+        <td> <%= person.email %></td>
+        <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
+      </tr>
+    <%end%>
+    </table>
+    <p style="color: blue"><%= flash[:success] %></p>
+    <p style="color: red"><%= flash[:error] %></p>
+    <br>
 
+    <div class="breakdown_wrap">
+      <div class="breakdown">
+        <span class="cost">Total Cost: $<%= '%.2f' % @total_cost %><br>
+        Total Paid: $<%= '%.2f' % @total_paid %><br>
+        </span>
+        <% if @total_owed && @total_owed >= 0 %>
+          <span class="owed" style="color:red">You Owe: $<%= '%.2f' % @total_owed.abs %></span>
+        <% elsif @total_owed && @total_owed < 0  %>
+          <span class="owed" style="color:green">You Are Owed: $<%= '%.2f' % @total_owed.abs %></span>
+        <% end %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+  <div class="event_links">
+    <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
+  <%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> |
+  <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
+  <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
+  </div>
+  <div class="event_wrapper2">
+      <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? %>
+        <%= render 'expense_list' %>
+      <% end %>
+</div>
+<br><br><br>
 
-<h1>Total Cost: $<%= '%.2f' % @total_cost %></h1>
-<h1>Total Paid: $<%= '%.2f' % @total_paid %></h1>
-<h1>
-<% if @total_owed && @total_owed >= 0 %>
-  <span style="color:red"><h1>You Owe: $<%= '%.2f' % @total_owed.abs %></h1></span>
-<% elsif @total_owed && @total_owed < 0  %>
-  <span style="color:green"><h1>You Are Owed: $<%= '%.2f' % @total_owed.abs %></h1></span>
-<% end %>
-</br></br>
-</br></br>
 
 <script>
 
-	$(document).ready(function() {
+  $(document).ready(function() {
 
 		$('#calendar').fullCalendar({
 			header: {
@@ -91,24 +102,8 @@
 	});
 
 </script>
-<style>
-
-	body {
-		margin: 40px 10px;
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
-
-	#calendar {
-		max-width: 900px;
-		margin: 0 auto;
-	}
-
-</style>
-
-<body>
 
 	<div id='calendar'></div>
+</section>
 
-</body>
+

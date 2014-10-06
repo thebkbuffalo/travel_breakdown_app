@@ -1,5 +1,6 @@
-<div>
-  <h1>Welcome to Travel App</h1>
+<section>
+  <div class= "strong">Welcome to Travel App!</div>
+  <div class="form">
   <p>Login</p>
   <div class="login">
     <%= form_tag(session_path) do %>
@@ -11,5 +12,8 @@
     <% end %>
     <p style="color: red"><%= flash[:error] %></p>
   </div>
-  <p><%= link_to('Sign up', new_user_path) %>
+	<span class="site-buttons">
+		<p><%= link_to('Sign up', new_user_path) %>
+	</span>
 </div>
+</section>

@@ -16,12 +16,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    owner = Role.where(user_id: params[:id].to_i).where(permission: "owner")
-    @owned = owner.map { |role| Event.where(id: role.event_id)}.flatten
-    organizer = Role.where("user_id = ? AND permission = ?", params[:id].to_i, "organizer")
-    @organized = organizer.map { |role| Event.where(id: role.event_id)}.flatten
-    friend = Role.where(user_id: params[:id].to_i).where(permission: "friend")
-    @friended = friend.map { |role| Event.where(id: role.event_id)}.flatten
+    @owner ||= Role.where(user_id: params[:id].to_i).where(permission: "owner")
+    # @owned = owner.map { |role| Event.where(id: role.event_id)}.flatten
+    @organizer ||= Role.where("user_id = ? AND permission = ?", params[:id].to_i, "organizer")
+    # @organized = organizer.map { |role| Event.where(id: role.event_id)}.flatten
+    @friend ||= Role.where(user_id: params[:id].to_i).where(permission: "friend")
+    # @friended = friend.map { |role| Event.where(id: role.event_id)}.flatten
     # @pending_invites = Role.where(user_id: @user.id).where(accepted: false)
   end
 
@@ -52,10 +52,18 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      redirect_to user_path(@user)
+    if params[:role_id]
+        role = Role.find(params[:role_id].to_i)
+        role.start_date = params[:role][:start_date]
+        role.end_date = params[:role][:end_date]
+        role.save
+        redirect_to user_path(@user.id)
     else
-      render(:edit)
+      if @user.update(user_params)
+        redirect_to user_path(@user)
+      else
+        render(:edit)
+      end
     end
   end
 

@@ -1,16 +1,16 @@
 <%= render 'layouts/header' %>
-
+<section>
 <h1>Listing users</h1>
-
-<table id="table">
+<br /><br />
+<table id="usersTable">
   <thead>
-    <tr>
+    <tr class="usersTableTr>
       <th>Email</th>
       <th>Image</th>
       <th>Name</th>
-      <th>Phone number</th>
+      <th>Phone</th>
       <th>Admin</th>
-      <th>Password digest</th>
+      <!-- <th>Password digest</th> -->
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +23,7 @@
         <td><%= user.name %></td>
         <td><%= user.phone_number %></td>
         <td><%= user.admin %></td>
-        <td><%= user.password_digest %></td>
+      <!--   <td><%= user.password_digest %></td> -->
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -35,3 +35,5 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+
+</section>

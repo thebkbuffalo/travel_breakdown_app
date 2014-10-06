@@ -11,12 +11,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require reset
  *= require jquery-ui
  *= require fullcalendar
  *= require fullcalendar.print
+ *= require styles
  *= require_self
  */
-
-@import 'reset.css';
-@import 'application.css.scss';
-
