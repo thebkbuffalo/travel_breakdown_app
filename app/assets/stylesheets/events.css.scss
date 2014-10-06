@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .events-title {
-	padding: 8px;
+	padding-top: 8px;
 	margin:auto;
 	font-weight: bold;
 	font-size: 1.7em;
@@ -14,10 +14,15 @@ span.events-going {
 	font-size: 1.2em;
 }
 
-div.breakdown {
+table.event_info {
+	padding: 50px;
+	float: right;
+	width: 500px;
+}
 
+div.breakdown {
 	/*width: 200px;*/
-	border: solid 1px #124157;
+	border: solid 1px grey;
 	text-align: right;
 	float: right;
 	background: white;
@@ -40,7 +45,6 @@ span.owed {
 	font-size: 1.3em;
 	/*margin-top: 10px;*/
 }
-
 
 
 

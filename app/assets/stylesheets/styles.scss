@@ -4,15 +4,20 @@ html {
 	color: rgb(40,40,40);
 }
 
+html, body {
+  background-image: url("/app/assets/images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 // setting table bg color //
 $table-background: rgba(32,32,32,.8);
 
 h1 {
-  background:$table-background;
+  border:1px solid #6496ff;
   padding: 15px;
-  border-radius: 10px;
-  margin: 15px;
-	font-size:16px;
+  border-radius: 5px;
+  margin: 10px;
+	font-size:18px;
 	font-weight:bold;
 }
 
@@ -95,7 +100,6 @@ a {
 		&:hover{
 			color:#6496ff;
 			/*font-weight:bold;*/
-			font-size:15px;
 		}
 }
 
@@ -285,12 +289,7 @@ $table_bg_color:hsla(0, 0%, 5%, 0.8);
 
 
 
-table.event_info {
-	padding: 50px;
-	float: right;
-	width: 500px;
 
-}
 div.center_wrap {
 	text-align: center;
 }

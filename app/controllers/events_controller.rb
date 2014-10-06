@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     people = Role.where(event_id: @event.id).where(accepted: true)
     @people = people.map { |person| User.where(id: person.user_id)}.flatten
     @people_role = people
-    
+
     @total_cost = 0
     @total_paid = 0
     @role.expenses.where(approved: true).each do |expense|
@@ -32,8 +32,6 @@ class EventsController < ApplicationController
     end
     @pending_expenses = @event.expenses.where(approved: false)
   end
-
-
 
   # GET /events/new
   def new
