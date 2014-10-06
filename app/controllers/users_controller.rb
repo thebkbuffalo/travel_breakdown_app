@@ -57,7 +57,7 @@ class UsersController < ApplicationController
         role.start_date = params[:role][:start_date]
         role.end_date = params[:role][:end_date]
         role.save
-        redirect_to event_path(role.event.id)
+        redirect_to user_path(@user.id)
     else
       if @user.update(user_params)
         redirect_to user_path(@user)
