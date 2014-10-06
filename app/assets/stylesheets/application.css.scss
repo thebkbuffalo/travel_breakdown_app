@@ -1,42 +1,223 @@
-// setting sheet links as imports //
+html {
+  /*background: url(http://i.imgur.com/sznD8BT.jpg) no-repeat center center fixed;*/
+  background-size: cover;
+	background:rgb(250,250,250);
+	color: rgb(40,40,40);
+}
+
+// setting table bg color //
+$table-background: rgba(32,32,32,.8);
+
+h1 {
+  background:$table-background;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px;
+	font-size:16px;
+	font-weight:bold;
+}
+
+h2{
+	margin: 20px 0 5px;
+	font-size:16px;
+	font-weight:bold;
+}
 
 @import 'bourbon';
-
 @import 'events';
 @import 'expenses';
 @import 'users';
 @import 'welcome';
 
 // setting site wide blue button header + color and white text //
+
 $blue_bg_color:#3B5998;
-$text_color: white;
+$text_color: rgb(40,40,40);
 
 // setting site wide font to verdana //
+
 body{
 	color:$text_color;
 	font-family: $verdana;
 }
-button {
-	display: inline-block;
+
+
+
+span.logout {
+	float: right;
+	margin-top: 14px;
+	padding-right:6px;
+}
+div.strong {
+	padding: 8px;
+	margin:auto;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+div.event_info {
+	float: left;
+}
+img.event_img {
+	width: 320px;
+	height: 320px;
+	margin-right: 20px;
+	border-radius: 10px;
+}
+div.event_wrapper {
+box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+
+	/*border-top: solid 40px rgba(0,0,0,.4);*/
+	text-align: left;
+	height: 400px;
+	/*text-align: center;*/
+	/*display: inline-block;*/
+	background-color: rgba(255,255,255,.1);
+	border-radius: 10px;
+	/*max-width: 1020px;*/
+	width: 960px;
+	/*padding: 20px;*/
+	padding: 0 20px 40px;
+	padding-bottom: 40px;
+	position: relative;
+	margin:auto;
+}
+div.event_wrapper2 {
+box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+
+	/*border-top: solid 40px rgba(0,0,0,.4);*/
+	text-align: left;
+	/*height: 400px;*/
+	/*text-align: center;*/
+	/*display: inline-block;*/
+	background-color: rgba(255,255,255,.1);
+	border-radius: 10px;
+	/*max-width: 1020px;*/
+	width: 960px;
+	/*padding: 20px;*/
+	padding: 20px;
+	top: 20px;
+	position: relative;
+	margin:auto;
+}
+div.event_links {
+	margin-top: -24px;
+	text-align: center;
+	position: relative;
+	margin-bottom: 20px
+}
+div.breakdown {
+
+	/*width: 200px;*/
+	border: solid 1px white;
+	text-align: right;
+	float: right;
+	background: white;
+	padding: 18px;
+	border-radius: 12px;
+	position: block;
+	bottom: -30px;
+	/*margin-right: 30px;*/
+}
+div.breakdown_wrap {
+position: absolute;
+bottom: 50px;
+right: 40px;
+}
+span.cost {
+	color: grey;
+}
+
+span.owed {
+	font-size: 1.3em;
+	/*margin-top: 10px;*/
 }
 
 header {
-	background-color:$blue_bg_color;
-	height:3em;
+	/*background-color:$blue_bg_color;*/
+	background-color: rgba(100,150,255,1);
+	/*background-color: rgba(255,255,255,.4);*/
+	height: 44px;
+	/*position: fixed;*/
+	width: 100%;
+	top:0;
 }
-// setting page body margin -- everything after header //
+// setting page body margin and bottom page link buttons //
+
 section{
 	margin:10px;
+	margin-top: 48px;
+
+
+	/*margin: 15px 0 75px 15px;*/
+		.site-buttons {
+		a {
+			@include button($blue_bg_color);
+			display: inline-block;
+			text-decoration: none;
+			color:white;
+				&:hover {
+					color:white;
+					text-decoration:none;
+					font-size:16px;
+			}
+		}
+	}
+
 }
-// setting page links //
- a {
-	text-decoration:none;
+
+
+// setting button links //
+
+header a {
+/*	@include button($blue_bg_color);
+	display: inline-block;*/
+	text-decoration: none;
+	color: rgb(220,220,220);
 	margin: 5px;
-	@include button($blue_bg_color);
+	margin-top: 14px;
 		&:hover{
-			color:white
+			color: white;
+			text-decoration:none;
+			font-weight: normal;
+			font-size:15px;
+		}
+
+
+}
+
+
+.site-buttons a {
+	@include button($blue_bg_color);
+	display: inline-block;
+	text-decoration: none;
+	color:white;
+	margin: 5px 0 75px 0;
+		&:hover{
+			color:white;
+			text-decoration:none;
+			font-size:15px;
 		}
 }
+
+
+
+// setting page links //
+
+a {
+	text-decoration:none;
+	margin: 5px;
+	font-size:15px;
+	color:gray;
+	/*text-transform: capitalize;*/
+		&:hover{
+			color:white;
+			/*font-weight:bold;*/
+			font-size:15px;
+		}
+}
+
+
 
 // setting radius for table //
 @mixin border-radius($radius) {
@@ -48,31 +229,105 @@ section{
 
 // setting up site wide table bg color //
 
-$table_bg_color:hsla(221, 44%, 21%, 0.65);
-
+$table_bg_color:hsla(0, 0%, 5%, 0.8);
 
 #sassTable {
-	@include border-color(red green null blue);
 	@include border-radius(4px);
-	background-color:$table_bg_color;
+	/*background-color:$table_bg_color;*/
 	text-align:left;
-	width:90%;
+	/*width:90%;*/
 	margin: 10px 0px;
 	padding: 2px;
 	font-size: inherit;
 	vertical-align: middle;
 	border-collapse: separate;
+box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	
+
 	border-spacing: 3px;
 			  &.th, &.td, &.hr, &.thead, &.tbody {
 				background-color:$table_bg_color;
 				text-align:left;
+				/*border: solid 1px grey;*/
 		}
 }
 
+table.event_info {
+	padding: 50px;
+	float: right;
+	width: 500px;
 
+}
+div.center_wrap {
+	text-align: center;
+}
 .message, .success, .error, .warning {
   border: 1px solid #cccccc;
   padding: 10px;
   color: #333;
 
 }
+
+#table {
+	margin: auto;
+	/*border: solid 1px black;*/
+}
+
+table.table {
+background-color: rgba(0,0,0,.4);
+border-radius: 12px 12px 0 0;
+/*border: solid 1px rgba(0,0,0,.4);*/
+
+}
+th {
+	padding-top: 4px;
+	padding-bottom: 4px;
+
+
+}
+td {
+	/*border: solid 1px lightgrey;*/
+	padding: 2px 12px;
+	/*max-width: 100px;*/
+}
+div.form {
+	text-align: center;
+	margin: auto;
+	max-width: 340px;
+	border: solid 1px white;
+	padding: 20px;
+	border-radius: 20px;
+	background: rgba(255,255,255,.3);
+	margin-top: 50px;
+box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+
+}
+input {
+	font-size: .9em;
+	/*padding:4px;*/
+	/*border-radius: 5px;*/
+	/*width: 80px;*/
+}
+.strong{
+	font-weight:bold;
+	line-height:1.5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
