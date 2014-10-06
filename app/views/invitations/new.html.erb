@@ -1,0 +1,24 @@
+    <p style="color: red"><%= flash[:notice] %></p>
+  <% if flash[:notice] && flash[:notice].match("is not a member") %>
+    <%= form_for @invitation do |f| %>
+      <%= hidden_field_tag(:event, @event.id) %>
+      <div>
+        <%= f.label :name %><br/>
+        <%= f.text_field :name %>
+      </div>
+
+      <div>
+        <%= f.label :email %><br/>
+        <%= f.text_field :email, value: @new_email %>
+      </div>
+
+      <div>
+        <%= f.label :message %><br/>
+        <%= f.text_area :message, size: "30x10", value: "#{@user.name} has invited you to #{@event.name}. This event starts on #{@event.start_date} and ends on #{@event.end_date}. Head to our website to see the details!" %>
+      </div>
+
+      <div>
+        <%= f.submit "Invite" %>
+      </div>
+    <% end %>
+  <% end %>
