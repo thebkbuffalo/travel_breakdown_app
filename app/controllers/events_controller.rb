@@ -61,6 +61,18 @@ class EventsController < ApplicationController
           format.json { render json: @event.errors, status: :unprocessable_entity }
         end
       end
+    elsif params[:finalize]
+      @event.roles.each do |role|
+        total_cost = @event.get_total_cost(role)
+        total_paid = 0
+        role.expenses.each { |expense| total_paid += expense.amount.to_f }
+        total_owed = total_cost - total_paid
+         role.amount_owed = total_owed
+         role.save
+      end
+      @event.closed = true
+      @event.save
+      redirect_to event_path(id: @event.id)
     else
       respond_to do |format|
         if @event.update(event_params)
