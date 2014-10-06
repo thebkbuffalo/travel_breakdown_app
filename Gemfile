@@ -30,7 +30,7 @@ gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'annotate'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -59,3 +59,4 @@ gem 'cancan', '~> 1.6.10'
 gem 'twilio-ruby', '~> 3.13.1'
 gem 'bourbon'
 gem 'simple_calendar', '~> 1.1.0'
+gem 'annotate'
