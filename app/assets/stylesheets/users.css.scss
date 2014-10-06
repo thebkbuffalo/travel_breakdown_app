@@ -3,11 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #usersTable {
-	border: 1px solid #cdcdcd;
+	border: 1px solid gray;
 	border-collapse:collapse;
 	tr:hover{
 		background-color:#efefef;			
 	}
 }
+
+#profile-box {
+	width: 220px;
+	border:1px solid #000;
+	border-radius: 5px;
+	margin:0 auto;
+	text-align:center;
+	padding:10px;
+
+}
+
+.profile-info {
+	font-size:14px;
+	line-height:22px;
+}
+
+.name {
+	font-size:30px;
+	padding-top:7px;
+}
+
 
 
