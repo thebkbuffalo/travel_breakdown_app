@@ -1,10 +1,10 @@
 <%= render 'layouts/header' %>
 <section>
-Listing users
-
-<table id="table">
+<h1>Listing users</h1>
+<br /><br />
+<table id="usersTable">
   <thead>
-    <tr>
+    <tr class="usersTableTr>
       <th>Email</th>
       <th>Image</th>
       <th>Name</th>
@@ -33,7 +33,7 @@ Listing users
 </table>
 
 <br>
-<span class="site-buttons">
+
 <%= link_to 'New User', new_user_path %>
-</span>
+
 </section>
