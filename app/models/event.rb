@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
         @total_cost += expense.groceries_per_person_per_day * overlap_dates(expense, role)
       elsif expense.calculation_type.downcase == "boat"
         @total_cost += boat(expense, role)
-      elsif expense.calculation_type.downcase == "gift"
+      elsif expense.calculation_type.downcase == "gifts"
         @total_cost += expense.gift
       end
   	end

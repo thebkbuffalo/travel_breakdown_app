@@ -63,7 +63,7 @@ class Expense < ActiveRecord::Base
         groceries
       elsif calculation_type.downcase == "boat"
         boat
-      elsif calculation_type.downcase == "gift"
+      elsif calculation_type.downcase == "gifts"
         gift
       end
 	end
