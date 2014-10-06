@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     end
     @type = @event.expenses.map do |expense|
       if expense.calculation_type.downcase == "groceries"
-        @total_cost += expense.groceries
+        @total_cost += expense.groceries * @role.total_days
       elsif expense.calculation_type.downcase == "boat"
         @total_cost += expense.boat
       elsif expense.calculation_type.downcase == "gift"

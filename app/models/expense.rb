@@ -12,9 +12,14 @@ class Expense < ActiveRecord::Base
 	end
 
   def groceries
-  	(amount / event.attendance.flatten.count) * role.total_days
+  	(amount.to_f / event.people_days)
 	end
-	
+	def people_days
+		sum = 0
+		roles.each { |role| sum += role.total_days}
+		sum
+	end
+
 	def boat
 		@attendance = event.attendance
 		per_day = amount.to_f/total_days

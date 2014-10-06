@@ -11,6 +11,11 @@ class Event < ActiveRecord::Base
 		(end_date - start_date).to_i
 	end
 
+	def people_days
+		sum = 0
+		roles.each { |role| sum += role.total_days}
+		sum
+	end
 
 	def attendance
 		attendance = []
