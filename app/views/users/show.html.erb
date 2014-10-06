@@ -18,11 +18,11 @@
   <th>Name</th>
   <th>Location</th>
   <th>Dates</th>
-<% @owned.each do |event| %>
+<% @owner.each do |role| %>
   <tr>
-    <td><%= link_to event.name, event_path(event.id) %> </td>
-    <td> <%= event.location %></td>
-    <td> <%= event.start_date %> - <%= event.end_date %></td>
+    <td><%= link_to role.event.name, event_path(role.event.id) %> </td>
+    <td> <%= role.event.location %></td>
+    <td> <%= role.event.start_date %> - <%= role.event.end_date %></td>
   </tr>
 <%end%>
 </table>
@@ -36,20 +36,11 @@
 <tr>
   <th>Name</th>
   <th>Location</th>
-  <th>Dates</th>
-<% @organized.each do |event| %>
-  <tr>
-    <td> <%= link_to event.name, event_path(event.id) %> </td>
-    <td> <%= event.location %></td>
-    <td> <%= event.start_date %> - <%= event.end_date %></td>
-    <% role = Role.where(user_id: @user.id).where(event_id: event.id)[0].accepted %>
-    <% if role%>
-      <td><p> attending</p></td>
-    <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
-    <% end %>
-    <td> <%= event.start_date %> - <%= event.end_date %> </td>
-  </tr>
+  <th>Event Dates</th>
+  <th>Your Dates</th>
+  <th>Status </th>
+<% @organizer.each do |role| %>
+  <%= render partial: "events_list", locals: {role: role} %>
 <%end%>
 </table>
 <br/><br/>
@@ -61,21 +52,11 @@
 <tr>
   <th>Name</th>
   <th>Location</th>
-  <th>Dates</th>
-  <th>Accept Invitation </th>
-<% @friended.each do |event| %>
-  <tr>
-    <td><%= link_to event.name, event_path(event.id) %> </td>
-    <td> <%= event.location %></td>
-    <td> <%= event.start_date %> - <%= event.end_date %> </td>
-    <% role = Role.where(user_id: @user.id).where(event_id: event.id)[0].accepted %>
-    <% if role%>
-      <td> <p> attending </p> </td>
-    <% else %>
-      <td> <%= link_to 'accept',  event_path(event.id, friend:"true"), :method=> :put%> <%= link_to 'deny',  event_path(event.id, friend:"true"), :method=> :delete%></td>
-      <td> <%= link_to 'accept',  event_path(event.id), :method=> :put%> </td>
-    <% end %>
-  </tr>
+  <th>Event Dates</th>
+  <th>Your Dates</th>
+  <th>Status </th>
+<% @friend.each do |role| %>
+  <%= render partial: "events_list", locals: {role: role} %>
 <%end%>
 </table>
 </section>

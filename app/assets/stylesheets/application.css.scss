@@ -13,8 +13,6 @@ h1 {
   margin: 15px;
 }
 
-// setting sheet links as imports //
-
 @import 'bourbon';
 
 @import 'events';
@@ -102,7 +100,6 @@ a {
 
 $table_bg_color:hsla(0, 0%, 5%, 0.8);
 
-
 #sassTable {
 	@include border-radius(4px);
 	background-color:$table_bg_color;
@@ -120,9 +117,7 @@ $table_bg_color:hsla(0, 0%, 5%, 0.8);
 		}
 }
 
-p {
-	line-height:2em;
-}
+
 .message, .success, .error, .warning {
   border: 1px solid #cccccc;
   padding: 10px;
