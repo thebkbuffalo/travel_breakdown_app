@@ -4,6 +4,11 @@ html {
 	color: rgb(40,40,40);
 }
 
+html, body {
+  background-image: url("/app/assets/images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 // setting table bg color //
 $table-background: rgba(32,32,32,.8);
 
