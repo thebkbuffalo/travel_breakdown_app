@@ -33,6 +33,8 @@
 		      <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
       	</tr>
     	<%end%>
+      <p style="color: blue"><%= flash[:success] %></p>
+      <p style="color: red"><%= flash[:error] %></p>
     	</table>
 
     <br>
