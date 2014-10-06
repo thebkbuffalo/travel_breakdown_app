@@ -25,7 +25,7 @@
         <td><%= expense.start_date %></td>
         <td><%= expense.end_date %></td>
         <td><%= expense.calculation_type %></td>
-        <td><%= '%.2f' % expense.calculate_owed %></td>
+        
         <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?%>
           <td><%= link_to 'Edit', edit_expense_path(event_id: params[:event_id], id: expense.id) %></td>
           <td><%= link_to 'Destroy', expense_path(event_id: params[:event_id], id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
