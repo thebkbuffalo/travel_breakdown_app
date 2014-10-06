@@ -26,12 +26,12 @@
 		    <th>Name</th>
 		    <th>Email</th>
 		    <th>Permission</th>
-		  <% @people.each do |person| %> 
+		  <% @people.each do |person| %>
 			</tr>
 		    <tr>
-		      <td> <%= person.name %> </td>
-		      <td> <%= person.email %> </td>
-		      <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
+		      <td> <%= person.user.name %> </td>
+		      <td> <%= person.user.email %> </td>
+		      <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
       	</tr>
     	<%end%>
       </table>
@@ -104,7 +104,7 @@
           end: '<%= @event.end_date %>',
 				},
 
-          <% @people_role.each do |person| %>
+          <% @people.each do |person| %>
             {
               title: '<%= User.find(person.user_id).name %>',
               start: '<%= person.start_date %>',
