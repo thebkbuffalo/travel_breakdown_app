@@ -4,37 +4,37 @@
 <p style="color: red"><%= flash[:notice] %></p>
 <div class="center_wrap">
   <div class="event_wrapper">
-    <div class="strong"><%= @event.name %>
+    <div class="events-title"><%= @event.name %>
     </div>
+	<hr>
     <div class="event_info">
         <img class="event_img" src="<%= @event.image %>">
-      <p>
-        Location:
+      <p>Location: 
         <%= @event.location %>
       </p>
-      <p>
-        Start date:
-        <%= @event.start_date %>
-      </p>
-      <p>
-        End date:
+      <p>Dates: <%= @event.start_date %> - 
         <%= @event.end_date %>
       </p>
     </div>
-    <div class="event_right">
-    <table class="event_info">
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Permission</th>
-    <% @people.each do |person| %>
-      <tr>
-        <td> <%= person.name %></td>
-        <td> <%= person.email %></td>
-        <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
-      </tr>
-    <%end%>
-    </table>
+
+
+		<div class="event_right">
+			<span class="events-going">Going
+    	</span>
+			<br /><br />
+    	<table class="event_info">
+		  <tr>
+		    <th>Name</th>
+		    <th>Email</th>
+		    <th>Permission</th>
+		  <% @people.each do |person| %>
+		    <tr>
+		      <td> <%= person.name %></td>
+		      <td> <%= person.email %></td>
+		      <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
+      	</tr>
+    	<%end%>
+    	</table>
     <br>
 
     <div class="breakdown_wrap">

@@ -93,7 +93,7 @@ a {
 	color:gray;
 	/*text-transform: capitalize;*/
 		&:hover{
-			color:white;
+			color:#6496ff;
 			/*font-weight:bold;*/
 			font-size:15px;
 		}
@@ -144,7 +144,7 @@ $table_bg_color:hsla(0, 0%, 5%, 0.8);
 	line-height:1.5em;
 }
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
 img.header_image {
 	border-radius: 100%;
@@ -163,9 +163,19 @@ span.logout {
 div.strong {
 	padding: 8px;
 	margin:auto;
-	text-align: center;
 	font-weight: bold;
 	font-size: 1.1em;
+}
+.events-title {
+	padding: 8px;
+	margin:auto;
+	font-weight: bold;
+	font-size: 1.7em;
+}
+span.events-going {
+	padding-left:118px;
+	font-weight: bold;
+	font-size: 1.2em;
 }
 div.event_info {
 	float: left;
@@ -319,11 +329,6 @@ div.center_wrap {
 	text-align: center;
 }
 
-.message, .success, .error, .warning {
-  border: 1px solid #cccccc;
-  padding: 10px;
-  color: #333;
-}
 
 #table {
 	margin: auto;
