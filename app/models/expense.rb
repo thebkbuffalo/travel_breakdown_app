@@ -7,14 +7,15 @@ class Expense < ActiveRecord::Base
   validates :item, :amount, :calculation_type, presence: true
   validates :role_id, presence: true
   validates :approved, :inclusion => {:in => [true, false]}
+
 	def total_days
 		(end_date - start_date).to_i
 	end
 
   def groceries
-  	(amount / event.attendance.flatten.count) * role.total_days
+    amount.to_f / event.people_days
 	end
-	
+
 	def boat
 		@attendance = event.attendance
 		per_day = amount.to_f/total_days
@@ -26,12 +27,13 @@ class Expense < ActiveRecord::Base
 					@sum += per_day/@attendance[count].count if event.start_date + count >= role.start_date && event.start_date + count <= role.end_date
 					start_date_count += 1
 					count += 1
-			else 
+			else
 				count += 1
 			end
 		end
 		@sum
 	end
+
 	def gift
 		amount.to_f / event.users.count
 	end

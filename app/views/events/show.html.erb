@@ -31,16 +31,17 @@
   <th>Permission</th>
 <% @people.each do |person| %>
   <tr>
-    <td> <%= person.name %></td>
-    <td> <%= person.email %></td>
-    <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
+    <td> <%= person.user.name %></td>
+    <td> <%= person.user.email %></td>
+    <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
   </tr>
 <%end%>
 </table>
 <br>
 <span class="site-buttons">
 <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
-<%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> | 
+<%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> |
+<%= link_to 'Finalize Event', event_path(event_id: @event.id, finalize: "true"), method: :put %>
 <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
 <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
 </span>
@@ -79,7 +80,7 @@ Total Paid: $<%= '%.2f' % @total_paid %><br>
           end: '<%= @event.end_date %>',
 				},
 
-          <% @people_role.each do |person| %>
+          <% @people.each do |person| %>
             {
               title: '<%= User.find(person.user_id).name %>',
               start: '<%= person.start_date %>',

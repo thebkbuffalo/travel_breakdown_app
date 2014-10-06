@@ -11,28 +11,32 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    people = Role.where(event_id: @event.id).where(accepted: true)
-    @people = people.map { |person| User.where(id: person.user_id)}.flatten
-    @people_role = people
-    @total_cost = 0
-    @total_paid = 0
-    @role.expenses.where(approved: true).each do |expense|
-      @total_paid += expense.amount.to_f
-    end
-    @type = @event.expenses.map do |expense|
-      if expense.calculation_type.downcase == "groceries"
-        @total_cost += expense.groceries
-      elsif expense.calculation_type.downcase == "boat"
-        @total_cost += expense.boat
-      elsif expense.calculation_type.downcase == "gift"
-        @total_cost += expense.gift
-      end
-    @total_owed = @total_cost - @total_paid
-    end
+    @people = Role.where(event_id: @event.id).where(accepted: true)
+
+    # people = people.map { |person| User.where(id: person.user_id)}.flatten
+
+    @total_cost = get_individual_cost
+    # @total_paid = get_paid
+    # @total_owed = @total_cost - @total_paid
+    # @total_cost = 0
+    # @total_paid = 0
+    # @role.expenses.where(approved: true).each do |expense|
+    #   @total_paid += expense.amount.to_f
+    # end
+    # @type = @event.expenses.map do |expense|
+    #   if expense.calculation_type.downcase == "groceries"
+    #     @total_cost += expense.groceries
+    #   elsif expense.calculation_type.downcase == "boat"
+    #     @total_cost += expense.boat
+    #   elsif expense.calculation_type.downcase == "gift"
+    #     @total_cost += expense.gift
+    #   end
+    # @total_owed = @total_cost - @total_paid
+    # end
     @pending_expenses = @event.expenses.where(approved: false)
   end
 
-  
+
 
   # GET /events/new
   def new
@@ -76,6 +80,14 @@ class EventsController < ApplicationController
           format.json { render json: @event.errors, status: :unprocessable_entity }
         end
       end
+    elsif params[:finalize]
+      people = Role.where(event_id: @event.id).where(accepted: true)
+
+      people.each do |person|
+        binding.pry
+       person.amount_owed = @total_owed
+      end
+      redirect_to event_path(@event.id)
     else
       respond_to do |format|
         if @event.update(event_params)
