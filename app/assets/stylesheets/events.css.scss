@@ -47,7 +47,9 @@ span.owed {
 	/*margin-top: 10px;*/
 }
 
-
+tr.pending, tr.invited {
+	color: gray;
+}
 
 #calendar {
 		max-width: 900px;

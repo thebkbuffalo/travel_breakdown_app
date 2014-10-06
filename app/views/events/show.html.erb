@@ -34,9 +34,28 @@
 		      <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
       	</tr>
     	<%end%>
+
+      <% if @pending_people %>
+        <% @pending_people.each do |person| %>
+        <tr class="pending">
+          <td> <%= person.user.name %> </td>
+          <td> <%= person.user.email %> </td>
+          <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
+        <%end%>
+        </tr>
+      <%end%>
+      <% if @invited_people %>
+        <% @invited_people.each do |person| %>
+        <tr class="invited">
+          <td> <%= person.name %> </td>
+          <td> <%= person.email %> </td>
+          <td> "soup" </td>
+        <%end%>
+        </tr>
+      <%end%>
       </table>
 
-      </br>
+      </br></br>
       <% if flash[:success] %>
         <table class="event_info">
           <tr>
