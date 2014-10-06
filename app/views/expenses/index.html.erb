@@ -1,6 +1,6 @@
 <%= render 'layouts/header' %>
-
-<h1>Listing expenses</h1>
+<div class="event_wrapper2">
+<span class"strong">Listing expenses</strong>
 
 <table id="table">
   <thead>
@@ -39,3 +39,4 @@
 
 <%= link_to 'New Expense', new_event_expense_path %>
 <%= link_to 'Back to Event', event_path(id: params[:event_id]) %>
+</div>
