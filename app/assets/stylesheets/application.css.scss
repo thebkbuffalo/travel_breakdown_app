@@ -1,7 +1,7 @@
 html {
-  background: url(http://i.imgur.com/sznD8BT.jpg) no-repeat center center fixed;
+  /*background: url(http://i.imgur.com/sznD8BT.jpg) no-repeat center center fixed;*/
   background-size: cover;
-	background:#000;
+	background:rgb(240,240,240);
 }
 
 // setting table bg color //
@@ -71,7 +71,7 @@ img.event_img {
 	border-radius: 10px;
 }
 div.event_wrapper {
-box-shadow: 3px 3px 60px rgba(0,0,0,.4);
+box-shadow: 3px 3px 60px rgba(0,0,0,.2);
 
 	/*border-top: solid 40px rgba(0,0,0,.4);*/
 	text-align: left;
@@ -89,7 +89,7 @@ box-shadow: 3px 3px 60px rgba(0,0,0,.4);
 	margin:auto;
 }
 div.event_wrapper2 {
-box-shadow: 3px 3px 60px rgba(0,0,0,.4);
+box-shadow: 3px 3px 60px rgba(0,0,0,.2);
 
 	/*border-top: solid 40px rgba(0,0,0,.4);*/
 	text-align: left;
@@ -270,7 +270,6 @@ div.center_wrap {
   color: #333;
 }
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 #table {
 	margin: auto;
 	/*border: solid 1px black;*/
@@ -296,12 +295,14 @@ td {
 div.form {
 	text-align: center;
 	margin: auto;
-	max-width: 300px;
+	max-width: 340px;
 	border: solid 1px white;
 	padding: 20px;
 	border-radius: 20px;
 	background: rgba(255,255,255,.3);
 	margin-top: 50px;
+box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+
 }
 input {
 	font-size: .9em;
@@ -309,7 +310,6 @@ input {
 	/*border-radius: 5px;*/
 	/*width: 80px;*/
 }
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .strong{
 	font-weight:bold;
 	line-height:1.5em;
