@@ -175,12 +175,18 @@ div.strong {
 div.event_info {
 	float: left;
 }
+
 img.event_img {
 	width: 320px;
 	height: 320px;
 	margin-right: 20px;
 	border-radius: 10px;
 }
+div.login {
+	background-color: rgba(255,255,255,.2);
+	height: 200px;
+}
+
 div.event_wrapper {
 box-shadow: 3px 3px 60px rgba(0,0,0,.2);
 
@@ -296,7 +302,7 @@ div.center_wrap {
 
 
 #table {
-	margin: auto;
+	margin: 0 auto;
 	/*border: solid 1px black;*/
 }
 
@@ -314,7 +320,7 @@ th {
 }
 td {
 	/*border: solid 1px lightgrey;*/
-	padding: 2px 12px;
+	padding: 10px;
 	/*max-width: 100px;*/
 }
 div.form {
