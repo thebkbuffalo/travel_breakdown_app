@@ -5,6 +5,9 @@
 #usersTable tr,td{
 	border: 1px solid #cdcdcd;
 	border-collapse:collapse;
+	&:hover{
+		background-color:#999;			
+	}
 }
 
 
