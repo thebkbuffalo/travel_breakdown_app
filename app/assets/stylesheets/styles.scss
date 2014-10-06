@@ -93,7 +93,7 @@ a {
 	color:gray;
 	/*text-transform: capitalize;*/
 		&:hover{
-			color:white;
+			color:#6496ff;
 			/*font-weight:bold;*/
 			font-size:15px;
 		}
@@ -144,7 +144,7 @@ $table_bg_color:hsla(0, 0%, 5%, 0.8);
 	line-height:1.5em;
 }
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
 img.header_image {
 	border-radius: 100%;
@@ -160,13 +160,14 @@ span.logout {
 	margin-top: 14px;
 	padding-right:6px;
 }
+// Gray do we still need this style -- broke into  event-title and events-going //
 div.strong {
 	padding: 8px;
 	margin:auto;
-	text-align: center;
 	font-weight: bold;
 	font-size: 1.1em;
 }
+
 div.event_info {
 	float: left;
 }
@@ -218,32 +219,7 @@ div.event_links {
 	position: relative;
 	margin-bottom: 20px
 }
-div.breakdown {
 
-	/*width: 200px;*/
-	border: solid 1px white;
-	text-align: right;
-	float: right;
-	background: white;
-	padding: 18px;
-	border-radius: 12px;
-	position: block;
-	bottom: -30px;
-	/*margin-right: 30px;*/
-}
-div.breakdown_wrap {
-position: absolute;
-bottom: 50px;
-right: 40px;
-}
-span.cost {
-	color: grey;
-}
-
-span.owed {
-	font-size: 1.3em;
-	/*margin-top: 10px;*/
-}
 
 
 // setting page body margin and bottom page link buttons //
@@ -319,11 +295,6 @@ div.center_wrap {
 	text-align: center;
 }
 
-.message, .success, .error, .warning {
-  border: 1px solid #cccccc;
-  padding: 10px;
-  color: #333;
-}
 
 #table {
 	margin: auto;
