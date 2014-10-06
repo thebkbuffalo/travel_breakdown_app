@@ -56,8 +56,8 @@
 
     <div class="breakdown_wrap">
       <div class="breakdown">
-        <span class="cost">Total Cost: $<%= '%.2f' % @total_cost %><br>
-        Total Paid: $<%= '%.2f' % @total_paid %><br>
+        <span class="cost">Your Total Cost: $<%= '%.2f' % @total_cost %><br>
+        Total Spent: $<%= '%.2f' % @total_paid %><br>
         </span>
         <% if @total_owed && @total_owed >= 0 %>
           <span class="owed" style="color:red">You Owe: $<%= '%.2f' % @total_owed.abs %></span>
