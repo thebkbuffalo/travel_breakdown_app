@@ -23,7 +23,6 @@ table.event_info {
 }
 
 div.breakdown {
-	/*width: 200px;*/
 	border: solid 1px grey;
 	text-align: right;
 	float: right;
@@ -36,8 +35,8 @@ div.breakdown {
 }
 div.breakdown_wrap {
 position: absolute;
-bottom: 50px;
-right: 40px;
+bottom: 35px;
+right: 18px;
 }
 span.cost {
 	color: grey;
