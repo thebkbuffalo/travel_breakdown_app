@@ -33,12 +33,8 @@
 --------------------------------------------------------------------------------------------------*/
 
 
-.fc-row th,
-td,
-hr,
-thead,
-tbody, {
-
+td,hr,thead,tbody, .fc-row th,
+{
 	border-color: #ccc !important;
 	background: #fff !important;
 }
