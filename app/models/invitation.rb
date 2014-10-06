@@ -1,21 +1,13 @@
-class Invitation
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
-  include ActiveModel::Validations
-  include ActionView::Helpers::TextHelper
-
-  attr_accessor :name, :email, :message
+class Invitation < ActiveRecord::Base
+  belongs_to :event
+  validates :email, :format => { :with => /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/ }
+  validates :message, :length => { :minimum => 10, :maximum => 1000 }
 
   # validates :name,
   #           :presence => true
 
-  validates :email,
-            :format => { :with => /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/ }
 
-  validates :message,
-            :length => { :minimum => 10, :maximum => 1000 }
-
-  def initialize(attributes = {})
+  def clean_up(attributes = {})
     attributes.each do |name, value|
       send("#{name}=", value)
     end
@@ -28,7 +20,6 @@ class Invitation
       :to => %("#{name}" <#{email}>),
       :subject => "You're Invited",
       :body => message,
-      :html_body => simple_format(message),
       :via => :smtp,
       :via_options => {
         :address => 'smtp.gmail.com',
