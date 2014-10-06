@@ -19,11 +19,13 @@ html {
 
 #profile-box {
 	width: 220px;
-	border:1px solid #000;
+	border:1px solid rgb(120,120,120);
 	border-radius: 5px;
 	margin:0 auto;
 	text-align:center;
 	padding:10px;
+	background: white;
+	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
 
 }
 
