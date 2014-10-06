@@ -72,6 +72,7 @@
   <div class="event_links">
     <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
   <%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> |
+  <%= link_to 'Finalize Event', event_path(id: @event.id, finalize: "true"), method: :put %> |
   <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
   <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
   </div>

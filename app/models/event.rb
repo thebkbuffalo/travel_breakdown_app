@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   has_many :roles
   has_many :users, through: :roles
   has_many :expenses, through: :roles
+  has_many :invitations
   validates :name, :start_date, :end_date, presence: true
 
 	def get_total_cost(role)
