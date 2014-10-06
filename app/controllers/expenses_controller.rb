@@ -41,7 +41,7 @@ class ExpensesController < ApplicationController
       @expense.approved = "true"
       respond_to do |format|
         if @expense.save
-          format.html { redirect_to event_expenses_path(event_id: @expense.role.event_id), notice: 'Expense was successfully updated.' }
+          format.html { redirect_to event_path(id: @expense.role.event_id), notice: 'Expense was successfully updated.' }
           format.json { render :show, status: :ok, location: @expense }
         else
           format.html { render :edit }

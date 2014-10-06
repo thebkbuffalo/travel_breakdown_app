@@ -1,7 +1,7 @@
 
 class Event < ActiveRecord::Base
   # after_save :check_valid_dates
-  has_many :roles
+  has_many :roles, :dependent => :delete_all
   has_many :users, through: :roles
   has_many :expenses, through: :roles
   has_many :invitations
@@ -10,12 +10,14 @@ class Event < ActiveRecord::Base
 	def get_total_cost(role)
 		@total_cost = 0
 		@type = self.expenses.map do |expense|
-      if expense.calculation_type.downcase == "groceries"
-        @total_cost += expense.groceries_per_person_per_day * overlap_dates(expense, role)
-      elsif expense.calculation_type.downcase == "boat"
-        @total_cost += boat(expense, role)
-      elsif expense.calculation_type.downcase == "gift"
-        @total_cost += expense.gift
+      if expense.approved
+        if expense.calculation_type.downcase == "groceries"
+          @total_cost += expense.groceries_per_person_per_day * overlap_dates(expense, role)
+        elsif expense.calculation_type.downcase == "boat"
+          @total_cost += boat(expense, role)
+        elsif expense.calculation_type.downcase == "gifts"
+          @total_cost += expense.gift
+        end
       end
   	end
   	@total_cost
