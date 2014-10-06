@@ -1,6 +1,9 @@
 html, body {
-  background-image: url("/app/assets/images/background.jpg") no-repeat center center fixed;
+  background-image: url(background.jpg);
+  background-repeat:no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  background-position: center;
 }
 .admin {
 color:#124157; 
