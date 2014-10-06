@@ -38,10 +38,12 @@
 <%end%>
 </table>
 <br>
+<span class="site-buttons">
 <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
 <%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> | 
 <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
 <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
+</span>
 
 <br>
 Total Cost: $<%= '%.2f' % @total_cost %><br>

@@ -1,4 +1,4 @@
-<div>
+<section>
   <h1>Welcome to Travel App</h1>
   <p>Login</p>
   <div class="login">
@@ -11,5 +11,7 @@
     <% end %>
     <p style="color: red"><%= flash[:error] %></p>
   </div>
-  <p><%= link_to('Sign up', new_user_path) %>
-</div>
+	<span class="site-buttons">
+		<p><%= link_to('Sign up', new_user_path) %>
+	</span>
+</section>
