@@ -21,15 +21,16 @@
 			<span class="events-going">Going
     	</span>
 			<br /><br />
-    	<table class="event_info">
+    	<table class="event_info" cellpadding="25px" cellpadding="100px">
 		  <tr>
 		    <th>Name</th>
 		    <th>Email</th>
 		    <th>Permission</th>
-		  <% @people.each do |person| %>
+		  <% @people.each do |person| %> 
+			</tr>
 		    <tr>
-		      <td> <%= person.name %></td>
-		      <td> <%= person.email %></td>
+		      <td> <%= person.name %> </td>
+		      <td> <%= person.email %> </td>
 		      <td> <%= Role.where(user_id: person.id).where(event_id: @event.id)[0].permission %></td>
       	</tr>
     	<%end%>
@@ -103,7 +104,8 @@
 
 </script>
 
-	<div id='calendar'></div>
+	<div id='calendar'>
+</div>
 </section>
 
 
