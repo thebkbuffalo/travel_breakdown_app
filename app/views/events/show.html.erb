@@ -95,14 +95,15 @@
   <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
   <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
   </div>
+      <% if @pending_expenses.count > 0 %>
   <div class="event_wrapper2">
       <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? %>
         <%= render 'expense_list' %>
       <% end %>
 </div>
-<br><br><br>
-
-
+<br><br>
+<%end%>
+<br>
 <script>
 
   $(document).ready(function() {
