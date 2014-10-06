@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new(params[:invitation])
     if @invitation.deliver
-      flash[:success] = "#{params[:invitation][:name]} has been invited!"
+      flash[:success] = "#{params[:invitation][:email]} has been invited!"
     else
       flash[:error] = "We were unable to invite your friend using the email address provided: #{params[:invitation][:email]}"
     end

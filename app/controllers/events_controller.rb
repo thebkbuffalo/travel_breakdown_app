@@ -32,7 +32,7 @@ class EventsController < ApplicationController
     @pending_expenses = @event.expenses.where(approved: false)
   end
 
-  
+
 
   # GET /events/new
   def new
