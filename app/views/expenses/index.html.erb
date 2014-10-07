@@ -25,6 +25,7 @@
         <td><%= expense.start_date %></td>
         <td><%= expense.end_date %></td>
         <td><%= expense.tag %></td>
+        <bindint.pry>
 
         <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?%>
           <td><%= link_to 'Edit', edit_expense_path(event_id: params[:event_id], id: expense.id) %></td>
@@ -34,19 +35,9 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-<<<<<<< HEAD
 <div style="text-align: center">
 <%= link_to 'New Expense', new_event_expense_path %>
 <%= link_to 'Back to Event', event_path(id: params[:event_id]) %>
 </div>
-=======
 
-<div class="Suggestion">
-<%= link_to 'New Expense', new_event_expense_path %>
-<%= link_to 'Back to Event', event_path(id: params[:event_id]) %>
-</div>
-
->>>>>>> 1d825b69e15eba601bb769e1c8be0c739d91dabf
-</div>
