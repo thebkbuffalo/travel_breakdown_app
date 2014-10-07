@@ -37,7 +37,9 @@ class Expense < ActiveRecord::Base
 	end
 
 	def gift
-	  event.roles.map { |role|  role if role.accepted}.count
+    binding.pry
+	  amount.to_f/event.roles.select { |role|  role if role.accepted}.count
+
 	end
 
 	def calculate_owed
