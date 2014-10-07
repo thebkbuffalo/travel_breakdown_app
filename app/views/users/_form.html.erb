@@ -12,24 +12,24 @@
   <% end %>
     <p>
       <%= f.label :email %>:
-      <%= f.text_field :email, :required => true %> (required)<br/>
+      <%= f.text_field :email, placeholder: 'Email (required)' %><br/>
     </p>
 
     <p>
       <%= f.label :name  %>:
-      <%= f.text_field :name, :required => true %> (required)<br/>
+      <%= f.text_field :name, placeholder: 'Name (required)' %><br/>
     </p>
      <p>
       <%= f.label :image %>:
-      <%= f.url_field :image %>&nbsp;<br/>
+      <%= f.url_field :image, placeholder: 'Image' %>&nbsp;<br/>
     </p>
 
     <p>
       <%= f.label :password %>:
-      <%= f.password_field :password, :required => true %> (required)<br/></p>
+      <%= f.password_field :password, placeholder: 'Password (required)' %><br/></p>
       <p><%= f.label :password_confirmation, 'Confirmation' %>:
-      <%= f.password_field :password_confirmation, :required => true %> (required)<br/></p>
-
+      <%= f.password_field :password_confirmation, placeholder: 'Confirmation (required)' %><br/></p>
+</br>
 
     <p><%= f.submit %></p>
 <% end %>
