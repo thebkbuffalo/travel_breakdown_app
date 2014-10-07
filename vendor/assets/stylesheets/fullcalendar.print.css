@@ -24,8 +24,8 @@
 	page-break-inside: avoid;
 }
 
-.main-event div.fc-content {
-	color: 'red' !important;
+.fc-day-grid-event.fc-event.fc-start.fc-not-end.main-event.fc-draggable {
+	background: 'red' !important;
 }
 .fc-event .fc-resizer {
 	display: none;
