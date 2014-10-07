@@ -10,39 +10,51 @@
       <th>Start date</th>
       <th>End date</th>
       <th>Categoy</th>
+      <th>Type</th>
       <th>Approved</th>
-      <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?%>
+      <% if (Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?) && !@event.closed %>
         <th colspan="3"></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
     <% @expenses.each do |expense| %>
-    <%if expense.approved%>
-      <tr>
-        <%else%>
-      <tr style="color: lightgrey">
-<%end%>
+      <%if expense.approved%>
+        <tr>
+      <%else%>
+        <tr style="color: lightgrey">
+      <%end%>
         <td><%= expense.item %></td>
         <td><%= expense.amount %></td>
         <td><%= expense.description %></td>
         <td><%= expense.start_date %></td>
         <td><%= expense.end_date %></td>
         <td><%= expense.tag %></td>
-        <% if expense.approved %>
-        <td>&#x2713;</td>
+        <%if expense.calculation_type == "boat" %>
+          <td>Variable Day Rate</td>
+        <%elsif expense.calculation_type == "gifts" %>
+          <td>Even Split</td>
+        <%elsif expense.calculation_type == "groceries" %>
+          <td>Flat Day Rate</td>
+          <%else%>
+          <td> </td>
         <% end %>
-        <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?%>
+        <% if (Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?) && !@event.closed%>
           <td><%= link_to 'Edit', edit_expense_path(event_id: params[:event_id], id: expense.id) %></td>
           <td><%= link_to 'Destroy', expense_path(event_id: params[:event_id], id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+          <% if expense.approved %>
+        <td>&#x2713;</td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 <div style="text-align: center">
+  <% if !@event.closed %>
 <%= link_to 'New Expense', new_event_expense_path %>
+<% end %>
 <%= link_to 'Back to Event', event_path(id: params[:event_id]) %>
 </div>
 
