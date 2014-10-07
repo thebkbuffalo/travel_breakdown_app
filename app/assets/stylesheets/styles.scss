@@ -11,10 +11,12 @@ h1 {
 	font-weight:bold;
 }
 
+
 h2{
 	margin: 20px 0 5px;
-	font-size:16px;
-	font-weight:bold;
+	font-size: 25px;
+	font-weight: bold;
+  color: #3D3D3D;
 }
 
 @import 'bourbon';
@@ -183,7 +185,7 @@ img.event_img {
 }
 div.login {
 	/*background-color: rgba(255,255,255,.2);*/
-	height: 200px;
+	height: 182px;
 
 }
 div.login input {
@@ -346,7 +348,7 @@ div.form {
 	border: solid 1px white;
 	padding: 20px;
 	border-radius: 20px;
-	background: rgba(255,255,255,.3);
+	background: rgba(255,255,255,.6);
 	margin-top: 50px;
 box-shadow: 3px 3px 60px rgba(0,0,0,.2);
 
@@ -390,6 +392,7 @@ div.expense_type {
 div.expense_model_breakdown {
 	text-align: left;
 }
+<<<<<<< HEAD
 
 span.logo a {
 	font-family: 'Ubuntu', sans-serif;
@@ -404,10 +407,6 @@ span.logo a:hover {
 }
 
 /*font-family: 'Ubuntu', sans-serif;*/
-
-
-
-
 
 
 
