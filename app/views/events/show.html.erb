@@ -12,7 +12,7 @@
     <% end %>
 	<hr>
     <div class="event_info">
-        <img class="event_img" src="<%= @event.image %>">
+        <img class="event_img" src="<%if @event.image != "" %><%= @event.image %><% else %> http://i.imgur.com/XcCVauk.jpg<% end %>">
       <p>Location:
         <%= @event.location %>
       </p>
@@ -20,7 +20,6 @@
         <%= @event.end_date %>
       </p>
     </div>
-
 		<div class="event_right">
 			<span class="events-going">Invited
     	</span>
