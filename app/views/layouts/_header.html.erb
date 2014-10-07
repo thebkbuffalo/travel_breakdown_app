@@ -2,7 +2,7 @@
 
       <span class="logo"><%= link_to("Split.it", user_path(id: session.id)) %></span>
 
-    <img class="header_image" src="<%=current_user.image%>" width=30px height=30px />
+    <img class="header_image" src="<%if current_user.image != "" %><%= current_user.image %><% else %>http://i.imgur.com/0zJlY5J.jpg?1<% end %>" width=30px height=30px />
     <span class="logout"><%= link_to("Logout", session_path, method: :delete) %></span>
     <% if current_user.is_admin? %>
     <span class="admin">Admin</span>
