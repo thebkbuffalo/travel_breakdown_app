@@ -1,4 +1,5 @@
-    <p style="color: red"><%= flash[:notice] %></p>
+  <div id='invite_friend_form'>
+    <%= flash[:notice] %></p>
   <% if flash[:notice] && flash[:notice].match("is not a member") %>
     <%= form_for @invitation do |f| %>
       <%= hidden_field_tag(:event_id, @event.id) %>
@@ -19,7 +20,12 @@
       </div>
 
       <div>
+        <br/>
         <%= f.submit "Invite" %>
       </div>
+      <br/>
+
+      <%= link_to('Your Event', event_path(@event)) %>
     <% end %>
   <% end %>
+</div>
