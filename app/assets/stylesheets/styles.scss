@@ -430,6 +430,61 @@ div.expense_model_breakdown h2 {
 
 
 
+div.form2 {
+	text-align: center;
+	margin: auto;
+	max-width: 390px;
+	border: solid 1px white;
+	padding: 20px;
+	border-radius: 20px;
+	background: rgba(255,255,255,.3);
+	margin-top: 50px;
+	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	height:190px;
+	&.p action_button  {
+		  margin-left:50px;
+	  }
+}
+
+div.field2 {
+  margin: 8px;
+  p {
+  float:right;
+  	margin-bottom:4px;
+  }
+}
+
+div.location {
+  float:left;
+  margin-left:20px;
+  margin-top:-0.5px;
+}
+
+div.img {
+  float:left;
+  margin-left:36px;
+  margin-top:-5px;
+}
+
+div.sub {
+  padding-top: 18px;
+  margin-left:15px;
+}
+
+div.field2a {
+  margin-bottom: 4px;
+}
+
+div.pull{
+	margin-left:-32px;
+}
+div.conf{
+	margin-left:-62px;
+}
+
+div.Suggestion {
+	text-align:center;
+}
 
 
 

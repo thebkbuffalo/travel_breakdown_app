@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20141006225826) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "closed",      default: false
   end
 
   create_table "expenses", force: true do |t|
