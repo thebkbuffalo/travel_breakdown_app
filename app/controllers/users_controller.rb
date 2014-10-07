@@ -27,8 +27,18 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  # TODO write this tomorrow morning 
+  # TODO write this tomorrow morning
   def edit
+
+  end
+
+    def update
+      binding.pry
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render(:edit)
+    end
   end
 
     # GET /users/1/password
@@ -114,6 +124,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :email,
       :name,
+      :image,
       :password,
       :password_confirmation
     )
