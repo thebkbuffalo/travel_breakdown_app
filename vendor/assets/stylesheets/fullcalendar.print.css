@@ -19,11 +19,14 @@
 --------------------------------------------------------------------------------------------------*/
 
 .fc-event {
-	background: #fff !important;
+	background: #A1C9E3 !important;
 	color: #000 !important;
 	page-break-inside: avoid;
 }
 
+.fc-day-grid-event.fc-event.fc-start.fc-not-end.main-event.fc-draggable {
+	background: 'red' !important;
+}
 .fc-event .fc-resizer {
 	display: none;
 }
@@ -32,15 +35,14 @@
 /* Table & Day-Row Restyling
 --------------------------------------------------------------------------------------------------*/
 
-
 th,
 td,
 tr,
 thead,
 tbody,
 .fc-row {
-	border-color: #ccc !important;
-	background: #fff !important;
+	border-color: #000000 !important;
+	background: #F5F5F5 !important;
 }
 
 /* kill the overlaid, absolutely-positioned common components */

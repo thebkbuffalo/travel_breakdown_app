@@ -99,14 +99,15 @@
   <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
   <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
   </div>
+      <% if @pending_expenses.count > 0 %>
   <div class="event_wrapper2">
       <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? %>
         <%= render 'expense_list' %>
       <% end %>
 </div>
-<br><br><br>
-
-
+<br><br>
+<%end%>
+<br>
 <script>
 
   $(document).ready(function() {
@@ -123,9 +124,12 @@
 			events: [
 
 				{
+          className: 'main-event',
 					title: '<%= @event.name %>',
 					start: '<%= @event.start_date %>',
           end: '<%= @event.end_date + 1%>',
+          color: '#6588C2'
+
 				},
 
           <% @people.each do |person| %>
@@ -133,9 +137,10 @@
               title: '<%= User.find(person.user_id).name %>',
               start: '<%= person.start_date %>',
               end: '<%= person.end_date + 1%>',
+            color: 'black'
             },
           <% end %>
-		  ]
+		  ],
 		});
 
 	});
