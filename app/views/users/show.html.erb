@@ -11,6 +11,9 @@
 	<span class="profile-info"> <%= @user.email %></span>
 	<br/>
 	<span class="profile-info"><%= @user.phone_number %> </span>
+  <br>
+<%= link_to 'Edit', edit_user_path(@user) %>
+
 </div>
 
 
@@ -61,6 +64,5 @@
 
 
 <br/><br/>
-<%= link_to 'Edit Profile', edit_user_path(@user) %> |
 
 </section>
