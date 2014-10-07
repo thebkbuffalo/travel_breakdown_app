@@ -19,13 +19,12 @@
 --------------------------------------------------------------------------------------------------*/
 
 .fc-event {
-	background: #A1C9E3 !important;
+	background: #A1C9E3;
 	color: #000 !important;
 	page-break-inside: avoid;
 }
 
-.fc-day-grid-event.fc-event.fc-start.fc-not-end.main-event.fc-draggable {
-	background: 'red' !important;
+
 }
 .fc-event .fc-resizer {
 	display: none;
