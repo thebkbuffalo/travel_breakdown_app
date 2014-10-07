@@ -5,13 +5,16 @@ class InvitationsController < ApplicationController
     @event = Event.find(params[:event_id])
     @invitation = Invitation.new
     @user = User.find(params[:owner])
+    @permission = params[:permission]
   end
 
   def create
     @invitation = Invitation.new(message: params[:invitation][:message],
                                  name: params[:invitation][:name],
                                  email: params[:invitation][:email],
-                                 event_id: params[:event_id])
+                                 event_id: params[:event_id],
+                                 permission: params[:permission]
+                                 )
     if @invitation.save && @invitation.deliver
       flash[:success] = "#{params[:invitation][:email]} has been invited!"
     else

@@ -129,8 +129,9 @@ class EventsController < ApplicationController
       end
     else
       new_email = params[:role][:user][:email]
+      permission = params[:role][:permission]
       flash[:notice] = "#{new_email} is not a member. Would you like to invite them to join the site?"
-      redirect_to new_invitation_path(event_id: @event.id, new_email: new_email, owner: @user.id)
+      redirect_to new_invitation_path(event_id: @event.id, new_email: new_email, owner: @user.id, permission: permission)
     end
   end
 
