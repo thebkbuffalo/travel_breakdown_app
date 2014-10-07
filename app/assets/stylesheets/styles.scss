@@ -143,7 +143,7 @@ $table_bg_color:hsla(0, 0%, 5%, 0.8);
   color: #333;
 }
 
-.strong{
+.strong {
 	font-weight:bold;
 	line-height:1.5em;
 }
@@ -206,7 +206,7 @@ div.login input {
 	background-color: white;
 }
 
-div.login input[type="submit"], div.login input[type="submit"].submit, div button a, div button, div.login a{
+div.login input[type="submit"], div.login input[type="submit"].submit, div button a, div button, div.login a {
 	padding: 10px;
 	font-size: 18px;
 	border-radius: 8px;
@@ -253,11 +253,9 @@ div.split_it {
 
 button a {
 	font-family: 'Ubuntu';
-	/*font-family: 'Didact Gothic';*/
-width: 200px;
-padding-left: 61px !important;
-padding-right: 61px !important;
-
+	width: 200px;
+	padding-left: 61px !important;
+	padding-right: 61px !important;
 	font-size: 20px;
 	margin: 0;
 }
@@ -278,9 +276,6 @@ div.picture_wrapper div.form {
 section{
 	margin:10px;
 	margin-top: 40px;
-
-
-	/*margin: 15px 0 75px 15px;*/
 		.site-buttons {
 		a {
 			@include button($blue_bg_color);
@@ -294,7 +289,6 @@ section{
 			}
 		}
 	}
-
 }
 
 
@@ -314,13 +308,7 @@ section{
 		}
 }
 
-
-
 // setting page links //
-
-
-
-
 
 // setting radius for table //
 @mixin border-radius($radius) {
@@ -334,13 +322,9 @@ section{
 
 $table_bg_color:hsla(0, 0%, 5%, 0.8);
 
-
-
-
 div.center_wrap {
 	text-align: center;
 }
-
 
 #table {
 	margin: 0 auto;

@@ -16,7 +16,7 @@ h1 {
 	font-weight:bold;
 }
 
-h2{
+h2 {
 	margin: 20px 0 5px;
 	font-size:16px;
 	font-weight:bold;
@@ -35,7 +35,7 @@ $text_color: rgb(40,40,40);
 
 // setting site wide font to verdana //
 
-body{
+body {
 	color:$text_color;
 	font-family: $verdana;
 }
@@ -149,7 +149,6 @@ section{
 			}
 		}
 	}
-
 }
 
 
@@ -168,8 +167,6 @@ header a {
 			font-weight: normal;
 			font-size:15px;
 		}
-
-
 }
 
 
@@ -186,8 +183,6 @@ header a {
 		}
 }
 
-
-
 // setting page links //
 
 a {
@@ -202,8 +197,6 @@ a {
 			font-size:15px;
 		}
 }
-
-
 
 // setting radius for table //
 @mixin border-radius($radius) {
@@ -279,7 +272,6 @@ div.form {
 	margin-top: 50px;
 	box-shadow: 3px 3px 10px rgba(0,0,0,.1);
 
-
 }
 
 input {
@@ -287,22 +279,6 @@ input {
 	font-weight:bold;
 	line-height:1.5em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
