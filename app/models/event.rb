@@ -32,8 +32,10 @@ class Event < ActiveRecord::Base
     overlap_dates_array(expense, role).each do |date|
       person_count = 0
       self.roles.each do |role|
-        role_dates = (role.start_date..role.end_date).to_a
-        person_count += 1 if role_dates.include? date
+        if role.accepted
+          role_dates = (role.start_date..role.end_date).to_a
+          person_count += 1 if role_dates.include? date
+        end
       end
       sum += expense.cost_per_day/person_count
     end
