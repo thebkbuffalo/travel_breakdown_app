@@ -40,6 +40,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
+      invites = Invitation.where(email: @user.email)
+      invites.each do |invite|
+        event = Event.find(invite.event_id)
+        Role.create(start_date: event.start_date,
+                    end_date: event.end_date,
+                    permission: invite.permission,
+                    event_id: event.id,
+                    user_id: @user.id
+                    )
+        Invitation.find(invite.id).destroy
+      end
       redirect_to user_path(@user)
     else
       render :new

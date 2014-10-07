@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_user
+  before_action :authorize_admin_only,    only:   :index
   before_action :set_event, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
   before_action :set_role, only: [:show, :edit, :update, :destroy, :invite_friends, :new_friend]
   # GET /events
@@ -129,8 +130,9 @@ class EventsController < ApplicationController
       end
     else
       new_email = params[:role][:user][:email]
+      permission = params[:role][:permission]
       flash[:notice] = "#{new_email} is not a member. Would you like to invite them to join the site?"
-      redirect_to new_invitation_path(event_id: @event.id, new_email: new_email, owner: @user.id)
+      redirect_to new_invitation_path(event_id: @event.id, new_email: new_email, owner: @user.id, permission: permission)
     end
   end
 
