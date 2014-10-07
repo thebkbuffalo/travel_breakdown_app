@@ -65,6 +65,7 @@ class EventsController < ApplicationController
         end
       end
     elsif params[:finalize]
+      Role.where("event_id = ? AND accepted = ?", @event.id, false).destroy_all
       @event.roles.each do |role|
         total_cost = @event.get_total_cost(role)
         total_paid = 0

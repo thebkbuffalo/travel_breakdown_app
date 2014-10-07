@@ -37,9 +37,7 @@ class Expense < ActiveRecord::Base
 	end
 
 	def gift
-    binding.pry
 	  amount.to_f/event.roles.select { |role|  role if role.accepted}.count
-
 	end
 
 	def calculate_owed
@@ -51,7 +49,6 @@ class Expense < ActiveRecord::Base
         gift
       end
 	end
-
 end
 
 # == Schema Information
