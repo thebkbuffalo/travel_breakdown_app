@@ -38,10 +38,12 @@
     <%= f.date_field :end_date, min: @event.start_date, max: @event.end_date, value: @event.end_date %></p>
   </div>
   <div class="expense_type">
-    <p><%= f.label :calculation_type %>:
-    <%= f.radio_button :calculation_type, :boat %> Per Person/Per Day?
-    <%= f.radio_button :calculation_type, :groceries %> Per Day?
-    <%= f.radio_button :calculation_type, :gifts , :checked => true%> Even Split?<p>
+    <p>
+      <%= f.label :calculation_type %>:
+    <%= f.radio_button :calculation_type, :gifts , :checked => true%> Even Split
+    <%= f.radio_button :calculation_type, :groceries %> Flat Day Rate
+    <%= f.radio_button :calculation_type, :boat %> Variable Day Rate
+    </p>
   </div>
   <div class="field">
     <p><%= f.label :Category %>:
@@ -49,5 +51,17 @@
   </div>
   <div class="actions">
     <%= f.submit %>
+  </div>
+  <div class="expense_model_breakdown">
+  <h2>Even Split</h2>
+    <p>
+      Split an expense evenly between all members
+    </p>
+  <h2>Flat Day Rate</h2>
+    <p>
+    </p>
+  <h2>Variable Day Rate</h2>
+    <p>
+    </p>
   </div>
 <% end %>
