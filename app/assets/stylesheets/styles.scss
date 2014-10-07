@@ -352,3 +352,37 @@ input {
 	font-weight:bold;
 	line-height:1.5em;
 }
+
+
+
+
+
+
+div.expense_form {
+	/*position: relative;*/
+	text-align: center;
+	margin: auto;
+	max-width: 580px;
+	border: solid 1px white;
+	padding: 20px;
+	border-radius: 20px;
+	background: rgba(255,255,255,.3);
+	margin-top: 50px;
+	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	/*height: 600px;*/
+
+}
+div.field {
+	/*border: solid 1px black;*/
+padding-right: 180px;
+	text-align:right;
+	margin: 8px;
+}
+
+div.expense_type {
+	left: 500px;
+}
+
+div.expense_model_breakdown {
+	text-align: left;
+}
