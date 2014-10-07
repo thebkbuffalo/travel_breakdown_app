@@ -147,11 +147,22 @@ img.header_image {
 	margin-right: 16px
 }
 
-span.logout {
+span.logout a {
 	float: right;
 	margin-top: 14px;
 	padding-right:6px;
+	color: white;
 }
+span.logout a:hover {
+	color: yellow;
+}
+span.admin_a a {
+	color: white;
+}
+span.admin_a a:hover {
+	color: yellow;
+}
+
 // Gray do we still need this style -- broke into  event-title and events-going //
 div.strong {
 	padding: 8px;
@@ -351,10 +362,6 @@ input {
 	line-height:1.5em;
 }
 
-
-
-
-
 div.expense_form {
 	/*position: relative;*/
 	text-align: center;
@@ -384,7 +391,19 @@ div.expense_model_breakdown {
 	text-align: left;
 }
 
+span.logo a {
+	font-family: 'Ubuntu', sans-serif;
+	float: left;
+	font-size: 2em;
+	margin-top: 6px;
+	color:white;
+	margin-left: 10px;
+}
+span.logo a:hover {
+	color: yellow;
+}
 
+/*font-family: 'Ubuntu', sans-serif;*/
 
 
 
