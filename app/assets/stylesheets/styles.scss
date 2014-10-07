@@ -1,4 +1,7 @@
 
+html, body {
+	font-family: 'Didact Gothic', sans-serif;
+}
 // setting table bg color //
 $table-background: rgba(32,32,32,.8);
 
@@ -11,6 +14,9 @@ h1 {
 	font-weight:bold;
 }
 
+h1, h2 {
+	font-family: 'Ubuntu', sans-serif;
+}
 
 h2{
 	margin: 20px 0 5px;
@@ -35,7 +41,7 @@ $text_color: black;
 
 body{
 	color:$text_color;
-	font-family: $verdana;
+	/*font-family: $verdana;*/
 }
 
 header {
@@ -119,7 +125,7 @@ $table_bg_color:hsla(0, 0%, 5%, 0.8);
 	font-size: inherit;
 	vertical-align: middle;
 	border-collapse: separate;
-	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
 	border-spacing: 3px;
 			  &.th, &.td, &.hr, &.thead, &.tbody {
 				background-color:$table_bg_color;
@@ -209,7 +215,8 @@ div.login input[type="submit"], div.login input[type="submit"].submit, div butto
 
 
 div.event_wrapper {
-box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
+
 
 	/*border-top: solid 40px rgba(0,0,0,.4);*/
 	text-align: left;
@@ -227,7 +234,8 @@ box-shadow: 3px 3px 60px rgba(0,0,0,.2);
 	margin:auto;
 }
 div.event_wrapper2 {
-box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
+
 
 	/*border-top: solid 40px rgba(0,0,0,.4);*/
 	text-align: left;
@@ -328,7 +336,7 @@ div.center_wrap {
 }
 
 table.table {
-background-color: rgba(0,0,0,.4);
+background-color: rgba(0,0,0,.2);
 border-radius: 12px 12px 0 0;
 /*border: solid 1px rgba(0,0,0,.4);*/
 
@@ -350,7 +358,8 @@ div.form {
 	border-radius: 20px;
 	background: rgba(255,255,255,.6);
 	margin-top: 50px;
-box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
+
 
 }
 input {
@@ -374,13 +383,13 @@ div.expense_form {
 	border-radius: 20px;
 	background: rgba(255,255,255,.3);
 	margin-top: 50px;
-	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
 	/*height: 600px;*/
 
 }
 div.field {
 	/*border: solid 1px black;*/
-padding-right: 180px;
+	padding-right: 180px;
 	text-align: right;
 	margin: 8px;
 }
@@ -391,14 +400,14 @@ div.expense_type {
 
 div.expense_model_breakdown {
 	text-align: left;
-	padding: 0 40px 0 40px;
+	padding: 0 18px 0 18px;
 }
 
 span.logo a {
 	font-family: 'Ubuntu', sans-serif;
 	float: left;
 	font-size: 2em;
-	margin-top: 6px;
+	margin-top: 4px;
 	color:white;
 	margin-left: 10px;
 }
