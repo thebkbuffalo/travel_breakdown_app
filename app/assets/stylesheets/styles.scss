@@ -242,14 +242,19 @@ div.split_it {
 	color: rgba(255, 255, 255, 1);
 	margin: auto !important;
 	text-shadow: 0px 0px 20px black;
-	top: 100px;
+	top: 50px;
 	z-index: 0;
 	width: 100%;
 
 }
+.form3 {
+	background-color: white !important;
+	margin-top: 10px !important;
+}
 
 div#login {
-	top: 190px
+	top: 140px;
+	padding: 50px;
 }
 
 button a {
@@ -347,7 +352,7 @@ td {
 	background-color: white;
 	/*max-width: 100px;*/
 }
-div.form {
+div.form, #invite_friend_form, .form3 {
 	text-align: center;
 	margin: auto;
 	max-width: 320px;
@@ -359,6 +364,12 @@ div.form {
 	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
 	z-index: 500;
 	position: relative;
+}
+
+h2#new_event_head {
+	text-align: center;
+	font-size: 25px;
+	margin-top: 35px;
 }
 
 input {
@@ -400,17 +411,17 @@ div.expense_model_breakdown h2 {
 	color: rgb(100,100,100);
 }
 
-.form3 {
-	margin: auto;
-	max-width: 390px;
-	border: solid 1px white;
-	padding: 20px;
-	border-radius: 20px;
-	background: rgba(255,255,255,.3);
-	margin-top: 50px;
-	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
-	height: 175px;
-}
+// .form3 {
+// 	margin: auto;
+// 	max-width: 390px;
+// 	border: solid 1px white;
+// 	padding: 20px;
+// 	border-radius: 20px;
+// 	background: rgba(255,255,255,.3);
+// 	margin-top: 50px;
+// 	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+// 	height: 175px;
+// }
 
 #sub {
 	margin-top: 2.25%;
