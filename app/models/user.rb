@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :admin, :inclusion => {:in => [true, false]}
 
- def is_admin?
+  def is_admin?
     self.admin == true
   end
 

@@ -3,16 +3,7 @@ class Invitation < ActiveRecord::Base
   validates :email, format: { :with => /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/ }
   validates :message, length: { :minimum => 10, :maximum => 1000 }
   validates :event_id, presence: true
-
-  # validates :name,
-  #           :presence => true
-
-
-  def clean_up(attributes = {})
-    attributes.each do |name, value|
-      send("#{name}=", value)
-    end
-  end
+  validates :permission, presence: true
 
   def deliver
     return false unless valid?
@@ -33,7 +24,4 @@ class Invitation < ActiveRecord::Base
     })
   end
 
-  def persisted?
-    false
-  end
 end

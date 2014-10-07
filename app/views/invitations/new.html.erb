@@ -2,6 +2,7 @@
   <% if flash[:notice] && flash[:notice].match("is not a member") %>
     <%= form_for @invitation do |f| %>
       <%= hidden_field_tag(:event_id, @event.id) %>
+      <%= hidden_field_tag(:permission, @permission) %>
       <div>
         <%= f.label :name %><br/>
         <%= f.text_field :name %>

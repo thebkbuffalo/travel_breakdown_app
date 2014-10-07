@@ -18,20 +18,22 @@
     </div>
 
 		<div class="event_right">
-			<span class="events-going">Going
+			<span class="events-going">Invited
     	</span>
 			<br /><br />
     	<table class="event_info" cellpadding="25px" cellpadding="100px">
 		  <tr>
 		    <th>Name</th>
 		    <th>Email</th>
-		    <th>Permission</th>
+        <th>Permission</th>
+		    <th>Confirmed</th>
 		  <% @people.each do |person| %>
 			</tr>
 		    <tr>
 		      <td> <%= person.user.name %> </td>
 		      <td> <%= person.user.email %> </td>
-		      <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
+          <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
+		      <td class="checkmark"> &#x2713; </td>
       	</tr>
     	<%end%>
 
@@ -41,6 +43,7 @@
           <td> <%= person.user.name %> </td>
           <td> <%= person.user.email %> </td>
           <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
+          <td> </td>
         <%end%>
         </tr>
       <%end%>
@@ -49,7 +52,8 @@
         <tr class="invited">
           <td> <%= person.name %> </td>
           <td> <%= person.email %> </td>
-          <td> "soup" </td>
+          <td> <%= person.permission %> </td>
+          <td> </td>
         <%end%>
         </tr>
       <%end%>
