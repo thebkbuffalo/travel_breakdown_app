@@ -2,17 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html {
-  background-image: url(background.jpg);
-  background-repeat:no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
 #signup_header {
   text-align: center;
   font-size: 25px;
@@ -35,7 +24,7 @@ html {
 	text-align:center;
 	padding:10px;
 	background: rgba(255,255,255,.6);
-	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
 }
 
 .profile-info {
