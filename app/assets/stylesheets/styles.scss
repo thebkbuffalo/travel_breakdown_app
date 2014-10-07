@@ -400,7 +400,7 @@ div.expense_model_breakdown h2 {
 	color: rgb(100,100,100);
 }
 
-div.form3 {
+.form3 {
 	margin: auto;
 	max-width: 390px;
 	border: solid 1px white;
@@ -409,10 +409,11 @@ div.form3 {
 	background: rgba(255,255,255,.3);
 	margin-top: 50px;
 	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
-	height:150px;
-	&.p action_button  {
-		  margin-left:50px;
-	  }
+	height: 175px;
+}
+
+#sub {
+	margin-top: 2.25%;
 }
 
 
@@ -500,13 +501,3 @@ div.s_date{
 #field_users_form{
 	margin-bottom:4px;
 }
-
-
-
-
-
-
-
-
-
-
