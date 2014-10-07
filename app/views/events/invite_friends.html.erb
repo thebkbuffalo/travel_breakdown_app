@@ -1,5 +1,6 @@
 <%= render 'layouts/header' %>
 
+  <div class="form">
   <p style="color: red"><%= flash[:notice] %></p>
 
   <% if @role.errors.any? %>
@@ -18,9 +19,9 @@
   <%= f.fields_for @user do |user|%>
     <%= user.label :email %>:
     <%= user.email_field :email, :value => nil, :placeholder => "yourname@email.com", :required => true %>
-  <% end %><br>
+  <% end %><br><br>
   <%= f.radio_button :permission, :organizer %> Organizer?
-  <%= f.radio_button :permission, :friend, :checked => true %> Friend? <br>
+  <%= f.radio_button :permission, :friend, :checked => true %> Friend? <br><br>
   <%= f.submit "Invite"%>
 
   <% end %>

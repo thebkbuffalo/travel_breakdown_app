@@ -23,17 +23,15 @@ class Event < ActiveRecord::Base
   	@total_cost
 	end
 
-	# def total_days
-	# 	(end_date - start_date).to_i
-	# end
-
   def boat(expense, role)
     sum = 0
     overlap_dates_array(expense, role).each do |date|
       person_count = 0
       self.roles.each do |role|
-        role_dates = (role.start_date..role.end_date).to_a
-        person_count += 1 if role_dates.include? date
+        if role.accepted
+          role_dates = (role.start_date..role.end_date).to_a
+          person_count += 1 if role_dates.include? date
+        end
       end
       sum += expense.cost_per_day/person_count
     end
@@ -52,46 +50,6 @@ class Event < ActiveRecord::Base
     intersection = role_range & expense_range
     intersection.count
   end
-
-	# def attendance
-	# 	attendance = []
-	# 	total_days.times {attendance.push([])}
-	# 	roles.each do |role|
-	# 		count = 0
-	# 		while count < total_days
-	# 			if role.start_date == (start_date + count) && role.end_date >= (start_date + count)
-	# 				attendance[count].push(role)
-	# 				count += 1
-	# 				role.start_date += 1
-	# 			else
-	# 				count += 1
-	# 			end
-	# 		end
-	# 	end
-	# 	attendance
-	# end
-
-	 # private
-
-  #   def event_dates
-  #     (event.start_date..event.end_date).to_a
-  #   end
-
-  #   def correct_date_order?
-  #     start_date <= end_date
-  #   end
-
-  #   def valid_date_range?
-  #     event_dates.include?(start_date) && event_dates.include?(end_date)
-  #   end
-
-  #   def check_valid_dates
-  #     if !correct_date_order? || !valid_date_range?
-  #       state = "dirt"
-  #     else
-  #       state = "golden"
-  #     end
-  #   end
 
 end
 

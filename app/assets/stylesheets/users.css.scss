@@ -2,6 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+#sign_up {
+  background-image: url(background.jpg);
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+
 #signup_header {
   text-align: center;
   font-size: 25px;
