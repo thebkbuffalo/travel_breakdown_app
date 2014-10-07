@@ -6,6 +6,10 @@
   <div class="event_wrapper">
     <div class="events-title"><%= @event.name %>
     </div>
+    <% if @event.closed %>
+    <div class="events-title">Event Finalized
+    </div>
+    <% end %>
 	<hr>
     <div class="event_info">
         <img class="event_img" src="<%= @event.image %>">
@@ -26,14 +30,29 @@
 		    <th>Name</th>
 		    <th>Email</th>
         <th>Permission</th>
+        <% if @event.closed %>
+         <th>Amount</th>
+        <% else %>
 		    <th>Confirmed</th>
+        <% end %>
 		  <% @people.each do |person| %>
 			</tr>
 		    <tr>
 		      <td> <%= person.user.name %> </td>
 		      <td> <%= person.user.email %> </td>
           <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
-		      <td class="checkmark"> &#x2713; </td>
+        <% if @event.closed %>
+         <td>
+          <% if person.amount_owed && person.amount_owed >= 0 %>
+            <span style="color:red">Owes: $<%= '%.2f' % person.amount_owed.abs %></span>
+          <% elsif person.amount_owed && person.amount_owed < 0  %>
+            <span style="color:green">Owed: $<%= '%.2f' % person.amount_owed.abs %></span>
+          <% end %>
+           </td>
+        <% else %>
+         <td class="checkmark"> &#x2713; </td>
+        <% end %>
+
       	</tr>
     	<%end%>
 
@@ -93,14 +112,16 @@
   </div>
 </div>
   <div class="event_links">
-  <% if @role.is_owner? || @role.is_organizer? %>
+  <% if (@role.is_owner? || @role.is_organizer?) && !@event.closed %>
     <%= link_to 'Edit', edit_event_path(id: @event.id)  %> |
     <%= link_to 'Invite Friends', event_invite_friends_path(event_id: @event.id) %> |
   <% end %>
-  <% if @role.is_owner? %>
+  <% if @role.is_owner? && !@event.closed %>
     <%= link_to 'Finalize Event', event_path(id: @event.id, finalize: "true"), method: :put %> |
   <% end %>
+  <% if !@event.closed %>
   <%= link_to 'Add Expense', new_event_expense_path(event_id: @event.id) %> |
+  <% end %>
   <%= link_to 'See Expenses', event_expenses_path(event_id: @event.id) %>
   </div>
       <% if @pending_expenses.count > 0 %>

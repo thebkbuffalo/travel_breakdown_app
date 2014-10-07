@@ -10,7 +10,8 @@
       <th>Start date</th>
       <th>End date</th>
       <th>Categoy</th>
-      <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?%>
+      <th>Type</th>
+      <% if (Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?) && !@event.closed %>
         <th colspan="3"></th>
       <% end %>
     </tr>
@@ -25,9 +26,14 @@
         <td><%= expense.start_date %></td>
         <td><%= expense.end_date %></td>
         <td><%= expense.tag %></td>
-        <bindint.pry>
-
-        <% if Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?%>
+        <%if expense.calculation_type == "boat" %>
+          <td>Variable Day Rate</td>
+        <%elsif expense.calculation_type == "gifts" %>
+          <td>Even Split</td>
+        <%elsif expense.calculation_type == "groceries" %>
+          <td>Flat Day Rate</td>
+        <% end %>
+        <% if (Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?) && !@event.closed%>
           <td><%= link_to 'Edit', edit_expense_path(event_id: params[:event_id], id: expense.id) %></td>
           <td><%= link_to 'Destroy', expense_path(event_id: params[:event_id], id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -37,7 +43,9 @@
 </table>
 <br>
 <div style="text-align: center">
+  <% if !@event.closed %>
 <%= link_to 'New Expense', new_event_expense_path %>
+<% end %>
 <%= link_to 'Back to Event', event_path(id: params[:event_id]) %>
 </div>
 
