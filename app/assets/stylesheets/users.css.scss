@@ -3,17 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 html {
-  background:rgb(250,250,250);
-  color: rgb(40,40,40);
-  background-image:none;
+  background-image: url(background.jpg);
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  position: absolute;
+  width: 100%;
 }
 
+#signup_header {
+  text-align: center;
+  font-size: 25px;
+
+}
 
 #usersTable {
 	border: 1px solid gray;
 	border-collapse:collapse;
 	tr:hover{
-		background-color:#efefef;			
+		background-color:#efefef;
 	}
 }
 
@@ -24,7 +34,7 @@ html {
 	margin:0 auto;
 	text-align:center;
 	padding:10px;
-	background: white;
+	background: rgba(255,255,255,.6);
 	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
 }
 
@@ -32,6 +42,7 @@ html {
 	font-size:14px;
 	line-height:22px;
 }
+
 
 .name {
 	font-size:30px;
@@ -55,10 +66,3 @@ section h2{
 				text-align:left;
 	}
 }
-
-
-
-
-
-
-
