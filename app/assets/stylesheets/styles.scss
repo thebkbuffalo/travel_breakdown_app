@@ -427,7 +427,20 @@ div.expense_model_breakdown h2 {
 
 
 
-
+div.form3 {
+	margin: auto;
+	max-width: 390px;
+	border: solid 1px white;
+	padding: 20px;
+	border-radius: 20px;
+	background: rgba(255,255,255,.3);
+	margin-top: 50px;
+	box-shadow: 3px 3px 60px rgba(0,0,0,.2);
+	height:150px;
+	&.p action_button  {
+		  margin-left:50px;
+	  }
+}
 
 
 div.form2 {
@@ -487,10 +500,33 @@ div.Suggestion {
 }
 
 
+div.f_name{
+  float:left;
+  margin-left:30x;
+  margin-top:-5px;
+}
 
+div.e_date{
+  float:left;
+  margin-left:15px;
+  margin-top:-5px;
+  font-size:17px;
+}
+div.s_date{
+  float:left;
+  margin-left:7px;
+  margin-top:-5px;
+  font-size:17px;
+}
 
+.hack
+{
+	margin-left:38px;
+}
 
-
+#field_users_form{
+	margin-bottom:4px;
+}
 
 
 

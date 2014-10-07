@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form3">
 <% if params[:user_id]%>
 <% form_info = [@user, @event] %>
 <% else %>
@@ -17,28 +17,29 @@
     </div>
   <% end %>
 
-  <div id="field_users_form" class="field2">
-    <p><%= f.label :name %>:
+  <div id="field_users_form" class="f_name">
+    <p class="hack"><%= f.label :name %>:
     <%= f.text_field :name, :required => true%> (required)</p>
   </div>
-  <div id="field_users_form" class="field2">
+  <div id="field_users_form" class="s_date">
      <p><%= f.label :start_date %>:
     <%= f.date_field :start_date, :required => true %> (required)</p>
   </div>
-  <div id="field_users_form" class="field2">
+  <div id="field_users_form" class="e_date">
     <p><%= f.label :end_date %>:
     <%= f.date_field :end_date, :required => true %> (required)</p>
   </div>
-  <div id="field_users_form" class="field2 location">
+  <div class="field2 location">
     <p><%= f.label :location %>:
     <%= f.text_field :location %></p>
   </div>
-  <div id="field_users_form" class="field2 img">
+  <div class="field2 img">
     <p><%= f.label :image %>:
     <%= f.url_field :image %></p>
   </div>
-  <div class="actions">
-    <p class="field2 sub"><%= f.submit %></p>
+  <br />
+   <div id="field_users_form" class="field2">
+    <p class="sub"><%= f.submit %></p>
   </div>
 <% end %>
 </div>
