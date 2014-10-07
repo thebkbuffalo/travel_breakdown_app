@@ -368,7 +368,7 @@ div.expense_form {
 	/*position: relative;*/
 	text-align: center;
 	margin: auto;
-	max-width: 580px;
+	max-width: 540px;
 	border: solid 1px white;
 	padding: 20px;
 	border-radius: 20px;
@@ -391,8 +391,8 @@ div.expense_type {
 
 div.expense_model_breakdown {
 	text-align: left;
+	padding: 0 40px 0 40px;
 }
-<<<<<<< HEAD
 
 span.logo a {
 	font-family: 'Ubuntu', sans-serif;
@@ -406,6 +406,15 @@ span.logo a:hover {
 	color: yellow;
 }
 
+p.small_text {
+	font-size: .8em;
+	color: grey;
+	padding:0 16px 0 16px;
+}
+div.expense_model_breakdown h2 {
+	font-size: .9em;
+	color: rgb(100,100,100);
+}
 /*font-family: 'Ubuntu', sans-serif;*/
 
 
