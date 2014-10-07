@@ -72,6 +72,7 @@ td.checkmark {
 	max-width: 1020px !important;
 	margin: 0 auto;
 }
+
 div.event_wrapper {
 	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
 	overflow: auto;
@@ -80,31 +81,23 @@ div.event_wrapper {
 	background-color: rgba(255,255,255,1);
 	border-radius: 10px;
 	width: 960px;
-	/*padding: 0 20px 40px;
 	padding-bottom: 40px;*/
 	padding: 10px 28px 28px 30px;
 	position: relative;
 	margin: auto;
 }
+
 div.event_wrapper2 {
 	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
-
-
-	/*border-top: solid 40px rgba(0,0,0,.4);*/
 	text-align: left;
-	/*height: 400px;*/
-	/*text-align: center;*/
-	/*display: inline-block;*/
 	background-color: rgba(255,255,255,1);
 	border-radius: 10px;
-	/*max-width: 1020px;*/
 	width: 960px;
-	/*padding: 20px;*/
 	padding: 20px;
 	top: 20px;
-	/*position: relative;*/
 	margin:auto;
 }
+
 	div.event_info {
 	float: left;
 }
