@@ -39,13 +39,13 @@
           <%else%>
           <td> </td>
         <% end %>
+          <% if expense.approved %>
+        <td>&#x2713;</td>
+        <%end%>
         <% if (Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_owner? || Role.where(user_id: @user.id).where(event_id: @event.id)[0].is_organizer?) && !@event.closed%>
           <td><%= link_to 'Edit', edit_expense_path(event_id: params[:event_id], id: expense.id) %></td>
           <td><%= link_to 'Destroy', expense_path(event_id: params[:event_id], id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-          <% if expense.approved %>
-        <td>&#x2713;</td>
-        <%end%>
       </tr>
     <% end %>
   </tbody>
