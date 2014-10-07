@@ -1,6 +1,6 @@
 <%= render 'layouts/header' %>
+<h2 style="text-align: center">Expense Index</h2>
 <div class="event_wrapper2">
-<span class"strong">Listing expenses</strong>
 
 <table id="table">
   <thead>
@@ -36,7 +36,8 @@
 </table>
 
 <br>
-
+<div style="text-align: center">
 <%= link_to 'New Expense', new_event_expense_path %>
 <%= link_to 'Back to Event', event_path(id: params[:event_id]) %>
+</div>
 </div>

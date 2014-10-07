@@ -3,7 +3,8 @@ html, body {
 	font-family: 'Didact Gothic', sans-serif;
 }
 // setting table bg color //
-$table-background: rgba(32,32,32,.8);
+/*$table-background: rgba(32,32,32,.8);*/
+$table-background: white;
 
 h1 {
   border:1px solid #6496ff;
@@ -19,8 +20,8 @@ h1, h2 {
 }
 
 h2{
-	margin: 20px 0 5px;
-	font-size: 25px;
+	margin: 8px 0 5px;
+	font-size: 22px;
 	font-weight: bold;
   color: #3D3D3D;
 }
@@ -46,9 +47,10 @@ body{
 
 header {
 	background-color: rgba(100,150,255,1);
-	height: 44px;
+	height: 60px;
 	width: 100%;
 	top:0;
+	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
 }
 // setting page body margin and bottom page link buttons //
 
@@ -149,26 +151,37 @@ $table_bg_color:hsla(0, 0%, 5%, 0.8);
 img.header_image {
 	border-radius: 100%;
 	float: right;
-	width: 40px;
-	height: 40px;
-	margin:2px;
+	width: 50px;
+	height: 50px;
+	margin:5px;
 	margin-right: 16px
 }
 
 span.logout a {
 	float: right;
-	margin-top: 14px;
+	margin-top: 20px;
 	padding-right:6px;
 	color: white;
+	font-size: 1.1em;
 }
 span.logout a:hover {
 	color: yellow;
 }
 span.admin_a a {
+	margin-top: 20px;
+	font-size: 1.1em;
 	color: white;
+}
+span.admin_a {
+	margin-top: 20px;
+
 }
 span.admin_a a:hover {
 	color: yellow;
+}
+
+span.admin {
+	margin-top: 22px;
 }
 
 // Gray do we still need this style -- broke into  event-title and events-going //
@@ -179,16 +192,7 @@ div.strong {
 	font-size: 1.1em;
 }
 
-div.event_info {
-	float: left;
-}
 
-img.event_img {
-	width: 320px;
-	height: 320px;
-	margin-right: 20px;
-	border-radius: 10px;
-}
 div.login {
 	/*background-color: rgba(255,255,255,.2);*/
 	height: 182px;
@@ -197,6 +201,7 @@ div.login {
 div.login input {
 	padding: 10px;
 	font-size: 1.2em;
+	width: 200px;
 	border-radius: 8px;
 	background-color: white;
 }
@@ -210,62 +215,69 @@ div.login input[type="submit"], div.login input[type="submit"].submit, div butto
 	border: none;
 	font-weight: bold;
 	border-radius: 0;
+	font-family: 'Ubuntu';
+	font-size: 20px;
+	margin-left: 0;
+	margin-right: 0;
+/*width: 0%;*/
+
+}
+div.login input[type="submit"]:hover {
+	color: yellow;
+	cursor: pointer;
+}
+div button {
+	padding: 10px 0 10px 0 ;
+	width: 200px;
+}
+
+button a:hover {
+	cursor: pointer;
+	color: yellow;
+	
+}
+div.split_it {
+	font-family: 'Ubuntu';
+	position: absolute;
+	font-size: 25em;
+	height: 0;
+	text-align: center;
+	color: rgba(255, 255, 255, 1);
+	margin: auto !important;
+	text-shadow: 0px 0px 20px black;
+	top: 0;
+	z-index: 0;
+	width: 100%;
 
 }
 
+button a {
+	font-family: 'Ubuntu';
+	/*font-family: 'Didact Gothic';*/
+width: 200px;
+padding-left: 61px !important;
+padding-right: 61px !important;
 
-div.event_wrapper {
-	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
-
-
-	/*border-top: solid 40px rgba(0,0,0,.4);*/
-	text-align: left;
-	height: 400px;
-	/*text-align: center;*/
-	/*display: inline-block;*/
-	background-color: rgba(255,255,255,.1);
-	border-radius: 10px;
-	/*max-width: 1020px;*/
-	width: 960px;
-	/*padding: 20px;*/
-	padding: 0 20px 40px;
-	padding-bottom: 40px;
-	position: relative;
-	margin:auto;
+	font-size: 20px;
+	margin: 0;
 }
-div.event_wrapper2 {
-	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
 
-
-	/*border-top: solid 40px rgba(0,0,0,.4);*/
-	text-align: left;
-	/*height: 400px;*/
-	/*text-align: center;*/
-	/*display: inline-block;*/
-	background-color: rgba(255,255,255,.1);
-	border-radius: 10px;
-	/*max-width: 1020px;*/
-	width: 960px;
-	/*padding: 20px;*/
-	padding: 20px;
-	top: 20px;
-	position: relative;
-	margin:auto;
-}
 div.event_links {
 	margin-top: -24px;
 	text-align: center;
 	position: relative;
 	margin-bottom: 20px
 }
-
+div.picture_wrapper div.form {
+	margin-top: 120px
+}
 
 
 // setting page body margin and bottom page link buttons //
 
 section{
 	margin:10px;
-	margin-top: 48px;
+	margin-top: 40px;
 
 
 	/*margin: 15px 0 75px 15px;*/
@@ -336,7 +348,7 @@ div.center_wrap {
 }
 
 table.table {
-background-color: rgba(0,0,0,.2);
+/*background-color: rgba(0,0,0,.2);*/
 border-radius: 12px 12px 0 0;
 /*border: solid 1px rgba(0,0,0,.4);*/
 
@@ -347,18 +359,21 @@ th {
 td {
 	/*border: solid 1px lightgrey;*/
 	padding: 10px;
+	background-color: white;
 	/*max-width: 100px;*/
 }
 div.form {
 	text-align: center;
 	margin: auto;
-	max-width: 390px;
+	max-width: 320px;
 	border: solid 1px white;
-	padding: 20px;
+	padding: 30px;
 	border-radius: 20px;
 	background: rgba(255,255,255,.6);
 	margin-top: 50px;
 	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
+	z-index: 500;
+	position: relative;
 }
 
 input {
@@ -372,20 +387,7 @@ input {
 	line-height:1.5em;
 }
 
-div.expense_form {
-	/*position: relative;*/
-	text-align: center;
-	margin: auto;
-	max-width: 540px;
-	border: solid 1px white;
-	padding: 20px;
-	border-radius: 20px;
-	background: rgba(255,255,255,.3);
-	margin-top: 50px;
-	box-shadow: 1px 1px 8px rgba(0,0,0,.1);
-	/*height: 600px;*/
 
-}
 div.field {
 	/*border: solid 1px black;*/
 	padding-right: 180px;
@@ -393,22 +395,13 @@ div.field {
 	margin: 8px;
 }
 
-div.expense_type {
-	left: 500px;
-}
-
-div.expense_model_breakdown {
-	text-align: left;
-	padding: 0 18px 0 18px;
-}
-
 span.logo a {
 	font-family: 'Ubuntu', sans-serif;
 	float: left;
-	font-size: 2em;
-	margin-top: 4px;
+	font-size: 2.4em;
+	margin-top: 10px;
 	color:white;
-	margin-left: 10px;
+	margin-left: 16px;
 }
 span.logo a:hover {
 	color: yellow;
@@ -419,31 +412,4 @@ p.small_text {
 	color: grey;
 	padding:0 16px 0 16px;
 }
-div.expense_model_breakdown h2 {
-	font-size: .9em;
-	color: rgb(100,100,100);
-}
-/*font-family: 'Ubuntu', sans-serif;*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

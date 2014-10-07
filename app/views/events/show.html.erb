@@ -42,7 +42,7 @@
         <tr class="pending">
           <td> <%= person.user.name %> </td>
           <td> <%= person.user.email %> </td>
-          <td> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
+          <td class="what"> <%= Role.where(user_id: person.user.id).where(event_id: @event.id)[0].permission %></td>
           <td> </td>
         <%end%>
         </tr>
@@ -112,6 +112,8 @@
 <br><br>
 <%end%>
 <br>
+
+  <div id='calendar'>
 <script>
 
   $(document).ready(function() {
@@ -151,6 +153,5 @@
 
 </script>
 
-	<div id='calendar'>
 </div>
 </section>
