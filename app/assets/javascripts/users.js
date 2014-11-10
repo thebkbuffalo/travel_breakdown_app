@@ -54,6 +54,13 @@ $(document).on('page:change', function(){
         $( this ).removeClass( "hover" );
       }
     );
+    $('tr').hover(
+      function() {
+        $( this ).addClass( "highlight" );
+      }, function() {
+        $( this ).removeClass( "highlight" );
+      }
+    );
 });
 
 function hideAll() {
