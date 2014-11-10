@@ -24,7 +24,7 @@
 			<span class="events-going">Invited
     	</span>
 			<br /><br />
-    	<table class="event_info" cellpadding="25px" cellpadding="100px">
+    	<table id="eventListTable" class="event_info" cellpadding="25px" cellpadding="100px">
 		  <tr class="tableHeader">
 		    <th>Name</th>
 		    <th>Email</th>
@@ -34,8 +34,12 @@
         <% else %>
 		    <th>Confirmed</th>
         <% end %>
+              </tr>
+      </table>
+      <div class="scroll">
+      <table id="eventListTable" class="event_info" cellpadding="25px" cellpadding="100px">
 		  <% @people.each do |person| %>
-			</tr>
+
 		    <tr>
 		      <td> <%= person.user.name %> </td>
 		      <td> <%= person.user.email %> </td>
@@ -84,6 +88,7 @@
             <td style="color: blue"><%= flash[:success] %></td>
           </tr>
         </table>
+      </div>
       <% end %>
       <% if flash[:error] %>
         <table class="event_info">

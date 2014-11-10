@@ -538,3 +538,10 @@ div.form {
 .hover {
 	border-bottom: solid 3px #6496ff;
 }
+
+.scroll {
+  max-height: 220px;
+  overflow: auto;
+  float: right;
+  width: 500px;
+}
