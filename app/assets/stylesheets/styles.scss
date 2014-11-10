@@ -515,3 +515,26 @@ div.s_date{
 div.form {
 	margin-top: 10px;
 }
+
+.tableHeader {
+	border-bottom: solid 1px;
+}
+
+.eventsHeader {
+	display: inline;
+	padding: 1px;
+	margin: 10px;
+}
+
+#eventsHeader {
+	text-align: center;
+	padding: 10px;
+}
+
+#ownerTitle, #organizerTitle, #invitedTitle {
+	color: gray;
+}
+
+.hover {
+	border-bottom: solid 3px #6496ff;
+}

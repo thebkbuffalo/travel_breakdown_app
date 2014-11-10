@@ -16,8 +16,8 @@
       <p>Location:
         <%= @event.location %>
       </p>
-      <p>Dates: <%= @event.start_date %> -
-        <%= @event.end_date %>
+      <p>Dates: <%= @event.start_date.strftime("%a %b. %d, %Y") %> -
+        <%= @event.end_date.strftime("%a %b. %d, %Y") %>
       </p>
     </div>
 		<div class="event_right">
@@ -25,7 +25,7 @@
     	</span>
 			<br /><br />
     	<table class="event_info" cellpadding="25px" cellpadding="100px">
-		  <tr>
+		  <tr class="tableHeader">
 		    <th>Name</th>
 		    <th>Email</th>
         <th>Permission</th>
@@ -97,6 +97,9 @@
 
     <div class="breakdown_wrap">
       <div class="breakdown">
+      <% if @event.closed %>
+       Total Spent: $<%= '%.2f' % @total_paid %><br>
+      <% else %>
         <span class="cost">Your Total Cost: $<%= '%.2f' % @total_cost %><br>
         Total Spent: $<%= '%.2f' % @total_paid %><br>
         </span>
@@ -105,8 +108,10 @@
         <% elsif @total_owed && @total_owed < 0  %>
           <span class="owed" style="color:green">You Are Owed: $<%= '%.2f' % @total_owed.abs %></span>
         <% end %>
+      <% end %>
       </div>
     </div>
+
     </div>
   </div>
 </div>
