@@ -63,6 +63,7 @@ class UsersController < ApplicationController
       end
       redirect_to user_path(@user)
     else
+      flash[:error] = "There was an issue with your sign up please try again"
       render :new
     end
   end

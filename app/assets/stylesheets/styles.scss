@@ -193,7 +193,7 @@ div.strong {
 div.login {
 	/*background-color: rgba(255,255,255,.2);*/
 	height: 182px;
-
+	margin-bottom: -10px;
 }
 div.login input {
 	padding: 10px;
@@ -442,6 +442,7 @@ div.form2 {
 	&.p action_button  {
 		  margin-left:50px;
 	  }
+	font-family: 'Ubuntu';
 }
 
 div.field2 {
@@ -548,4 +549,21 @@ div.form {
 
 .highlight {
 	color: gray;
+}
+
+#dialog_form {
+	display: none;
+}
+
+.ui-dialog {
+z-index: 1000 !important;
+}
+
+.ui-dialog-titlebar {
+	height: 20px;
+}
+
+.ui-dialog .ui-dialog-title {
+	float: none;
+	overflow:visible;
 }
