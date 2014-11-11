@@ -442,6 +442,7 @@ div.form2 {
 	&.p action_button  {
 		  margin-left:50px;
 	  }
+	font-family: 'Ubuntu';
 }
 
 div.field2 {
@@ -556,4 +557,13 @@ div.form {
 
 .ui-dialog {
 z-index: 1000 !important;
+}
+
+.ui-dialog-titlebar {
+	height: 20px;
+}
+
+.ui-dialog .ui-dialog-title {
+	float: none;
+	overflow:visible;
 }

@@ -3,7 +3,6 @@ $(document).on('page:change', function(){
   $('#sign_up_button').click(function(e) {
       e.stopPropagation();
       e.preventDefault();
-      debugger;
       $('#dialog_form').dialog( {
           show : "fadeIn",
           hide : "toggle",
